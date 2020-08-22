@@ -1,0 +1,11 @@
+{
+    "command_owner_only": "This command is owner only.",
+    "not_enough_permission": "You need `{permissions}` permissions to use this command.",
+    "command_guild_only": "This command is guild only.",
+    "ping_command": ":ping_pong: Pong! {ping}ms",
+    "specify_language": "Specify a language",
+    "specify_valid_language": "Specify a valid language. Available languages: `{languages}`",
+    "language_updated": "Your language has been successfully updated",
+    "command_disabled": "This command is disabled.",
+    "wait_cooldown": "You have to wait {cooldown} seconds to use this command again!"
+}

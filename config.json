@@ -1,0 +1,17 @@
+{
+    "prefixes": [
+        "a!"
+    ],
+    "owners": [
+        "327594208758202379"
+    ],
+    "game": {
+        "status": "online",
+        "type": "PLAYING",
+        "name": [
+            "Asomataru v2.0 Beta!"
+        ],
+        "url": "STREAM_URL",
+        "interval": 15
+    }
+}
