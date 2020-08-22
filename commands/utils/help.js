@@ -1,6 +1,6 @@
 module.exports = {
     name: 'help',
-    aliases: [h],
+    aliases: ['h'],
     permissions: [],
     ownerOnly: false,
     enabled: true,
