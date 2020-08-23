@@ -7,7 +7,7 @@ module.exports = {
     cooldown: 0,
     exec: async (client, message, args) => {
 const Discord = require("discord.js");
-const package = require('../package.json');
+const package = require('../../package.json');
 const version = (package.version)
 const embed = new Discord.MessageEmbed()
 .setColor("006400")
