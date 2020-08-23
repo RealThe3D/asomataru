@@ -9,9 +9,10 @@ module.exports = {
         const Discord = require('discord.js');
         const botstats = new Discord.MessageEmbed()
         .setTitle(`Asomataru's Bot Stats`)
-        .addField(`Guilds, ${client.guilds.cache.size} Guilds` [inline=true])
-        .addField(`Members, ${client.users.cache.size} users`)   
-
+        .addFields(
+            {name: 'Guilds', value: `${client.guilds.cache.size} Guilds`},
+            {name: 'Members', value: `${client.users.cache.size} users`}
+)
         message.channel.send(botstats);
     },
 };
