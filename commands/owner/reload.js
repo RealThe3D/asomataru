@@ -3,7 +3,7 @@ module.exports = {
     aliases: [],
     permissions: [],
     ownerOnly: true,
-    enabled: true,
+    enabled: false,
     cooldown: 0,
     exec: async (client, message, args) => {
         const owner = "327594208758202379";
@@ -13,11 +13,11 @@ module.exports = {
         if (message.author.id === owner) {
         if (!command) return message.channel.send(`There is no command with the name \`${commandName}\``);
 
-        delete require.cache[require.resolve(`../${command.name}.js`)];
+        delete require.cache[require.resolve(`./${command.name}.js`)];
 
         try
         {
-            const newCommand = require(`../${command.name}.js`);
+            const newCommand = require(`./${command.name}.js`);
             message.client.commands.set(newCommand.name, newCommand);
             message.channel.send(`Command \`${command.name}\` was reloaded.`);
         }
