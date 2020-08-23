@@ -9,6 +9,7 @@ module.exports = {
   aliases: ['commands'],
   usage: '[command name]',
   cooldown: 1,
+  enabled: true,
   exec: async (client, message, args) => {
     const categories = {
       "General": [],
