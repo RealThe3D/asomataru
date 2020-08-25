@@ -10,7 +10,7 @@ module.exports = {
 
         let randomAmount = Math.floor(Math.random()* Math.floor(100)) // 1-100
 
-        const userData = await client.models.userfindById(message.author.id)
+        const userData = await client.models.user.findById(message.author.id)
         if(!userData) await client.models.user.create({ _id: message.author.id })
 
         const embed = new Discord.MessageEmbed()

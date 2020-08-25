@@ -8,7 +8,7 @@ module.exports = {
     exec: async (client, message, args) => {
         const Discord = require("discord.js");
 
-        const userData = await client.models.userfindById(message.author.id)
+        const userData = await client.models.user.findById(message.author.id)
         if(!userData) await client.models.user.create({ _id: message.author.id })
 
         let money = userData.money
