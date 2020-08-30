@@ -2,12 +2,25 @@
 ## Versions
 
 ### Asomataru v2.0
-Asomataru's is getting a huge update soon!
+### v2.0.2 
+`botstats` command fixed. - August 22, 2020
+### v2.0.1
+`botstats` command added. - August 22, 2020
+### v2.0
+Lighter, Faster, and more organized!
+Asomataru got its files revamped to be a lot more lighter, and they are actually now organized! Asomataru should be 30% more responsive.
+
+Revamped command and event handlers!
+The command handler of Asomataru has been recoded to be more responsive and allows subfolders so now i can group commands by category! I trimmed the size of the main bot file from 69 (funny number) to 19 lines by doing so!
+
+MongoDB support!
+Some bugs have been fixed inside Asomataru! - August 22, 2020
+
 ## Asomataru v1.0
-### 1.1.7.1
-Renamed `moemorphism` to `moe`.
+### v1.1.7.1
+Renamed `moemorphism` to `moe`. - August 15, 2020
 ### v1.1.7
-Added `moemorphism` command. (Refer to v1.1.7.1 changelog)
+Added `moemorphism` command. (Refer to v1.1.7.1 changelog) - August 15, 2020
 ### v1.1.6 
 Updated `credits` to list another person, `kiss` command added, `neko` command added and `birthday` has a new birthday! - August 15, 2020
 ### v1.1.5.2 / 1.1.5 Hotfix 2 
