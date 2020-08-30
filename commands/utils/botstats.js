@@ -7,13 +7,13 @@ module.exports = {
     cooldown: 10,
     exec: async (client, message, args) => {
         const Discord = require('discord.js');
+        const stats = [
+        `**Guilds: ${client.guilds.cache.size} Guilds**`
+        `**Users: ${client.users.cache.size} Users**`
+        ]
         const botstats = new Discord.MessageEmbed()
         .setTitle(`Asomataru's Bot Stats`)
-        .addFields(
-            {name: 'Guilds', value: `${client.guilds.cache.size} Guilds`},
-            {name: 'Members', value: `${client.users.cache.size} users`}
-)
-        .addFooter('Warning! This is cached data meaning that this maybe outdated until Asomataru is restarted!')
+        .setDescription(`${stats}`)
         message.channel.send(botstats);
     },
 };
