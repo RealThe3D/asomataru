@@ -13,7 +13,6 @@ client.database.on("error", (err) => {
 });
 client.database.once("open", async () => {
     require("./models");
-    require("./models/userModel")
     require("./handlers/eventHandler")(client);
     require("./handlers/moduleHandler")(client);
     client.login(TOKEN);
