@@ -1,6 +1,8 @@
 # Asomataru Bot
 ## Information
-(https://top.gg/api/widget/730622099525206086.svg)
+![top.gg server listing](https://top.gg/api/widget/730622099525206086.svg)
+
+Asomataru is a Discord bot made on Discord.js v12!
 
 > I’m hoping to expand the bot with more commands and make Koro proud!
 ## Commands
