@@ -16,7 +16,7 @@ module.exports = {
   
       const embed = new Discord.MessageEmbed()
       .setTitle(`${message.author.username}'s Balance`)
-      .setDescription(`Balance: ${data.cash} Coins`)
+      .setDescription(`Balance: ${data.coins} Coins`)
       .setFooter('Asomataru RPG System v0.1 Beta!')
       message.channel.send(embed)
     }
