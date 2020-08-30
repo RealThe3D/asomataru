@@ -1,6 +1,6 @@
 # Asomataru Bot
 ## Information
-https://top.gg/api/widget/662469470618648576.svg
+(https://top.gg/api/widget/730622099525206086.svg)
 
 > I’m hoping to expand the bot with more commands and make Koro proud!
 ## Commands
