@@ -13,6 +13,7 @@ module.exports = {
             {name: 'Guilds', value: `${client.guilds.cache.size} Guilds`},
             {name: 'Members', value: `${client.users.cache.size} users`}
 )
+        .addFooter('Warning! This is cached data meaning that this maybe outdated until Asomataru is restarted!')
         message.channel.send(botstats);
     },
 };

@@ -57,6 +57,23 @@ module.exports = {
                 ]
             }
         });
+        message.channel.send({
+            embed: {
+                color: 3447003,
+                title: "RPG:",
+                fields: [{
+                    name: "Command",
+                    value: "profile\nadventure",
+                    inline: true
+                },
+                {
+                    name: "Action",
+                    value: "Shows your RPG stats!\nAdventure to earn some coins!",
+                    inline: true
+                }
+                ]
+            }
+        });
     }
 
 }
