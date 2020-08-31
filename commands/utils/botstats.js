@@ -14,7 +14,7 @@ module.exports = {
         ]
         const botstats = new Discord.MessageEmbed()
         .setTitle(`Asomataru's Bot Stats`)
-        .setDescription(`${stats}`)
+        .setDescription(stats)
         message.channel.send(botstats);
     },
 };
