@@ -6,6 +6,7 @@ module.exports = {
     enabled: true,
     cooldown: 0,
     exec: async (client, message, args) => {
+        const Discord = require('discord.js');
         const pogLink = "https://img.pngio.com/emote-pogchamp-twitchtv-greenbluerup-emoticon-png-clipart-pogchamp-emote-discord-728_508.jpg";
         const embed = new Discord.MessageEmbed()
         .setImage (pogLink)
