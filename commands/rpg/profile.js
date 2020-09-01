@@ -16,10 +16,10 @@ module.exports = {
   
       const userStats = [
         `Balance: ${data.account.coins} Coins`,
-        `HP: ${user.account.hp} Health`,
-        `Level: ${user.account.level}`,
-        `XP: ${user.account.xp} XP`,
-        `XP to Level Up: ${user.xp - user.xpRemaining}`
+        `HP: ${data.account.hp} Health`,
+        `Level: ${data.account.level}`,
+        `XP: ${data.account.xp} XP`,
+        `XP to Level Up: ${data.account.xp - data.account.xpRemaining}`
       ]
       const embed = new Discord.MessageEmbed()
       .setTitle(`${message.author.username}'s Balance`)
