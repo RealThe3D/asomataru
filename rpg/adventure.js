@@ -23,7 +23,7 @@ module.exports = {
 
         message.channel.send(embed);
         
-        data.account.coins = data.account.coins + randomAmount 
+        data.coins = data.coins + randomAmount 
         data.save()
         }
     }

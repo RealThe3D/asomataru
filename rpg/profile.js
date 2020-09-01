@@ -15,11 +15,11 @@ module.exports = {
       if(!data) await User.create({ userID: member.user.id })
   
       const userStats = [
-        `Balance: ${data.account.coins} Coins`,
-        `HP: ${data.account.hp} Health`,
-        `Level: ${data.account.level}`,
-        `XP: ${data.account.xp} XP`,
-        `XP to Level Up: ${data.account.xp - data.account.xpRemaining}`
+        `Balance: ${data.coins} Coins`,
+        `HP: ${data.hp} Health`,
+        `Level: ${data.level}`,
+        `XP: ${data.xp} XP`,
+        `XP to Level Up: ${data.xp - data.xpRemaining}`
       ]
       const embed = new Discord.MessageEmbed()
       .setTitle(`${message.author.username}'s Balance`)
