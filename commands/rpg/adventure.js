@@ -1,6 +1,6 @@
 module.exports = {
     name: 'adventure',
-    aliases: ['adv'],
+    aliases: ['adventure'],
     permissions: [],
     ownerOnly: false,
     enabled: true,
@@ -9,11 +9,12 @@ module.exports = {
         const User = require('../../models/userModel.js');
         const Discord = require("discord.js");
 
-        let randomAmount = Math.floor(Math.random()* Math.floor(100)) // 1-100
+        let randomAmount = Math.floor(Math.random()* Math.floor(15)) // 1-15
 
         let data = await User.findOne({userID: message.author.id })
   
-        if(!data) await User.create({ userID: message.author.id })
+        if(!data) return message.channel.send('Please use the profile command to register for the bot.');
+        else {
 
         const embed = new Discord.MessageEmbed()
         .setTitle(`${message.author.username} traveled and did some bounties!`)
@@ -24,5 +25,6 @@ module.exports = {
         
         data.coins = data.coins + randomAmount 
         data.save()
+        }
     }
 }
