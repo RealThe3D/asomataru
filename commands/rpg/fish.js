@@ -24,22 +24,22 @@ module.exports = {
     } else { // TEXT WALL INCOMING!!!
         if(fishRNG === "salmon") {
             message.channel.send(`${message.author.username} has caught a salmon!`)
-            data.fish.salmon + 1;
+            data.fish.salmon = data.fish.salmon + 1;
             data.save();
         }
         if(fishRNG === "bass") {
             message.channel.send(`${message.author.username} has caught a bass!`)
-            data.fish.bass + 1;
+            data.fish.bass = data.fish.bass + 1;
             data.save();
         }
         if(fishRNG === "eel") {
             message.channel.send(`${message.author.username} has caught an eel!`)
-            data.fish.eel + 1;
+            data.fish.eel = data.fish.eel + 1;
             data.save();
         }
         if(fishRNG === "pufferfish") {
             message.channel.send(`${message.author.username} has caught a pufferfish!`)
-            data.fish.pufferfish + 1;
+            data.fish.pufferfish = data.fish.pufferfish + 1;
             data.save();
         }
         }
