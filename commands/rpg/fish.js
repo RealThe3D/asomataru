@@ -25,20 +25,23 @@ module.exports = {
         if(fishRNG === "salmon") {
             message.channel.send(`${message.author.username} has caught a salmon!`)
             data.fish.salmon + 1;
+            data.save()
         }
         if(fishRNG === "bass") {
             message.channel.send(`${message.author.username} has caught a bass!`)
             data.fish.salmon + 1;
+            data.save()
         }
         if(fishRNG === "eel") {
             message.channel.send(`${message.author.username} has caught an eel!`)
             data.fish.eel + 1;
+            data.save()
         }
         if(fishRNG === "pufferfish") {
             message.channel.send(`${message.author.username} has caught a pufferfish!`)
             data.fish.pufferish + 1;
+            data.save()
         }
-        data.save()
         }
     },
 };
