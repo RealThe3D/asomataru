@@ -1,19 +1,16 @@
 module.exports = {
-    name: 'fish',
+    name: 'chop',
     aliases: [],
     permissions: [],
     ownerOnly: false,
     enabled: true,
     cooldown: 300,
     exec: async (client, message, args) => {
-        // Fish script because I suck. U_U
-        const fishNames = [
-            'bass',
-            'salmon',
-            'eel',
-            'pufferfish'
+        // Wood script because I suck. U_U
+        const woodNames = [
+            "oak wood"
         ]
-        var fishRNG = fishNames[Math.floor(Math.random() * fishNames.length)];
+        var woodRNG = woodNames[Math.floor(Math.random() * woodNames.length)];
 
         // MongoDB Scripts
         const User = require('../../models/userModel.js');
@@ -22,9 +19,9 @@ module.exports = {
 
         if(!data) {message.channel.send("You've have not registered yet, please use a!profile")
     } else { // TEXT WALL INCOMING!!!
-        if(fishRNG === "salmon") {
-            message.channel.send(`${message.author.username} has caught a salmon!`)
-            data.fish.salmon + 1;
+        if(fishRNG === "oak wood") {
+            message.channel.send(`${message.author.username} has chopped down a tree and got 1 oak wood!`)
+            "data.resources.oak wood" + 1;
         }
         if(fishRNG === "bass") {
             message.channel.send(`${message.author.username} has caught a bass!`)

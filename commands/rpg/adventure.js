@@ -9,7 +9,6 @@ module.exports = {
         const User = require('../../models/userModel.js');
         const Discord = require("discord.js");
 
-
         let randomAmount = Math.floor(Math.random()* Math.floor(25)) // 1-25
 
         let data = await User.findOne({userID: message.author.id })

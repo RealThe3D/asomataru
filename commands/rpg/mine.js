@@ -1,34 +1,37 @@
+// NEED TO FIX!
+
 module.exports = {
-    name: 'fish',
+    name: 'mine',
     aliases: [],
     permissions: [],
     ownerOnly: false,
     enabled: true,
     cooldown: 300,
     exec: async (client, message, args) => {
-        // Fish script because I suck. U_U
-        const fishNames = [
-            'bass',
-            'salmon',
-            'eel',
-            'pufferfish'
+        // Mining script because I suck. U_U
+        const oreNames = [
+            'copper ore',
+            'iron ore',
+            'mythril ore',
+            'platinum ore',
+            'cobblestone'
         ]
-        var fishRNG = fishNames[Math.floor(Math.random() * fishNames.length)];
+        var oreRNG = oreNames[Math.floor(Math.random() * oreNames.length)];
 
         // MongoDB Scripts
         const User = require('../../models/userModel.js');
         // Check for data
         let data = await User.findOne({userID: message.author.id })
-
+        /*
         if(!data) {message.channel.send("You've have not registered yet, please use a!profile")
-    } else { // TEXT WALL INCOMING!!!
-        if(fishRNG === "salmon") {
-            message.channel.send(`${message.author.username} has caught a salmon!`)
-            data.fish.salmon + 1;
+    } else { 
+        if(oreRNG === "copper ore") {
+            message.channel.send(`${message.author.username} has mined 1 copper ore!`)
+            data.resources.copper_ore + 1;
         }
-        if(fishRNG === "bass") {
+        if(fishRNG === "iron ore") {
             message.channel.send(`${message.author.username} has caught a bass!`)
-            data.fish.salmon + 1;
+            data.resources.salmon + 1;
         }
         if(fishRNG === "eel") {
             message.channel.send(`${message.author.username} has caught an eel!`)
@@ -39,6 +42,6 @@ module.exports = {
             data.fish.pufferish + 1;
         }
         data.save();
-        }
+        }   */
     },
 };

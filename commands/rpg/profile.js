@@ -1,5 +1,3 @@
-
-
 module.exports = {
     name: 'profile',
     aliases: ['stats'],
@@ -25,7 +23,6 @@ module.exports = {
         `Level: ${data.level}`,
         `XP: ${data.xp} XP`,
         `XP to Level Up: ${data.xptoNextLevel}`,
-
         `**Fish**`,
         `Salmon: ${data.fish.salmon}`,
         `Bass: ${data.fish.bass}`,
