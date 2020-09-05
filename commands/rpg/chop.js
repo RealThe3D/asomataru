@@ -3,7 +3,7 @@ module.exports = {
     aliases: [],
     permissions: [],
     ownerOnly: false,
-    enabled: true,
+    enabled: false,
     cooldown: 300,
     exec: async (client, message, args) => {
         // Wood script because I suck. U_U
