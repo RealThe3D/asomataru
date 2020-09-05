@@ -19,21 +19,9 @@ module.exports = {
 
         if(!data) {message.channel.send("You've have not registered yet, please use a!profile")
     } else { // TEXT WALL INCOMING!!!
-        if(fishRNG === "oak wood") {
+        if(woodNames === "oak wood") {
             message.channel.send(`${message.author.username} has chopped down a tree and got 1 oak wood!`)
             "data.resources.oak wood" + 1;
-        }
-        if(fishRNG === "bass") {
-            message.channel.send(`${message.author.username} has caught a bass!`)
-            data.fish.salmon + 1;
-        }
-        if(fishRNG === "eel") {
-            message.channel.send(`${message.author.username} has caught an eel!`)
-            data.fish.eel + 1;
-        }
-        if(fishRNG === "pufferfish") {
-            message.channel.send(`${message.author.username} has caught a pufferfish!`)
-            data.fish.pufferish + 1;
         }
         data.save();
         }
