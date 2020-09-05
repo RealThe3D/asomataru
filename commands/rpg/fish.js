@@ -38,7 +38,7 @@ module.exports = {
             message.channel.send(`${message.author.username} has caught a pufferfish!`)
             data.fish.pufferish + 1;
         }
-        data.save();
+        data.save()
         }
     },
 };
