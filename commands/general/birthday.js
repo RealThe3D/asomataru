@@ -2,10 +2,11 @@ module.exports = {
     name: "birthday",
     aliases: ['bday'],
     permissions: [],
-    ownerOnly: false,
+    ownerOnly: true,
     enabled: true,
     cooldown: 0,
     exec: async (client, message, args) => {
+        // Public on Septemeber 17th!
         const Discord = require('discord.js');
         const Eri = ['https://media1.tenor.com/images/f282775bfa181e9251023892a726037b/tenor.gif?itemid=16645535',
                      'https://media.tenor.com/images/804187a5ae8a39af449d06d353800692/tenor.gif',
