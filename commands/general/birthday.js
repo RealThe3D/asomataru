@@ -2,7 +2,7 @@ module.exports = {
     name: "birthday",
     aliases: ['bday'],
     permissions: [],
-    ownerOnly: true,
+    ownerOnly: false,
     enabled: true,
     cooldown: 0,
     exec: async (client, message, args) => {
@@ -20,7 +20,7 @@ module.exports = {
         .setColor('FFC0CB')
         .setTitle('HAPPY BIRTHDAY, The3D!')
         .setImage(EriRandom)
-        .setFooter(`It is 3D's Birthday today!, DM The3D#1120 a Happy Birthday!`)
+        .setFooter(`DM The3D#1120 and wish him a Happy Birthday!`)
 
         message.channel.send(embed)
     },
