@@ -20,7 +20,7 @@ module.exports = {
         .setColor('FFC0CB')
         .setTitle('HAPPY BIRTHDAY, The3D!')
         .setImage(EriRandom)
-        .setFooter(`It is 3D's Birthday today!, DM The3D#1120 a happy birthday!`)
+        .setFooter(`It is 3D's Birthday today!, DM The3D#1120 a Happy Birthday!`)
 
         message.channel.send(embed)
     },
