@@ -7,6 +7,7 @@ module.exports = {
     cooldown: 0,
     exec: async (client, message, args) => {
         // Public on Septemeber 17th!
+        // Now c
         const Discord = require('discord.js');
         const Eri = ['https://media1.tenor.com/images/f282775bfa181e9251023892a726037b/tenor.gif?itemid=16645535',
                      'https://media1.tenor.com/images/a276be1f5dd04a52672bb930d35c1e28/tenor.gif?itemid=16475061',
@@ -18,9 +19,9 @@ module.exports = {
         var EriRandom = Eri[Math.floor(Math.random() * Eri.length)];
         const embed = new Discord.MessageEmbed()
         .setColor('FFC0CB')
-        .setTitle('HAPPY BIRTHDAY, The3D!')
+        .setTitle('HAPPY LATE BIRTHDAY, The3D!')
         .setImage(EriRandom)
-        .setFooter(`DM The3D#1120 and wish him a Happy Birthday!`)
+        .setFooter(`DM The3D#1120 and wish him a late Happy Birthday!`)
 
         message.channel.send(embed)
     },
