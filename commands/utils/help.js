@@ -7,7 +7,7 @@ module.exports = {
     cooldown: 10,
     exec: async (client, message, args) => {
         // Command disabled
-        message.channel.send("This command is disabled until revamped, sorry for incovenience! 
+        message.channel.send("This command is disabled until revamped, sorry for incovenience!") 
                              },
       };
         /* message.channel.send({
