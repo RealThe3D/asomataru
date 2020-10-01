@@ -19,7 +19,7 @@ module.exports = {
         const embed = new Discord.MessageEmbed()
         .setTitle(`${message.author.username} traveled and did some bounties!`)
         .setDescription(`${message.author.username} has earned ${randomAmount} credits.`)
-        .setFooter('Asomataru RPG System v0.1 Beta!')
+        .setFooter('Asomataru RPG System v0.2 Beta!')
 
         message.channel.send(embed);
         

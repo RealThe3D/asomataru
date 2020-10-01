@@ -4,7 +4,7 @@ module.exports = {
     permissions: [],
     ownerOnly: false,
     enabled: true,
-    cooldown: 0,
+    cooldown: 2,
     exec: async (client, message, args) => {
         const randomPuppy = require('random-puppy');
         const Discord = require('discord.js');

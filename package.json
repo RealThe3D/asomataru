@@ -1,7 +1,7 @@
 {
   "name": "asomataru",
-  "version": "2.1.1",
-  "description": "A discord bot made by The3D#9801",
+  "version": "2.2.0",
+  "description": "A discord bot made by The3D#1120",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
@@ -10,6 +10,7 @@
   "dependencies": {
     "discord.js": "^12.3.1",
     "fs": "0.0.2",
+    "locale-parser":"^1.0.0",
     "mongoose": "^5.9.25",
     "random-puppy": "1.1.0"
   }

@@ -15,6 +15,7 @@ module.exports = {
         const botstats = new Discord.MessageEmbed()
         .setTitle(`Asomataru's Bot Stats`)
         .setDescription(stats)
+        .setFooter('MAY BE OUTDATED!')
         message.channel.send(botstats);
     },
 };

@@ -42,6 +42,7 @@ module.exports = {
             data.fish.pufferfish = data.fish.pufferfish + 1;
             data.save();
         }
+        data.save()
         }
     },
 };

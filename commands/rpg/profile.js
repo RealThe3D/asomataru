@@ -14,7 +14,7 @@ module.exports = {
       let data = await User.findOne({userID: member.user.id })
   
       if(!data) { await User.create({ userID: member.user.id })
-      message.channel.send(`Your account has created, ${message.author.username}!`)
+      message.channel.send(`Your account was created, ${message.author.username}!`)
     } else {
   
       const userStats = [
@@ -23,6 +23,7 @@ module.exports = {
         `Level: ${data.level}`,
         `XP: ${data.xp} XP`,
         `XP to Level Up: ${data.xptoNextLevel}`,
+        ` `,
         `**Fish**`,
         `Salmon: ${data.fish.salmon}`,
         `Bass: ${data.fish.bass}`,
@@ -34,7 +35,7 @@ module.exports = {
       const embed = new Discord.MessageEmbed()
       .setTitle(`${member.user.username}'s Stats`)
       .setDescription(userStats)
-      .setFooter('Asomataru RPG System v0.1 Beta!')
+      .setFooter('Asomataru RPG System v0.2 Beta!')
       message.channel.send(embed)
       }
     }

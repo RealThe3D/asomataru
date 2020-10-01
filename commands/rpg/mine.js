@@ -27,21 +27,13 @@ module.exports = {
     } else { 
         if(oreRNG === "copper ore") {
             message.channel.send(`${message.author.username} has mined 1 copper ore!`)
-            data.resources.copper_ore + 1;
+            data.resources.copperore + 1
         }
         if(fishRNG === "iron ore") {
-            message.channel.send(`${message.author.username} has caught a bass!`)
-            data.resources.salmon + 1;
+            message.channel.send(`${message.author.username} has mined 1 iron ore!`)
+            data.resources.ironore + 1
         }
-        if(fishRNG === "eel") {
-            message.channel.send(`${message.author.username} has caught an eel!`)
-            data.fish.eel + 1;
-        }
-        if(fishRNG === "pufferfish") {
-            message.channel.send(`${message.author.username} has caught a pufferfish!`)
-            data.fish.pufferish + 1;
-        }
-        data.save();
-        }   
+        data.save()
+    }
     },
 };

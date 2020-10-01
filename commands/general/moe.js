@@ -1,6 +1,6 @@
 module.exports = {
-    name: 'moe',
-    aliases: ['moemorphism'],
+    name: 'moemorphism',
+    aliases: ['moe'],
     permissions: [],
     ownerOnly: false,
     enabled: true,

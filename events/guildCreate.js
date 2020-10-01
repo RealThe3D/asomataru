@@ -3,6 +3,6 @@ module.exports = async guild => {
     await guildModel.create({
         guildID: guild.id
     });
-    guild.language = require("../locales/en.json");
+    guild.language = "en";
     console.log(`[JOINED GUILD]: ${guild.name} | ${guild.id}`);
 }

@@ -1,11 +1,11 @@
 const guildModel = require("../models/guildModel");
 module.exports = async client => {
-    client.user.setPresence({ activity: { name: 'Asomataru v2.1.2.1', type: 'PLAYING' }, status: 'online' })
+    client.user.setPresence({ activity: { name: 'Asomataru v2.2.0!', type: 'PLAYING' }, status: 'online' })
     for (let guild of client.guilds.cache.array()) {
         let language = "en";
         let guildDocument = await guildModel.findOne({ guildID: guild.id });
         if (guildDocument && guildDocument.language) language = guildDocument.language;
-        guild.language = require(`../locales/${language}.json`);
+        guild.language = language;
     }
     process.stdout.write("\n");
     console.log("   Asomataru Bot!    ");

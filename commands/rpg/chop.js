@@ -3,7 +3,7 @@ module.exports = {
     aliases: [],
     permissions: [],
     ownerOnly: false,
-    enabled: false,
+    enabled: true,
     cooldown: 300,
     exec: async (client, message, args) => {
         // Wood script because I suck. U_U
@@ -19,9 +19,9 @@ module.exports = {
 
         if(!data) {message.channel.send("You've have not registered yet, please use a!profile")
     } else { // TEXT WALL INCOMING!!!
-        if(woodNames === "oak wood") {
+        if(woodRNG === "oak wood") {
             message.channel.send(`${message.author.username} has chopped down a tree and got 1 oak wood!`)
-            "data.resources.oak wood" + 1;
+            data.resources.oakwood = data.resources.oakwood + 1;
         }
         data.save();
         }

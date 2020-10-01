@@ -13,7 +13,7 @@ const embed = new Discord.MessageEmbed()
 .setColor("006400")
 .setTitle("Asomataru Bot")
 .setDescription(`I'm on version ${version}`)
-.setFooter("Made by The3D#9801.")
+.setFooter("Made by The3D#1120.")
 message.channel.send(embed);
     },
 }

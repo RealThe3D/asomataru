@@ -1,0 +1,7 @@
+language_updated: Your language has been successfully updated
+help_embed_title: For more information about a command, use `help (command)` command
+help_permissions: Required Permissions
+help_name: Name
+help_aliases: Aliases
+help_not_found: "Command with name `%{command}` not found"
+not_found: Not Found
