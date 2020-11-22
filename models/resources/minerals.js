@@ -1,46 +1,46 @@
 const resources = {
 	// WOOD
-	["oak wood"]: {
+	["oakwood"]: {
 		type: Number,
 		default: 5,
 	},
 
 	// ORE
-	["copper ore"]: {
+	["copperore"]: {
 		type: Number,
 		default: 10,
 	},
-	["iron ore"]: {
+	["ironore"]: {
 		type: Number,
 		default: 0,
 	},
-	["mythril ore"]: {
+	["mythrilore"]: {
 		type: Number,
 		default: 0,
 	},
-	["platinum ore"]: {
+	["platinumore"]: {
 		type: Number,
 		default: 0,
 	},
 
 	// BARS
-	["copper bar"]: {
+	["copperbar"]: {
 		type: Number,
 		default: 0,
 	},
-	["iron bar"]: {
+	["ironbar"]: {
 		type: Number,
 		default: 0,
 	},
-	["mythril bar"]: {
+	["mythrilbar"]: {
 		type: Number,
 		default: 0,
 	},
-	["platinum bar"]: {
+	["platinumbar"]: {
 		type: Number,
 		default: 0,
 	},
-	["titanium bar"]: {
+	["titaniumbar"]: {
 		type: Number,
 		default: 0,
 	},
