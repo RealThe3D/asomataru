@@ -3,7 +3,7 @@ module.exports = {
     aliases: ['rankup'],
     permissions: [],
     ownerOnly: false,
-    enabled: false,
+    enabled: true,
     cooldown: 0,
     exec: async (client, message, args) => {        
         const User = require('../../models/userModel.js');
