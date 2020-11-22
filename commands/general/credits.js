@@ -12,12 +12,12 @@ module.exports = {
             "Kandrina#1426 - Lovely woman from Austria, likes eating ribs!",
             "Akashic Bearer#2305 - A bot programmer who totally doesn't have a better bot then me.",
             "Mochi#7342 - Coolio person, loves to eat mochi.",
-            "オルティナ#6718 aka Creation, worthy player and waifu!",
+            "Dr. Mathew#6718 aka Creation, worthy player and waifu!",
             "Incineroar#7934 - Fatal memer and pro smash player",
             "SteMi#6098 - Busy with schoolwork but can manage to tell me oyasumi",
             "SirSailor#3528 - Loves Xenoblade and Fire Emblem!",
             "Daniel Diaz#7193 aka Monika - Luxembourg's flag looks like aquafresh.",
-            "SpaceLives47#0463 aka Asomataru-Chan, the person this bot is named after! Subscribe to their YouTube, InfiniteTimeLapse!",
+            "Yakisoba#0463 aka Asomataru-Chan, the person this bot is named after! Subscribe to their YouTube, InfiniteTimeLapse!",
             "Mirjan#9930 - Fatal memer!"
         ]
         const creditsEmbed = new Discord.MessageEmbed()

@@ -30,7 +30,7 @@ module.exports = {
             .setDescription(`${mentioned} you got a kiss!`)
             .setColor(0x00AE86)
             .setImage(`${response}`)
-        message.channel.send(kiss).then().catch(console.error);
+        message.channel.send(kiss);
 
 
     },
