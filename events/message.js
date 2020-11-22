@@ -13,19 +13,19 @@ module.exports = async message => {
             guildID: message.guild.id
         });
         if (guildDocument && guildDocument.language) language = guildDocument.language;
-        message.guild.language = require(`../locales/${language}.json`);
+        message.guild.language = language;
     }
     let args = message.content.slice(prefix.length).split(" ");
     command = args.shift();
     if (message.client.commands.has(command)) cmdFile = message.client.commands.get(command);
     else if (message.client.aliases.has(command)) cmdFile = message.client.aliases.get(command);
     else return;
-    if (!cmdFile.enabled) return await message.channel.send(message.guild.language.command_disabled);
-    if (cmdFile.ownerOnly && !message.client.config.owners.includes(message.author.id)) return await message.channel.send(message.guild.language.command_owner_only);
-    if (cmdFile.permissions && !(message.client.config.owners.includes(message.author.id) || message.member.permissions.has(cmdFile.permissions))) return await message.channel.send(message.guild.language.not_enough_permission.replace(/{permissions}/g, cmdFile.permissions.join(", ")));
+    if (!cmdFile.enabled) return await message.channel.send(message.client.i18n.get(message.guild.language, "errors", "command_disabled"));
+    if (cmdFile.ownerOnly && !message.client.config.owners.includes(message.author.id)) return await message.channel.send(message.client.i18n.get(message.guild.language, "errors", "command_owner_only"));
+    if (cmdFile.permissions && !(message.client.config.owners.includes(message.author.id) || message.member.permissions.has(cmdFile.permissions))) return await message.channel.send(message.client.i18n.get(message.guild.language, "errors", "not_enough_permission", { permissions: cmdFile.permissions.join(", ") }));
     if (cmdFile.cooldown && typeof cmdFile.cooldown === "number" && cmdFile.cooldown >= 1 && cmdFile.cooldown <= 1440) {
         if (!activeUsers.hasOwnProperty(cmdFile.name)) activeUsers[cmdFile.name] = [];
-        if (activeUsers[cmdFile.name].includes(message.author.id)) return await message.channel.send(message.guild.language.wait_cooldown.replace(/{cooldown}/g, cmdFile.cooldown));;
+        if (activeUsers[cmdFile.name].includes(message.author.id)) return await message.channel.send(message.client.i18n.get(message.guild.language, "errors", "wait_cooldown", { cooldown: cmdFile.cooldown }));
     } 
     cmdFile.exec(message.client, message, args);
     if (activeUsers.hasOwnProperty(cmdFile.name)) {

@@ -1,6 +1,6 @@
 const guildModel = require("../models/guildModel");
 module.exports = async client => {
-    client.user.setPresence({ activity: { name: 'Asomataru v2.2.0!', type: 'PLAYING' }, status: 'online' })
+    client.user.setPresence({ activity: { name: 'Asomataru | v2.2.1', type: 'PLAYING' }, status: 'online' })
     for (let guild of client.guilds.cache.array()) {
         let language = "en";
         let guildDocument = await guildModel.findOne({ guildID: guild.id });
