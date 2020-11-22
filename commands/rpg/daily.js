@@ -8,7 +8,7 @@ module.exports = {
     exec: async (client, message, args) => {
         const User = require('../../models/userModel.js');
         let randomAmount = Math.floor(Math.random()* Math.floor(750)) // 1-750
-        let data = await User.findOne({userID: mesaage.author.id })
+        let data = await User.findOne({userID: message.author.id })
   
         if(!data) {
             message.channel.send(`You've have not registered yet, please use a!profile`)
