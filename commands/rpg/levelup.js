@@ -16,10 +16,10 @@ module.exports = {
             if(data.xp > data.xptoNextLevel) {
                 const embed = new Discord.MessageEmbed()
                 .setTitle("You have leveled up!")
-                .setDescription(`You are now ${data.level + 1}!`)
+                .setDescription(`You are now level ${data.level + 1}!`)
                 message.channel.send(embed);
                 data.level = data.level + 1
-                data.xptoNextLevel = data.xptoNextLevel * 3
+                data.xptoNextLevel = 6 * data.xptoNextLevel ^ 2 + 80 * data.xptoNextLevel + 100
                 data.xp = 0;
                 data.save();
             } else {
