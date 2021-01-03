@@ -6,16 +6,13 @@ module.exports = {
     enabled: true,
     cooldown: 0,
     exec: async (client, message, args) => {
-      const User = require('../../models/userModel.js');
+      const { data } = require('../../scripts/profile/newProfile.js')
+      //const User = require('../../models/userModel.js');
       const Discord = require('discord.js');
 
       let member = message.guild.member(message.mentions.users.first() || message.author)
       if(member.user.bot) return message.reply(`That is a bot.`)
-      let data = await User.findOne({userID: member.user.id })
-  
-      if(!data) { await User.create({ userID: member.user.id })
-      message.channel.send(`Your account was created, ${message.author.username}!`)
-    } else {
+    
   
       const userStats = [
         `Balance: ${data.coins} Coins`,
@@ -27,7 +24,7 @@ module.exports = {
         `**Fish**`,
         `Salmon: ${data.fish.salmon}`,
         `Bass: ${data.fish.bass}`,
-        `Eels:${data.fish.eel}`,
+        `Eels: ${data.fish.eel}`,
         `Pufferfish: ${data.fish.pufferfish}`
       ]
       
@@ -39,4 +36,3 @@ module.exports = {
       message.channel.send(embed)
       }
     }
-  }
