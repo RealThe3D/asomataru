@@ -9,8 +9,6 @@ module.exports = {
         const Discord = require('discord.js');
         const stats = [
         `**Guilds: ${client.guilds.cache.size} Guilds**`,
-
-        `**Users: ${client.users.cache.size} Users**`
         ]
         const botstats = new Discord.MessageEmbed()
         .setTitle(`Asomataru's Bot Stats`)
