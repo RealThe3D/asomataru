@@ -4,13 +4,13 @@ module.exports = {
     permissions: [],
     ownerOnly: false,
     enabled: true,
-    cooldown: 2,
+    cooldown: 0,
     exec: async (client, message, args) => {
         const randomPuppy = require('random-puppy');
         const Discord = require('discord.js');
         const subReddits = ["awwnime"]
-        const random = subReddits[Math.floor(Math.random() * subReddits.length)];
-        const img = await randomPuppy(random);
+        //const random = subReddits[Math.floor(Math.random() * subReddits.length)];
+        const img = await randomPuppy(subReddits);
     
         const embed = new Discord.MessageEmbed()
         .setImage (img)
