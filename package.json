@@ -1,6 +1,6 @@
 {
   "name": "asomataru",
-  "version": "2.2.0",
+  "version": "2.2.3",
   "description": "A discord bot made by The3D#1120",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "discord.js": "^12.3.1",
+    "discord.js": "^12.5.1",
     "fs": "0.0.2",
     "locale-parser":"^1.0.0",
     "mongoose": "^5.9.25",
