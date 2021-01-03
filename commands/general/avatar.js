@@ -11,7 +11,7 @@ module.exports = {
         const avatarEmbed = new Discord.MessageEmbed()
             .setColor(0x333333)
             .setAuthor(`${user.username}'s Profile Picture`)
-            .setImage(user.avatarURL({size: 1024, dynamic: true})) 
+            .setImage(user.avatarURL({size: 512, dynamic: true})) 
         message.channel.send(avatarEmbed);
     }
 }

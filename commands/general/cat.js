@@ -7,16 +7,15 @@ module.exports = {
     cooldown: 0,
     exec: async (client, message, args) => {
         const Discord = require('discord.js');
-        const randomPuppy = require('random-puppy');
-        const subReddits = ["cat", "cats"]
-        const random = subReddits[Math.floor(Math.random() * subReddits.length)];
-        const img = await randomPuppy(random);
-    
+        const superagent = require('superagent');
+        
+        let { body } = await superagent
+        .get("http://aws.random.cat/meow");
+
         const embed = new Discord.MessageEmbed()
-        .setImage (img)
         .setTitle (`**__Who is a good cuddly kitten!__**`)
-        .setURL (`https://reddit.com/${random}`)
-        .setFooter (`From r/${random}`)
+        .setImage (body.file)
+        .setFooter (`Powered by aws.random.cat API`);
     
         message.channel.send(embed);
         },
