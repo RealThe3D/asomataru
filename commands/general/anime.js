@@ -15,8 +15,8 @@ module.exports = {
         const embed = new Discord.MessageEmbed()
         .setImage (img)
         .setTitle (`**__This command is much better than Aka's!__**`)
-        .setURL (`https://reddit.com/${random}`)
-        .setFooter (`From r/${random}`)
+        .setURL (`https://reddit.com/${subReddits}`)
+        .setFooter (`From r/${subReddits}`)
     
         message.channel.send(embed);
         },
