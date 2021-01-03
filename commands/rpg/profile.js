@@ -6,8 +6,8 @@ module.exports = {
     enabled: true,
     cooldown: 0,
     exec: async (client, message, args) => {
-      const { data } = require('../../scripts/profile/newProfile.js')
-      //const User = require('../../models/userModel.js');
+
+      const User = require('../../models/userModel.js');
       const Discord = require('discord.js');
 
       let member = message.guild.member(message.mentions.users.first() || message.author)
