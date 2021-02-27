@@ -17,7 +17,7 @@ module.exports = {
         .setImage (body.url)
         .setTitle (`**__Moemorphism__**`)
         .setURL (`https://reddit.com/r/${body.subreddit}`)
-        .setFooter (`From r/${random}`)
+        .setFooter (`From r/${body.subreddit}`)
     
         message.channel.send(embed);
         },
