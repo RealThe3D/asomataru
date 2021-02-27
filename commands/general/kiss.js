@@ -16,7 +16,7 @@ module.exports = {
         
 
         const kiss = new Discord.MessageEmbed()
-            .setDescription(`${mentioned} you got a kiss!`)
+            .setDescription(`${member} you got a kiss!`)
             .setColor(0x00AE86)
             .setImage(body.url)
         message.channel.send(kiss);
