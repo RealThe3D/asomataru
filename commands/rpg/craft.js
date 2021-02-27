@@ -10,14 +10,18 @@ module.exports = {
                 // Check for data
                 let data = await User.findOne({userID: message.author.id })
         
-                if(!data) {message.channel.send("You've have not registered yet, please use a!profile")
+                if(!data) {
+                    message.channel.send("You've have not registered yet, please use a!profile")
             } else { 
         if(args[0] === '1') {
             if(data.resources.oakwood > 3) {
-                data.weapons.WeaponID1 = 1;
+                data.weapons.WeaponID1 = 1
+                data.resources.oakwood = data.resources.oakwood - 3
+                message.channel.send("Crafted!");
+                data.save();
             } else {
-                message.channel.send('Not enough resources!')
-            }
+                message.channel.send('Not enough resources!');
+                }
             }
         }
     },

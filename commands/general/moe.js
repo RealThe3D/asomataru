@@ -7,15 +7,16 @@ module.exports = {
     cooldown: 0,
     exec: async (client, message, args) => {
         const Discord = require('discord.js');
-        const randomPuppy = require('random-puppy');
-        const subReddits = ["moemorphism"]
-        const random = subReddits[Math.floor(Math.random() * subReddits.length)];
-        const img = await randomPuppy(random);
+        const superagent = require('superagent');
+
+        let {body} = await superagent
+        .get("https://meme-api.herokuapp.com/gimme/moemorphism");
+    
     
         const embed = new Discord.MessageEmbed()
-        .setImage (img)
+        .setImage (body.url)
         .setTitle (`**__Moemorphism__**`)
-        .setURL (`https://reddit.com/${random}`)
+        .setURL (`https://reddit.com/r/${body.subreddit}`)
         .setFooter (`From r/${random}`)
     
         message.channel.send(embed);

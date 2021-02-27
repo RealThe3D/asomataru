@@ -1,6 +1,6 @@
 module.exports = {
-    name: 'version',
-    aliases: ['v'],
+    name: 'changelog',
+    aliases: [],
     permissions: [],
     ownerOnly: false,
     enabled: true,

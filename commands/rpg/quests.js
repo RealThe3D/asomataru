@@ -6,6 +6,10 @@ module.exports = {
     enabled: true,
     cooldown: 0,
     exec: async (client, message, args) => {
+        const User = require('../../models/userModel.js');
+
+        let data = await User.findOne({userID: message.author.id })
+        
         const Discord = require("discord.js");
 
         const embed = new Discord.MessageEmbed()

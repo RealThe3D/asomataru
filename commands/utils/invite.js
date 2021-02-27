@@ -6,6 +6,11 @@ module.exports = {
     enabled: true,
     cooldown: 10,
     exec: async (client, message, args) => {
-        message.channel.send("Join the support server! https://discord.gg/vRPgqtb")
+        const Discord = require('discord.js');
+
+        const embed = new Discord.MessageEmbed()
+        .setTitle("Asomataru's support server!")
+        .setDescription('Join the support server! https://discord.gg/vRPgqtb')
+        message.channel.send(embed);
     },
 };
