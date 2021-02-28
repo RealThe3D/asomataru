@@ -1,12 +1,12 @@
 module.exports = {
-    name: "birthday",
-    aliases: ['bday'],
-    permissions: [],
-    ownerOnly: true,
-    enabled: true,
-    cooldown: 0,
-    exec: async (client, message, args) => {
-        /* const Discord = require('discord.js');
+  name: "birthday",
+  aliases: ["bday"],
+  permissions: [],
+  ownerOnly: true,
+  enabled: true,
+  cooldown: 0,
+  exec: async (client, message, args) => {
+    /* const Discord = require('discord.js');
         const Eri = ['https://media1.tenor.com/images/f282775bfa181e9251023892a726037b/tenor.gif?itemid=16645535',
                      'https://media.tenor.com/images/804187a5ae8a39af449d06d353800692/tenor.gif',
                      'https://media.tenor.com/images/f81582db3a15b82df5a0b44f378b7898/tenor.gif',
@@ -22,6 +22,6 @@ module.exports = {
         .setFooter(`It is 3D's Birthday today!, DM The3D#1120 a happy birthday!`)
 
         message.channel.send(embed) */
-        message.channel.send("No one's birthday soon!")
-    },
+    message.channel.send("No one's birthday soon!");
+  },
 };

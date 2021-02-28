@@ -11,8 +11,8 @@
     "discord.js": "^12.5.1",
     "express": "4.17.1",
     "fs": "0.0.2",
-    "locale-parser":"^1.0.0",
-    "mongoose": "^5.9.25",    
+    "locale-parser": "^1.0.0",
+    "mongoose": "^5.9.25",
     "superagent": "^6.1.0"
   }
 }

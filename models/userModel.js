@@ -1,19 +1,20 @@
-const mongoose = require("mongoose");
+const { Schema, model } = require("mongoose");
 
-const { resources } = require('./resources/minerals.js');
-const { fish } = require('./resources/fish.js');
-const { weapons } = require('./resources/weapon.js');
-const UserSchema = new mongoose.Schema ({
-    userID: String,
+const { resources } = require("./resources/minerals.js");
+const { fish } = require("./resources/fish.js");
+const { weapons } = require("./resources/weapon.js");
 
-    coins: {type: Number, default: 0},
-    xp: {type: Number, default: 0},
-    level: {type: Number, default: 1},
-    xptoNextLevel: {type: Number, default: 100},
-    hp: {type: Number, default: 50},
-    resources,
-    fish,
-    weapons
-})
+const UserSchema = new Schema({
+  userID: String,
 
-module.exports = mongoose.model("User", UserSchema);
+  coins: { type: Number, default: 0 },
+  xp: { type: Number, default: 0 },
+  level: { type: Number, default: 1 },
+  xptoNextLevel: { type: Number, default: 100 },
+  hp: { type: Number, default: 50 },
+  resources,
+  fish,
+  weapons,
+});
+
+module.exports = model("User", UserSchema);
