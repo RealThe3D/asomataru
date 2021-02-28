@@ -1,6 +1,6 @@
 const weapons = {
   ["WeaponID1"]: {
-    type: boolean,
+    type: Boolean,
     default: false,
   },
 };
