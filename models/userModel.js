@@ -14,7 +14,7 @@ const UserSchema = new Schema({
   hp: { type: Number, default: 50 },
   resources,
   fish,
-  weapons,
+  weapons
 });
 
 module.exports = model("User", UserSchema);
