@@ -1,5 +1,5 @@
 const weapons = {
-  ["WeaponID1"]: {
+  ['WeaponID1']: {
     type: boolean,
     default: false,
   },
