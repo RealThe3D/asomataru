@@ -47,4 +47,4 @@ Wanna add the bot? Use this link: https://discord.com/api/oauth2/authorize?clien
 
 ## Changelog
 
-- [CHANGELOG.md](CHANGELOG.md)
+-   [CHANGELOG.md](CHANGELOG.md)

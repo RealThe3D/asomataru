@@ -1,57 +1,38 @@
 body {
-  text-align: center;
-  background-color: darkslategray;
-  overflow-x: hidden;
+	background-color: #121212;
+	color: white;
+	font-family: 'Montserrat', sans-serif;
 }
 h1,
-p,
-a,
-div {
-  color: whitesmoke;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+h2 {
+	text-align: center;
 }
-ul {
-  display: inline-block;
-  text-align: center;
-  color: whitesmoke;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+a:visited {
+	color: whitesmoke;
 }
-li {
-  padding-left: 8px;
-  text-align: center;
-  color: whitesmoke;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+.div-content {
+	text-align: center;
 }
-.heading {
-  text-align: center;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  color: whitesmoke;
+.div-content-info {
+	position: relative;
+	left: 25%;
+	width: 50%;
+	text-align: center;
+	padding: 5px;
+	border-radius: 20px;
+	margin: 10px 0px 10px 0px;
+}
+.navbar-content {
+	padding-left: 6px;
+	display: inline;
 }
 #navbar {
-  background-color: black;
-  text-align: left;
-  margin: -10px;
-  width: auto;
-  overflow: hidden;
-  padding: 5px;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
+	margin: -10px 0px 0px -3px;
+	width: 100%;
+	background-color: #444444;
+	border-radius: 10px;
 }
-.navbar-item {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-weight: bold;
-  text-align: left;
-  padding-right: 20px;
-}
-#main-heading {
-  text-align: center;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-#topgg-link {
-  font-style: italic;
-}
-#disclaimer {
-  text-align: center;
-  font-size: 12px;
+#navbar-list {
+	padding: 10px 6px 10px 6px;
+	list-style-type: none;
 }

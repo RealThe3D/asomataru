@@ -1,11 +1,11 @@
 {
-  "prefixes": ["a!", "asomataru!"],
-  "owners": ["327594208758202379"],
-  "game": {
-    "status": "online",
-    "type": "PLAYING",
-    "name": ["Asomataru | v2.4"],
-    "url": "STREAM_URL",
-    "interval": 15
-  }
+	"prefixes": ["a!", "asomataru!"],
+	"owners": ["327594208758202379"],
+	"game": {
+		"status": "online",
+		"type": "PLAYING",
+		"name": ["Asomataru | v2.4"],
+		"url": "STREAM_URL",
+		"interval": 15
+	}
 }
