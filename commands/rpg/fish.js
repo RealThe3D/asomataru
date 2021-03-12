@@ -6,6 +6,8 @@ module.exports = {
 	enabled: true,
 	cooldown: 300,
 	exec: async (client, message, args) => {
+		const Discord = require('discord.js');
+		var description;
 		const fishNames = ['bass', 'salmon', 'eel', 'pufferfish'];
 		var fishRNG = fishNames[Math.floor(Math.random() * fishNames.length)];
 
@@ -21,29 +23,31 @@ module.exports = {
 		} else {
 			switch (fishRNG) {
 				case 'salmon':
-					message.channel.send(
-						`${message.author.username} has a caught a salmon!`
-					);
+					description = `${message.author.username} has a caught a salmon!`;
+
 					data.fish.salmon += 1;
 					break;
 				case 'bass':
-					message.channel.send(
-						`${message.author.username} has caught a bass!`
-					);
+					description = `${message.author.username} has caught a bass!`;
+
 					data.fish.bass += 1;
 					break;
 				case 'eel':
-					message.channel.send(
-						`${message.author.username} has caught an eel!`
-					);
+					description = `${message.author.username} has caught an eel!`;
+
 					data.fish.eel += 1;
 					break;
 				case 'pufferfish':
-					message.channel.send(
-						`${message.author.username} has a caught a pufferfish!`
-					);
+					description = `${message.author.username} has a caught a pufferfish!`;
+
 					data.fish.pufferfish += 1;
 			}
+			const embed = new Discord.MessageEmbed()
+				.setTitle('What a catch!')
+				.setDescription(description)
+				.setFooter('Asomataru RPG v0.2 Beta!');
+
+			message.channel.send(embed);
 			data.save();
 		}
 	},
