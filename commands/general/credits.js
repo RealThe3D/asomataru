@@ -8,7 +8,7 @@ module.exports = {
 	exec: async (client, message, args) => {
 		const Discord = require('discord.js');
 		const credits = [
-			'Davska#6229 - Pro smash player, and loves the Sinnoh region! Happy about the announced remakes',
+			'Davska#6229 - Pro smash player, and loves the Sinnoh region! Happy about the announced remakes!',
 			'Kandrina#1426 - Lovely woman from Austria, but plays too much Genshin!',
 			"Akashic Bearer#2305 - A discord bot programmer who totally doesn't have a better bot then me.",
 			'Mochi#7342 - Cool person, loves to eat mochi.',
