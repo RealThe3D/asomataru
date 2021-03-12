@@ -20,5 +20,6 @@ module.exports = {
 			.setDescription(ItemsList)
 			.setFooter(`Asomataru RPG System v0.2 Beta!`);
 		message.channel.send(embed);
+		// message.react('▶️');
 	},
 };
