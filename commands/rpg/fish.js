@@ -19,8 +19,8 @@ module.exports = {
 				"You've have not registered yet, please use a!profile"
 			);
 		} else {
-			switch (fishNames) {
-				case salmon:
+			switch (fishRNG) {
+				case 'salmon':
 					message.channel.send(
 						`${message.author.username} has a caught a salmon!`
 					);
