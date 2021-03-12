@@ -1,7 +1,7 @@
 const guildModel = require('../models/guildModel');
 module.exports = async (client) => {
 	client.user.setPresence({
-		activity: { name: 'Asomataru | v2.3.1', type: 'PLAYING' },
+		activity: { name: 'Asomataru | v2.3.1.1', type: 'PLAYING' },
 		status: 'online',
 	});
 	for (let guild of client.guilds.cache.array()) {

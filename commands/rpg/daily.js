@@ -20,6 +20,7 @@ module.exports = {
 				.setTitle(`${message.author.username}'s Daily Rewards`)
 				.setDescription(`Your daily reward is ${randomAmount} coins!`);
 			message.channel.send(embed);
+			data.save();
 		}
 	},
 };

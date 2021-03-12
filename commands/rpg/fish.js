@@ -20,7 +20,7 @@ module.exports = {
 			);
 		} else {
 			switch (fishNames) {
-				case 'salmon':
+				case salmon:
 					message.channel.send(
 						`${message.author.username} has a caught a salmon!`
 					);

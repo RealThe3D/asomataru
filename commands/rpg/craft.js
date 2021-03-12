@@ -3,8 +3,8 @@ module.exports = {
 	aliases: [],
 	permissions: [],
 	ownerOnly: false,
-	enabled: false,
-	cooldown: 300,
+	enabled: true,
+	cooldown: 10,
 	exec: async (client, message, args) => {
 		const User = require('../../models/userModel.js');
 		// Check for data
