@@ -16,6 +16,8 @@ module.exports = {
 				`You've have not registered yet, please use a!profile`
 			);
 		} else {
+			data.coins += randomAmount;
+
 			const embed = new Discord.MessageEmbed()
 				.setTitle(`${message.author.username}'s Daily Rewards`)
 				.setDescription(`Your daily reward is ${randomAmount} coins!`);
