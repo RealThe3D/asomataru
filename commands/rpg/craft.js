@@ -17,12 +17,9 @@ module.exports = {
 		} else {
 			if (args[0] === '1') {
 				if (data.resources.oakwood > 3) {
-					data.weapons.WeaponID1 = 1;
-					data.resources.oakwood = data.resources.oakwood - 3;
-					message.channel.send('Crafted!');
+					message.channel.send('Test');
 					data.save();
 				} else {
-					message.channel.send('Not enough resources!');
 				}
 			}
 		}

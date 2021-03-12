@@ -19,30 +19,30 @@ module.exports = {
 				"You've have not registered yet, please use a!profile"
 			);
 		} else {
-			// TEXT WALL INCOMING!!!
-			if (fishRNG === 'salmon') {
-				message.channel.send(
-					`${message.author.username} has caught a salmon!`
-				);
-				data.fish.salmon = data.fish.salmon + 1;
-			}
-			if (fishRNG === 'bass') {
-				message.channel.send(
-					`${message.author.username} has caught a bass!`
-				);
-				data.fish.bass = data.fish.bass + 1;
-			}
-			if (fishRNG === 'eel') {
-				message.channel.send(
-					`${message.author.username} has caught an eel!`
-				);
-				data.fish.eel = data.fish.eel + 1;
-			}
-			if (fishRNG === 'pufferfish') {
-				message.channel.send(
-					`${message.author.username} has caught a pufferfish!`
-				);
-				data.fish.pufferfish = data.fish.pufferfish + 1;
+			switch (fishNames) {
+				case 'salmon':
+					message.channel.send(
+						`${message.author.username} has a caught a salmon!`
+					);
+					data.fish.salmon += 1;
+					break;
+				case 'bass':
+					message.channel.send(
+						`${message.author.username} has caught a bass!`
+					);
+					data.fish.bass += 1;
+					break;
+				case 'eel':
+					message.channel.send(
+						`${message.author.username} has caught an eel!`
+					);
+					data.fish.eel += 1;
+					break;
+				case 'pufferfish':
+					message.channel.send(
+						`${message.author.username} has a caught a pufferfish!`
+					);
+					data.fish.pufferfish += 1;
 			}
 			data.save();
 		}
