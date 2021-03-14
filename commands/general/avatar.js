@@ -13,7 +13,7 @@ module.exports = {
 
 		if (!isNaN(args[0]) && args[0].length === 18) {
 			var member =
-				message.guild.members.cache.get(args[0].toString()) ||
+				message.guild.members.cache.fetch(args[0].toString()) ||
 				message.member;
 			user = member.user;
 		} else {
