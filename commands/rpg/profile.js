@@ -41,7 +41,7 @@ module.exports = {
 			`**Fish**`,
 			`Salmon: ${data.fish.salmon}`,
 			`Bass: ${data.fish.bass}`,
-			`Eels:${data.fish.eel}`,
+			`Eels: ${data.fish.eel}`,
 			`Pufferfish: ${data.fish.pufferfish}`,
 		];
 
