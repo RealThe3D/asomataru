@@ -10,18 +10,18 @@ module.exports = {
 		const User = require('../../models/userModel.js');
 		const Discord = require('discord.js');
 
-		var User;
+		var messageUser;
 
 		if (!isNaN(args[0]) && args[0].length === 18) {
 			var member =
 				message.guild.members.cache.get(args[0]) || message.member;
-			User = member.user;
+			messageUser = member.user;
 		} else {
-			User = message.mentions.users.first() || message.author;
+			messageUser = message.mentions.users.first() || message.author;
 		}
 
-		if (User.user.bot) return message.reply(`That is a bot.`);
-		let data = await User.findOne({ userID: User.user.id });
+		if (messageUser.user.bot) return message.reply(`That is a bot.`);
+		let data = await User.findOne({ userID: messageUser.user.id });
 
 		if (!data) {
 			await User.create({ userID: message.author.id });
