@@ -14,7 +14,6 @@
 	"dependencies": {
 		"discord.js": "^12.5.1",
 		"express": "4.17.1",
-		"locale-parser": "^1.0.0",
 		"mongoose": "^5.11.19",
 		"superagent": "^6.1.0"
 	}
