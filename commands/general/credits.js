@@ -18,7 +18,7 @@ module.exports = {
 			'SteelyMite#6098 - Busy with schoolwork but can manage to tell me oyasumi',
 			'SirSailor Star#3528 - Loves Xenoblade and Fire Emblem!',
 			"Daniel Diaz#9198 - Luxembourg's flag looks like aquafresh.",
-			'InfiniteTime#0463 aka Asomataru-Chan, the person this bot is named after! Subscribe to their YouTube and Twitch',
+			'InfiniteTime#0463 aka Asomataru-Chan, the person this bot is named after! Subscribe to their YouTube and Twitch!',
 			'Mirjan#9930 - Fatal memer!',
 		];
 		const creditsEmbed = new Discord.MessageEmbed()
