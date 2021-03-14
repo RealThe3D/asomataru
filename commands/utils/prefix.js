@@ -4,6 +4,7 @@ module.exports = {
 	permissions: ['BAN_MEMBERS'],
 	enabled: true,
 	cooldown: 3,
+	usage: 'prefix <prefix>',
 	exec: async (client, message, args) => {
 		const Discord = require('discord.js');
 

@@ -13,7 +13,6 @@ mongoose.connect(url, {
 });
 
 db.once('open', () => {
-	console.log('Database connected:', url);
 	require('./models/index.js');
 	require('./handlers/commandHandler.js')(client);
 	require('./handlers/eventHandler.js')(client);
