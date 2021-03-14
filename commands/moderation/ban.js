@@ -42,7 +42,7 @@ module.exports = {
 			res = reason;
 		}
 
-		await member
+		await user
 			.ban(reason)
 			.catch((error) =>
 				message.channel.send(
@@ -52,8 +52,8 @@ module.exports = {
 
 		let bean = new Discord.MessageEmbed()
 			.setColor('RED')
-			.setTitle(`Ban | ${member.tag}`)
-			.addField('User', member, true)
+			.setTitle(`Ban | ${user.tag}`)
+			.addField('User', user, true)
 			.addField('Moderator', message.author, true)
 			.addField('Reason', res)
 			.setTimestamp();

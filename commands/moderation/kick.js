@@ -40,7 +40,7 @@ module.exports = {
 			res = `${reason}`;
 		}
 
-		await member
+		await user
 			.kick(reason)
 			.catch((error) =>
 				message.reply(`Sorry, I couldn't kick because of : ${error}`)
@@ -48,12 +48,12 @@ module.exports = {
 
 		let kick = new Discord.MessageEmbed()
 			.setColor('RED')
-			.setTitle(`Kick | ${member.tag}`)
-			.addField('User', member, true)
+			.setTitle(`Kick | ${user.tag}`)
+			.addField('User', user, true)
 			.addField('Moderator', message.author, true)
 			.addField('Reason', res)
 			.setTimestamp()
-			.setFooter(member.id);
+			.setFooter(user.id);
 
 		message.channel.send(kick);
 	},
