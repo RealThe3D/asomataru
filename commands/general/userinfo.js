@@ -21,7 +21,9 @@ module.exports = {
 
 		if (!isNaN(args[0]) && args[0].length === 18) {
 			var member =
-				message.guild.users.cache.get(args[0]) || message.member;
+				message.guild.users.cache.get(args[0]) ||
+				message.guild.members.cache.get(args[0]) ||
+				message.member;
 			user = member.user;
 		} else {
 			user = message.mentions.users.first() || message.author;

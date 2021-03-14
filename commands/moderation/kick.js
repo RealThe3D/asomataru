@@ -9,8 +9,17 @@ module.exports = {
 	exec: async (client, message, args) => {
 		const Discord = require('discord.js');
 
-		const member =
-			message.mentions.users.first() || message.guild.users.get(args[0]);
+		var user;
+
+		if (!isNaN(args[0]) && args[0].length === 18) {
+			var member =
+				message.guild.users.cache.get(args[0]) ||
+				message.guild.members.cache.get(args[0]) ||
+				message.member;
+			user = member.user;
+		} else {
+			user = message.mentions.users.first() || message.author;
+		}
 
 		if (member.bot) {
 			return message.channel.send("I can't kick a bot!");

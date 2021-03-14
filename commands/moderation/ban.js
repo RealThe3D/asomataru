@@ -7,15 +7,18 @@ module.exports = {
 	cooldown: 0,
 	exec: async (client, message, args) => {
 		const Discord = require('discord.js');
-		let xdemb = new Discord.MessageEmbed()
-			.setColor('#000000')
-			.setTitle('Ban Command')
-			.addField('Description:', `Ban a member`, true)
-			.addField('Usage:', `!ban [user] [reason]`, true)
-			.addField('Example:', `!ban @user spam`);
 
-		const member =
-			message.mentions.users.first() || message.guild.users.get(args[0]);
+		var user;
+
+		if (!isNaN(args[0]) && args[0].length === 18) {
+			var member =
+				message.guild.users.cache.get(args[0]) ||
+				message.guild.members.cache.get(args[0]) ||
+				message.member;
+			user = member.user;
+		} else {
+			user = message.mentions.users.first() || message.author;
+		}
 
 		if (!member) {
 			return message.channel.send('Specify a user to ban, please.');
