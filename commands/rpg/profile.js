@@ -5,18 +5,26 @@ module.exports = {
 	ownerOnly: false,
 	enabled: true,
 	cooldown: 0,
+	usage: 'profile (@mention or userID)',
 	exec: async (client, message, args) => {
 		const User = require('../../models/userModel.js');
 		const Discord = require('discord.js');
 
-		let member = message.guild.member(
-			message.mentions.users.first() || message.author
-		);
-		if (member.user.bot) return message.reply(`That is a bot.`);
-		let data = await User.findOne({ userID: member.user.id });
+		var User;
+
+		if (!isNaN(args[0]) && args[0].length === 18) {
+			var member =
+				message.guild.members.cache.get(args[0]) || message.member;
+			User = member.user;
+		} else {
+			User = message.mentions.users.first() || message.author;
+		}
+
+		if (User.user.bot) return message.reply(`That is a bot.`);
+		let data = await User.findOne({ userID: User.user.id });
 
 		if (!data) {
-			await User.create({ userID: member.user.id });
+			await User.create({ userID: message.author.id });
 			message.channel.send(
 				`Your account was created, ${message.author.username}!`
 			);

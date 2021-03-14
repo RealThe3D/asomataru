@@ -7,7 +7,10 @@ module.exports = {
 	cooldown: 10,
 	exec: async (client, message, args) => {
 		const Discord = require('discord.js');
-		const stats = [`**Guilds: ${client.guilds.cache.size} Guilds**`];
+		const stats = [
+			`**Guilds: ${client.guilds.cache.size} Guilds**`,
+			`**Guilds: ${client.users.cache.size} Members**`,
+		];
 		const botstats = new Discord.MessageEmbed()
 			.setTitle(`Asomataru's Bot Stats`)
 			.setDescription(stats)

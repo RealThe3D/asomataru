@@ -5,6 +5,7 @@ module.exports = {
 	ownerOnly: false,
 	enabled: true,
 	cooldown: 10,
+	usage: 'invite',
 	exec: async (client, message, args) => {
 		const Discord = require('discord.js');
 

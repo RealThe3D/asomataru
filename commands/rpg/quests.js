@@ -5,6 +5,7 @@ module.exports = {
 	ownerOnly: false,
 	enabled: true,
 	cooldown: 0,
+	usage: 'quest',
 	exec: async (client, message, args) => {
 		const User = require('../../models/userModel.js');
 

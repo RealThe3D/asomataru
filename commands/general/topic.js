@@ -5,6 +5,7 @@ module.exports = {
 	ownerOnly: false,
 	enabled: true,
 	cooldown: 0,
+	usage: 'topic',
 	exec: async (client, message, args) => {
 		var options = [
 			'What is something you are obsessed with?',

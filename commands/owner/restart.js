@@ -5,6 +5,7 @@ module.exports = {
 	ownerOnly: true,
 	enabled: true,
 	cooldown: 10,
+	usage: 'restart',
 	exec: async (client, message, args) => {
 		message.channel.send(`Ok, ${message.author}, I'll restart....`);
 		message.channel.send(`Shutting down!`);

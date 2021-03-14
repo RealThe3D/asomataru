@@ -5,6 +5,7 @@ module.exports = {
 	ownerOnly: false,
 	enabled: true,
 	cooldown: 10,
+	usage: 'craft (item)',
 	exec: async (client, message, args) => {
 		const User = require('../../models/userModel.js');
 		// Check for data

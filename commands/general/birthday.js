@@ -5,6 +5,7 @@ module.exports = {
 	ownerOnly: true,
 	enabled: true,
 	cooldown: 0,
+	usage: 'birthday',
 	exec: async (client, message, args) => {
 		/* const Discord = require('discord.js');
         const Eri = ['https://media1.tenor.com/images/f282775bfa181e9251023892a726037b/tenor.gif?itemid=16645535',

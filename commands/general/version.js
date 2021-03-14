@@ -1,10 +1,11 @@
 module.exports = {
-	name: 'changelog',
+	name: 'version',
 	aliases: [],
 	permissions: [],
 	ownerOnly: false,
 	enabled: true,
 	cooldown: 0,
+	usage: 'version',
 	exec: async (client, message, args) => {
 		const Discord = require('discord.js');
 		const package = require('../../package.json');

@@ -5,6 +5,7 @@ module.exports = {
 	ownerOnly: false,
 	enabled: true,
 	cooldown: 86400,
+	usage: 'daily',
 	exec: async (client, message, args) => {
 		const User = require('../../models/userModel.js');
 		const Discord = require('discord.js');

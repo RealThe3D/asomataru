@@ -7,6 +7,7 @@ module.exports = {
 	ownerOnly: false,
 	enabled: false,
 	cooldown: 300,
+	usage: 'mine',
 	exec: async (client, message, args) => {
 		// Mining script because I suck. U_U
 		const oreNames = [

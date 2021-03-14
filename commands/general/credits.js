@@ -5,6 +5,7 @@ module.exports = {
 	ownerOnly: false,
 	enabled: true,
 	cooldown: 0,
+	usage: 'credits',
 	exec: async (client, message, args) => {
 		const Discord = require('discord.js');
 		const credits = [

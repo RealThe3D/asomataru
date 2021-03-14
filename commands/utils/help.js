@@ -1,20 +1,22 @@
-const { MessageEmbed } = require('discord.js');
-
 module.exports = {
 	name: 'help',
 	aliases: ['h'],
 	permissions: [],
 	enabled: true,
-	cooldown: 5,
+	ownerOnly: false,
+	cooldown: 0,
+	usage: 'help (command)',
 	exec: async (client, message, args) => {
+		const Discord = require('discord.js');
+		const Guild = require('../../models/guildModel');
+
+		const guildData = await Guild.findOne({ guildID: message.guild.id });
+		const prefix = guildData.prefix;
+
 		if (!args[0]) {
-			const embed = new MessageEmbed()
+			const embed = new Discord.MessageEmbed()
 				.setDescription(
-					client.i18n.get(
-						message.guild.language,
-						'commands',
-						'help_embed_title'
-					)
+					'For more information about a command, use `help <command_name>` command'
 				)
 				.setColor('GREEN')
 				.setTimestamp(new Date());
@@ -36,58 +38,38 @@ module.exports = {
 			await message.channel.send(embed);
 		} else {
 			let command = args[0];
-			if (client.commands.has(command) || client.aliases.has(command)) {
+			if (client.commands.has(command)) {
 				command =
 					client.commands.get(command) || client.aliases.get(command);
-				const embed = new MessageEmbed()
+				const embed = new Discord.MessageEmbed()
 					.setTitle(command.name)
+					.addField('Name', command.name)
 					.addField(
-						client.i18n.get(
-							message.guild.language,
-							'commands',
-							'help_name'
-						),
-						command.name
-					)
-					.addField(
-						client.i18n.get(
-							message.guild.language,
-							'commands',
-							'help_permissions'
-						),
+						'Required Permissions',
 						command.permissions[0]
 							? '```' + command.permissions.join(', ') + '```'
-							: client.i18n.get(
-									message.guild.language,
-									'commands',
-									'not_found'
-							  )
+							: 'Not Found'
 					)
 					.addField(
-						client.i18n.get(
-							message.guild.language,
-							'commands',
-							'help_aliases'
-						),
+						'Aliases',
 						command.aliases[0]
 							? '`' + command.aliases.join('`, `') + '`'
-							: client.i18n.get(
-									message.guild.language,
-									'commands',
-									'not_found'
-							  )
+							: 'Not Found'
+					)
+					.addField(
+						'Usage',
+						command.usage ? prefix + command.usage : 'Not Found'
 					)
 					.setColor('GREEN')
-					.setTimestamp(new Date());
+					.setFooter('() - Optional, <> - Required');
 				await message.channel.send(embed);
 			} else {
 				message.channel.send(
-					client.i18n.get(
-						message.guild.language,
-						'commands',
-						'help_not_found',
-						{ command }
-					)
+					'Command with name ' +
+						'`' +
+						`${command}` +
+						'`' +
+						' was not found.'
 				);
 			}
 		}

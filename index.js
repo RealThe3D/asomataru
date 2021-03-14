@@ -1,25 +1,26 @@
-const { Client } = require('discord.js');
-const { I18n } = require('locale-parser');
-const Mongoose = require('mongoose');
+const Discord = require('discord.js');
+
+const mongoose = require('mongoose');
+const db = mongoose.connection;
+
 const TOKEN = process.env.BOT_TOKEN;
+const config = require('./config.json');
 
-const client = new Client();
-client.config = require('./config.json');
-client.i18n = new I18n({ defaultLocale: 'en' });
+const client = new Discord.Client();
 
-Mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect(process.env.MONGODB_URI, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
 });
 
-client.database = Mongoose.connection;
-client.database.on('error', (err) => {
+db.once('open', () => {
+	require('./models/index');
+	require('./handlers/eventHandler')(client);
+	require('./handlers/moduleHandler')(client);
+});
+
+db.on('error', (err) => {
 	throw err;
 });
 
-client.database.once('open', async () => {
-	require('./models');
-	require('./handlers/eventHandler')(client);
-	require('./handlers/moduleHandler')(client);
-	client.login(TOKEN);
-});
+client.login(TOKEN);

@@ -1,90 +1,82 @@
-const guildModel = require('../models/guildModel');
 const activeUsers = {};
-module.exports = async (message) => {
-	if (message.author.bot || !message.guild) return;
-	let prefix = message.client.config.prefixes[0],
-		cmdFile;
-	for (let i = 0; i < message.client.config.prefixes.length; i++) {
-		if (message.content.startsWith(message.client.config.prefixes[i]))
-			prefix = message.client.config.prefixes[i];
-	}
-	if (!message.content.startsWith(prefix)) return;
-	if (!message.guild.language) {
-		let language = 'en';
-		let guildDocument = await guildModel.findOne({
-			guildID: message.guild.id,
-		});
-		if (guildDocument && guildDocument.language)
-			language = guildDocument.language;
-		message.guild.language = language;
-	}
-	let args = message.content.slice(prefix.length).split(' ');
-	command = args.shift();
-	if (message.client.commands.has(command))
-		cmdFile = message.client.commands.get(command);
-	else if (message.client.aliases.has(command))
-		cmdFile = message.client.aliases.get(command);
-	else return;
-	if (!cmdFile.enabled)
-		return await message.channel.send(
-			message.client.i18n.get(
-				message.guild.language,
-				'errors',
-				'command_disabled'
-			)
-		);
-	if (
-		cmdFile.ownerOnly &&
-		!message.client.config.owners.includes(message.author.id)
-	)
-		return await message.channel.send(
-			message.client.i18n.get(
-				message.guild.language,
-				'errors',
-				'command_owner_only'
-			)
-		);
-	if (
-		cmdFile.permissions &&
-		!(
-			message.client.config.owners.includes(message.author.id) ||
-			message.member.permissions.has(cmdFile.permissions)
-		)
-	)
-		return await message.channel.send(
-			message.client.i18n.get(
-				message.guild.language,
-				'errors',
-				'not_enough_permission',
-				{ permissions: cmdFile.permissions.join(', ') }
-			)
-		);
-	if (
-		cmdFile.cooldown &&
-		typeof cmdFile.cooldown === 'number' &&
-		cmdFile.cooldown >= 1 &&
-		cmdFile.cooldown <= 1440
-	) {
-		if (!activeUsers.hasOwnProperty(cmdFile.name))
-			activeUsers[cmdFile.name] = [];
-		if (activeUsers[cmdFile.name].includes(message.author.id))
-			return await message.channel.send(
-				message.client.i18n.get(
-					message.guild.language,
-					'errors',
-					'wait_cooldown',
-					{ cooldown: cmdFile.cooldown }
-				)
+
+module.exports = (client) => {
+	client.on('message', async (message) => {
+		const Guild = require('../models/guildModel');
+		let guildData = await Guild.findOne({ guildID: message.guild.id });
+
+		if (!guildData) {
+			await Guild.create({ guildID: message.guild.id });
+			return message.channel.send(
+				"For some odd reason, your guild is not on our database, possibly because the bot joined when it was offline.\nAs a failsafe, your guild's data is now stored on your database.\n Please disregard for the interruption."
 			);
-	}
-	cmdFile.exec(message.client, message, args);
-	if (activeUsers.hasOwnProperty(cmdFile.name)) {
-		activeUsers[cmdFile.name].push(message.author.id);
-		message.client.setTimeout(() => {
-			activeUsers[cmdFile.name].splice(
-				activeUsers[cmdFile.name].indexOf(message.author.id),
-				1
+		}
+		// Guild Updater
+
+		if (guildData && !guildData.prefix) {
+			await Guild.updateMany({}, { prefix: 'a!' });
+		}
+
+		const prefix = guildData.prefix;
+		const config = require('../config.json');
+
+		if (!message.content.startsWith(prefix) || message.author.bot) return;
+
+		const args = message.content.slice(prefix.length).trim().split(/ +/);
+		const commandName = args.shift().toLowerCase();
+
+		const command =
+			client.commands.get(commandName) ||
+			client.commands.find(
+				(cmd) => cmd.aliases && cmd.aliases.includes(commandName)
 			);
-		}, cmdFile.cooldown * 1000);
-	}
+
+		if (!command) return;
+
+		if (command.guildOnly && message.channel.type === 'dm') {
+			return message.reply("I can't execute that command inside DMs!");
+		}
+
+		if (command.permissions) {
+			const authorPerms = message.channel.permissionsFor(message.author);
+			if (!authorPerms || !authorPerms.has(command.permissions)) {
+				return message.reply('You can not do this!');
+			}
+		}
+
+		if (!command.enabled) {
+			return message.channel.send('This command is disabled.');
+		}
+		if (command.ownerOnly && !config.OWNERS.includes(message.author.id)) {
+			return message.channel.send('Only the bot owner can use this!');
+		}
+		if (
+			command.cooldown &&
+			typeof command.cooldown === 'number' &&
+			command.cooldown >= 1 &&
+			command.cooldown <= 86400
+		) {
+			if (!activeUsers.hasOwnProperty(command.name))
+				activeUsers[command.name] = [];
+			if (activeUsers[command.name].includes(message.author.id))
+				return message.channel.send(
+					`You have to wait ` +
+						'`' +
+						`${command.cooldown}` +
+						'`' +
+						` seconds to use this command again.`
+				);
+		}
+
+		command.exec(client, message, args);
+		if (activeUsers.hasOwnProperty(command.name)) {
+			activeUsers[command.name].push(message.author.id);
+			message.client.setTimeout(() => {
+				activeUsers[command.name].splice(
+					activeUsers[command.name].indexOf(message.author.id),
+					1
+				);
+			}, command.cooldown * 1000);
+		}
+	});
 };

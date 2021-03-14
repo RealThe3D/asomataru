@@ -5,6 +5,7 @@ module.exports = {
 	ownerOnly: true,
 	enabled: true,
 	cooldown: 0,
+	usage: 'eval <code>',
 	exec: async (client, message, args) => {
 		try {
 			const code = args.join(' ');

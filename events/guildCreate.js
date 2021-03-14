@@ -1,8 +1,10 @@
-const guildModel = require('../models/guildModel');
-module.exports = async (guild) => {
-	await guildModel.create({
-		guildID: guild.id,
+const Guild = require('../models/guildModel');
+module.exports = (client) => {
+	client.on('guildCreate', async (guild) => {
+		let guildData = Guild.findOne({ guildID: guild.id });
+		if (!guildData) {
+			await guildModel.create({ guildID: guild.id });
+		}
+		console.log(`[JOINED GUILD]: ${guild.name} | ${guild.id}`);
 	});
-	guild.language = 'en';
-	console.log(`[JOINED GUILD]: ${guild.name} | ${guild.id}`);
 };

@@ -5,11 +5,11 @@ module.exports = {
 	ownerOnly: false,
 	enabled: true,
 	cooldown: 0,
+	usage: 'userinfo (@mention or userID)',
 	exec: async (client, message, args) => {
 		const Discord = require('discord.js');
 
 		let inline = true;
-		let resence = true;
 		const status = {
 			online: 'Online',
 			idle: 'Idle',
@@ -17,14 +17,12 @@ module.exports = {
 			offline: 'Offline/Invisible',
 		};
 
-		/* 
-        const member =
-            message.mentions.members.first() ||
-            message.guild.members.get(args[0]) ||
-            message.member;
-        */
-		const member = message.mentions.users.first() || message.author;
-		let target = message.mentions.users.first() || message.author;
+		const member =
+			message.mentions.members.first() ||
+			message.guild.members.get(args[0]) ||
+			message.member;
+
+		// const member = message.mentions.users.first() || message.author;
 
 		if (member.user.bot === true) {
 			var bot = 'Yes';
@@ -32,7 +30,7 @@ module.exports = {
 			var bot = 'No';
 		}
 		var embed = new Discord.MessageEmbed()
-			.setThumbnail(target.displayAvatarURL)
+			.setThumbnail(member.displayAvatarURL)
 			.setColor('#00ff00')
 			.addField('Full Username', `${member.user.tag}`, inline)
 			.addField('ID', member.user.id, inline)

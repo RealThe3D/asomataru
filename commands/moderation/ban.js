@@ -1,7 +1,7 @@
 module.exports = {
 	name: 'ban',
 	aliases: [],
-	permissions: [],
+	permissions: ['BAN_MEMBERS'],
 	ownerOnly: false,
 	enabled: true,
 	cooldown: 0,
@@ -13,11 +13,6 @@ module.exports = {
 			.addField('Description:', `Ban a member`, true)
 			.addField('Usage:', `!ban [user] [reason]`, true)
 			.addField('Example:', `!ban @user spam`);
-
-		if (!message.member.hasPermission('BAN_MEMBERS'))
-			return message.channel.send(
-				"Sorry you don't have permission to use this!"
-			);
 
 		let member = message.mentions.members.first();
 		if (!member) return message.channel.send(xdemb);

@@ -1,4 +1,4 @@
-module.exports = {
-	guildModel: require('./guildModel'),
-	userModel: require('./userModel'),
+module.exports = () => {
+	require('./guildModel');
+	require('./userModel');
 };

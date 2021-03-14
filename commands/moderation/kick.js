@@ -1,27 +1,21 @@
 module.exports = {
 	name: 'kick',
 	aliases: [],
-	permissions: [],
+	permissions: ['KICK_MEMBERS'],
 	ownerOnly: false,
 	enabled: true,
 	cooldown: 0,
+	usage: 'kick (@mention or userID) (reason)',
 	exec: async (client, message, args) => {
 		const Discord = require('discord.js');
 
-		if (!message.member.hasPermission('KICK_MEMBERS'))
-			return message.channel.send(
-				"Sorry, you don't have permissions to use this!"
-			);
+		const member =
+			message.mentions.members.first() ||
+			message.guild.members.get(args[0]);
 
-		let xdemb = new Discord.MessageEmbed()
-			.setColor('#000000')
-			.setTitle('Kick Command')
-			.addField('Description:', `Kick a member`, true)
-			.addField('Usage:', '!kick [user] [reason]', true)
-			.addField('Example:', '!kick @user spam');
-
-		let member = message.mentions.members.first();
-		if (!member) return message.channel.send(xdemb);
+		//let member = message.mentions.members.first();
+		if (!member)
+			return message.channel.send('Specify a user to kick, please.');
 
 		if (!member.kickable)
 			return message.channel.send('I cannot kick this user!');

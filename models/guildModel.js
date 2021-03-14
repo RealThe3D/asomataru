@@ -5,10 +5,9 @@ const guildSchema = Schema({
 		type: String,
 		required: true,
 	},
-	language: {
+	prefix: {
 		type: String,
-		required: true,
-		default: 'en',
+		default: 'a!',
 	},
 });
 

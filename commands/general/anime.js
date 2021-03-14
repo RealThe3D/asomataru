@@ -5,6 +5,7 @@ module.exports = {
 	ownerOnly: false,
 	enabled: true,
 	cooldown: 5,
+	usage: 'anime',
 	exec: async (client, message, args) => {
 		const Discord = require('discord.js');
 		const superagent = require('superagent');

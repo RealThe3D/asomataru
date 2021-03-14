@@ -4,7 +4,7 @@ module.exports = {
 	permissions: [],
 	enabled: true,
 	cooldown: 3,
-	exec: async (client, message) => {
+	exec: async (client, message, args) => {
 		const Discord = require('discord.js');
 		const package = require('../../package.json');
 		const version = package.version;

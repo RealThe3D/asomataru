@@ -5,6 +5,7 @@ module.exports = {
 	ownerOnly: false,
 	enabled: true,
 	cooldown: 300,
+	usage: 'chop',
 	exec: async (client, message, args) => {
 		// Wood script because I suck. U_U
 		const woodNames = ['oak wood'];

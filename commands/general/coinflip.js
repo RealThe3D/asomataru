@@ -5,6 +5,7 @@ module.exports = {
 	ownerOnly: false,
 	enabled: true,
 	cooldown: 0,
+	usage: 'coinflip',
 	exec: async (client, message, args) => {
 		var choices = [`had landed on heads!`, `had landed on tails!`];
 		var coinResult = choices[Math.floor(Math.random() * choices.length)];
