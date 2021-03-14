@@ -40,7 +40,13 @@ module.exports = (client) => {
 		if (command.permissions) {
 			const authorPerms = message.channel.permissionsFor(message.author);
 			if (!authorPerms || !authorPerms.has(command.permissions)) {
-				return message.reply('You can not do this!');
+				return message.reply(
+					`you need ` +
+						'`' +
+						`${command.permissions}` +
+						'`' +
+						` in order to execute this command.`
+				);
 			}
 		}
 
