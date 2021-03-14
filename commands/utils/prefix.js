@@ -8,7 +8,7 @@ module.exports = {
 		const Discord = require('discord.js');
 
 		const Guild = require('../../models/guildModel');
-		let guildData = Guild.findOne({ guildID: message.guild.id });
+		let guildData = await Guild.findOne({ guildID: message.guild.id });
 
 		if (!args[0]) {
 			const noArgsEmbed = new Discord.MessageEmbed()
