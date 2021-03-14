@@ -39,11 +39,7 @@ module.exports = {
 			.setColor('#00ff00')
 			.addField('Full username', `${user.tag}`, inline)
 			.addField('ID', user.id, inline)
-			.addField(
-				'Nickname',
-				`${user.nickname !== null ? `${user.nickname}` : 'None'}`,
-				true
-			)
+			.addField('Nickname', user.nickname ? user.nickname : 'None', true)
 			.addField('Bot', `${bot}`, inline, true)
 			.addField('Status', `${status[user.presence.status]}`, inline, true)
 			.addField('Joined Discord At', user.createdAt)
