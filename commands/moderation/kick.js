@@ -20,9 +20,10 @@ module.exports = {
 		} else {
 			user = message.mentions.users.first() || message.author;
 		}
-		if (!user)
-			return message.channel.send('Specify a user to kick, please.');
 
+		if (!user) {
+			return message.channel.send('Specify a user to kick, please.');
+		}
 		if (user.bot) {
 			return message.channel.send("I can't kick a bot!");
 		}
