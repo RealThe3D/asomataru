@@ -32,8 +32,8 @@ module.exports = {
 				inline
 			)
 			.addField('Members', `${message.guild.memberCount}`, inline)
-			.addField('Roles', message.guild.roles.size, inline)
-			.addField('Channels', message.guild.channels.size, inline)
+			.addField('Roles', message.guild.roles.cache.size, inline)
+			.addField('Channels', message.guild.channels.cache.size, inline)
 			.addField('You Joined', message.member.joinedAt)
 			.setFooter(`Created ${message.guild.createdAt}`);
 

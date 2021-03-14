@@ -53,7 +53,7 @@ module.exports = (client) => {
 		if (!command.enabled) {
 			return message.channel.send('This command is disabled.');
 		}
-		if (command.ownerOnly && !config.OWNERS.includes(message.author.id)) {
+		if (command.ownerOnly && !config.owners.includes(message.author.id)) {
 			return message.channel.send('Only the bot owner can use this!');
 		}
 		if (

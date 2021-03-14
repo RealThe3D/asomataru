@@ -2,7 +2,7 @@ module.exports = {
 	name: 'birthday',
 	aliases: ['bday'],
 	permissions: [],
-	ownerOnly: true,
+	ownerOnly: false,
 	enabled: true,
 	cooldown: 0,
 	usage: 'birthday',
