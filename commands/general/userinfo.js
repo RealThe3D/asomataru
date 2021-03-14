@@ -19,7 +19,7 @@ module.exports = {
 
 		const member =
 			message.mentions.members.first() ||
-			message.guild.members.get(args[0]) ||
+			message.guild.members.cache.get(args[0]) ||
 			message.member;
 
 		// const member = message.mentions.users.first() || message.author;
