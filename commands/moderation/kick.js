@@ -12,7 +12,7 @@ module.exports = {
 		const member =
 			message.mentions.users.first() || message.guild.users.get(args[0]);
 
-		if (member.user.bot) {
+		if (member.bot) {
 			return message.channel.send("I can't kick a bot!");
 		}
 
@@ -37,8 +37,8 @@ module.exports = {
 			);
 
 		let kick = new Discord.MessageEmbed()
-			.setColor('#000000')
-			.setTitle(`Kick | ${member.user.tag}`)
+			.setColor('RED')
+			.setTitle(`Kick | ${member.tag}`)
 			.addField('User', member, true)
 			.addField('Moderator', message.author, true)
 			.addField('Reason', res)

@@ -17,35 +17,40 @@ module.exports = {
 			offline: 'Offline/Invisible',
 		};
 
-		const member =
-			message.mentions.users.first() ||
-			message.guild.users.cache.get(args[0]) ||
-			message.member;
+		var user;
 
-		if (member.user.bot === true) {
+		if (!isNaN(args[0]) && args[0].length === 18) {
+			var member =
+				message.guild.users.cache.get(args[0]) || message.member;
+			user = member.user;
+		} else {
+			user = message.mentions.users.first() || message.author;
+		}
+
+		if (user.bot === true) {
 			var bot = 'Yes';
 		} else {
 			var bot = 'No';
 		}
 		var embed = new Discord.MessageEmbed()
-			.setThumbnail(member.displayAvatarURL)
+			.setThumbnail(user.displayAvatarURL)
 			.setColor('#00ff00')
-			.addField('Full Username', `${member.user.tag}`, inline)
-			.addField('ID', member.user.id, inline)
+			.addField('Full username', `${user.tag}`, inline)
+			.addField('ID', user.id, inline)
 			.addField(
 				'Nickname',
-				`${member.nickname !== null ? `${member.nickname}` : 'None'}`,
+				`${user.nickname !== null ? `${user.nickname}` : 'None'}`,
 				true
 			)
 			.addField('Bot', `${bot}`, inline, true)
 			.addField(
 				'Status',
-				`${status[member.user.presence.status]}`,
+				`${status[member.presence.status]}`,
 				inline,
 				true
 			)
-			.addField('Joined Discord At', member.user.createdAt)
-			.setFooter(`Information about ${member.user.username}`)
+			.addField('Joined Discord At', member.createdAt)
+			.setFooter(`Information about ${member.username}`)
 			.setTimestamp();
 		message.channel.send(embed);
 	},

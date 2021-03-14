@@ -20,7 +20,7 @@ module.exports = {
 			messageUser = message.mentions.users.first() || message.author;
 		}
 
-		if (messageUser.user.bot) return message.reply(`That is a bot.`);
+		if (messageUser.bot) return message.reply(`That is a bot.`);
 		let data = await User.findOne({ userID: messageUser.user.id });
 
 		if (!data) {

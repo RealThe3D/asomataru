@@ -20,7 +20,7 @@ module.exports = {
 		if (!member) {
 			return message.channel.send('Specify a user to ban, please.');
 		}
-		if (member.user.bot) {
+		if (member.bot) {
 			return message.channel.send("I can't ban a bot!");
 		}
 		if (!member.bannable)
@@ -46,8 +46,8 @@ module.exports = {
 			);
 
 		let bean = new Discord.MessageEmbed()
-			.setColor('#000000')
-			.setTitle(`Ban | ${member.user.tag}`)
+			.setColor('RED')
+			.setTitle(`Ban | ${member.tag}`)
 			.addField('User', member, true)
 			.addField('Moderator', message.author, true)
 			.addField('Reason', res)
