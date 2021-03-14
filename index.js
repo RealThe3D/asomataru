@@ -1,14 +1,13 @@
 const Discord = require('discord.js');
+const client = new Discord.Client();
 
 const mongoose = require('mongoose');
 const db = mongoose.connection;
 
 const TOKEN = process.env.BOT_TOKEN;
-const config = require('./config.json');
+const url = process.env.MONGODB_URI;
 
-const client = new Discord.Client();
-
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect(url, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
 });
