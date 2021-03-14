@@ -27,11 +27,12 @@ module.exports = {
 		if (user.bot) {
 			return message.channel.send("I can't ban a bot!");
 		}
-		if (!user.bannable)
-			return message.channel.send("I can't ban this user!");
-
-		if (user.id === message.author.id)
+		if (user.id === message.author.id) {
 			return message.channel.send("You can't ban yourself, dummy!");
+		}
+		if (!user.bannable) {
+			return message.channel.send("I can't ban this user!");
+		}
 
 		let reason = args.slice(1).join(' ');
 

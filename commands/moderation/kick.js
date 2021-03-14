@@ -26,9 +26,12 @@ module.exports = {
 		if (user.bot) {
 			return message.channel.send("I can't kick a bot!");
 		}
-
-		if (!user.kickable)
+		if (user.id === message.author.id) {
+			return message.channel.send("You can't ban yourself, dummy!");
+		}
+		if (!user.kickable) {
 			return message.channel.send('I cannot kick this user!');
+		}
 
 		let reason = args.slice(1).join(' ');
 		if (!reason) {
