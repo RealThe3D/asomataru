@@ -5,6 +5,7 @@ module.exports = {
 	ownerOnly: false,
 	enabled: true,
 	cooldown: 0,
+	usage: 'ban (@mention or userID) (reason)',
 	exec: async (client, message, args) => {
 		const Discord = require('discord.js');
 
@@ -20,17 +21,17 @@ module.exports = {
 			user = message.mentions.users.first() || message.author;
 		}
 
-		if (!member) {
+		if (!user) {
 			return message.channel.send('Specify a user to ban, please.');
 		}
-		if (member.bot) {
+		if (user.bot) {
 			return message.channel.send("I can't ban a bot!");
 		}
-		if (!member.bannable)
+		if (!user.bannable)
 			return message.channel.send("I can't ban this user!");
 
-		if (member.id === message.author.id)
-			return message.channel.send("You can't ban your self");
+		if (user.id === message.author.id)
+			return message.channel.send("You can't ban yourself, dummy!");
 
 		let reason = args.slice(1).join(' ');
 

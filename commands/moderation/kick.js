@@ -20,16 +20,14 @@ module.exports = {
 		} else {
 			user = message.mentions.users.first() || message.author;
 		}
+		if (!user)
+			return message.channel.send('Specify a user to kick, please.');
 
-		if (member.bot) {
+		if (user.bot) {
 			return message.channel.send("I can't kick a bot!");
 		}
 
-		//let member = message.mentions.members.first();
-		if (!member)
-			return message.channel.send('Specify a user to kick, please.');
-
-		if (!member.kickable)
+		if (!user.kickable)
 			return message.channel.send('I cannot kick this user!');
 
 		let reason = args.slice(1).join(' ');
