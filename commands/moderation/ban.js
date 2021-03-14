@@ -14,8 +14,15 @@ module.exports = {
 			.addField('Usage:', `!ban [user] [reason]`, true)
 			.addField('Example:', `!ban @user spam`);
 
-		let member = message.mentions.members.first();
-		if (!member) return message.channel.send(xdemb);
+		const member =
+			message.mentions.users.first() || message.guild.users.get(args[0]);
+
+		if (!member) {
+			return message.channel.send('Specify a user to ban, please.');
+		}
+		if (member.user.bot) {
+			return message.channel.send("I can't ban a bot!");
+		}
 		if (!member.bannable)
 			return message.channel.send("I can't ban this user!");
 

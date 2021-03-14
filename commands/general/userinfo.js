@@ -18,11 +18,9 @@ module.exports = {
 		};
 
 		const member =
-			message.mentions.members.first() ||
-			message.guild.members.cache.get(args[0]) ||
+			message.mentions.users.first() ||
+			message.guild.users.cache.get(args[0]) ||
 			message.member;
-
-		// const member = message.mentions.users.first() || message.author;
 
 		if (member.user.bot === true) {
 			var bot = 'Yes';

@@ -10,8 +10,11 @@ module.exports = {
 		const Discord = require('discord.js');
 
 		const member =
-			message.mentions.members.first() ||
-			message.guild.members.get(args[0]);
+			message.mentions.users.first() || message.guild.users.get(args[0]);
+
+		if (member.user.bot) {
+			return message.channel.send("I can't kick a bot!");
+		}
 
 		//let member = message.mentions.members.first();
 		if (!member)
