@@ -15,25 +15,24 @@ module.exports = {
 
 		let data = await User.findOne({ userID: message.author.id });
 
-		if (!data)
+		if (!data) {
 			return message.channel.send(
 				'Please use the profile command to register for the bot.'
 			);
-		else {
-			const embed = new Discord.MessageEmbed()
-				.setTitle(
-					`${message.author.username} traveled and did some bounties!`
-				)
-				.setDescription(
-					`${message.author.username} has earned ${randomAmount} credits. You also gained ${randomXP} XP!`
-				)
-				.setFooter('Asomataru RPG System v0.2 Beta!');
-
-			message.channel.send(embed);
-
-			data.coins = data.coins + randomAmount;
-			data.xp = data.xp + randomXP;
-			data.save();
 		}
+		const embed = new Discord.MessageEmbed()
+			.setTitle(
+				`${message.author.username} traveled and did some bounties!`
+			)
+			.setDescription(
+				`${message.author.username} has earned ${randomAmount} credits. You also gained ${randomXP} XP!`
+			)
+			.setFooter('Asomataru RPG System v0.2 Beta!');
+
+		message.channel.send(embed);
+
+		data.coins = data.coins + randomAmount;
+		data.xp = data.xp + randomXP;
+		data.save();
 	},
 };

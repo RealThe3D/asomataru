@@ -12,16 +12,15 @@ module.exports = {
 		let data = await User.findOne({ userID: message.author.id });
 
 		if (!data) {
-			message.channel.send(
+			return message.channel.send(
 				"You've have not registered yet, please use a!profile"
 			);
-		} else {
-			if (args[0] === '1') {
-				if (data.resources.oakwood > 3) {
-					message.channel.send('Test');
-					data.save();
-				} else {
-				}
+		}
+		if (args[0] === '1') {
+			if (data.resources.oakwood > 3) {
+				message.channel.send('Test');
+				data.save();
+			} else {
 			}
 		}
 	},

@@ -27,29 +27,28 @@ module.exports = {
 
 		if (!data) {
 			await User.create({ userID: message.author.id });
-			message.channel.send(
+			return message.channel.send(
 				`Your account was created, ${message.author.username}!`
 			);
-		} else {
-			const userStats = [
-				`Balance: ${data.coins} Coins`,
-				`HP: ${data.hp} Health`,
-				`Level: ${data.level}`,
-				`XP: ${data.xp} XP`,
-				`XP to Level Up: ${data.xptoNextLevel}`,
-				` `,
-				`**Fish**`,
-				`Salmon: ${data.fish.salmon}`,
-				`Bass: ${data.fish.bass}`,
-				`Eels:${data.fish.eel}`,
-				`Pufferfish: ${data.fish.pufferfish}`,
-			];
-
-			const embed = new Discord.MessageEmbed()
-				.setTitle(`${member.user.username}'s Stats`)
-				.setDescription(userStats)
-				.setFooter('Asomataru RPG System v0.2 Beta!');
-			message.channel.send(embed);
 		}
+		const userStats = [
+			`Balance: ${data.coins} Coins`,
+			`HP: ${data.hp} Health`,
+			`Level: ${data.level}`,
+			`XP: ${data.xp} XP`,
+			`XP to Level Up: ${data.xptoNextLevel}`,
+			` `,
+			`**Fish**`,
+			`Salmon: ${data.fish.salmon}`,
+			`Bass: ${data.fish.bass}`,
+			`Eels:${data.fish.eel}`,
+			`Pufferfish: ${data.fish.pufferfish}`,
+		];
+
+		const embed = new Discord.MessageEmbed()
+			.setTitle(`${member.user.username}'s Stats`)
+			.setDescription(userStats)
+			.setFooter('Asomataru RPG System v0.2 Beta!');
+		message.channel.send(embed);
 	},
 };

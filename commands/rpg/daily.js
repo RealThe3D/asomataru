@@ -20,6 +20,7 @@ module.exports = {
 			data.coins += randomAmount;
 
 			const embed = new Discord.MessageEmbed()
+				.setColor('GREEN')
 				.setTitle(`${message.author.username}'s Daily Rewards`)
 				.setDescription(`Your daily reward is ${randomAmount} coins!`);
 			message.channel.send(embed);

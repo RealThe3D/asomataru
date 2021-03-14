@@ -12,24 +12,22 @@ module.exports = {
 		let data = await User.findOne({ userID: message.author.id });
 
 		if (!data) {
-			message.channel.send(
+			return message.channel.send(
 				'Please use the profile command to register for the bot.'
 			);
+		}
+		if (data.xp > data.xptoNextLevel) {
+			const embed = new Discord.MessageEmbed()
+				.setTitle('You have leveled up!')
+				.setDescription(`You are now level ${data.level + 1}!`);
+			message.channel.send(embed);
+			data.level = data.level + 1;
+			data.xptoNextLevel =
+				(6 * data.xptoNextLevel) ^ (2 + 80 * data.xptoNextLevel + 100);
+			data.xp = 0;
+			data.save();
 		} else {
-			if (data.xp > data.xptoNextLevel) {
-				const embed = new Discord.MessageEmbed()
-					.setTitle('You have leveled up!')
-					.setDescription(`You are now level ${data.level + 1}!`);
-				message.channel.send(embed);
-				data.level = data.level + 1;
-				data.xptoNextLevel =
-					(6 * data.xptoNextLevel) ^
-					(2 + 80 * data.xptoNextLevel + 100);
-				data.xp = 0;
-				data.save();
-			} else {
-				message.channel.send('Not enough XP.');
-			}
+			message.channel.send('Not enough XP.');
 		}
 	},
 };

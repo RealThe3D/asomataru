@@ -18,38 +18,37 @@ module.exports = {
 		let data = await User.findOne({ userID: message.author.id });
 
 		if (!data) {
-			message.channel.send(
+			return message.channel.send(
 				"You've have not registered yet, please use a!profile"
 			);
-		} else {
-			switch (fishRNG) {
-				case 'salmon':
-					description = `${message.author.username} has a caught a salmon!`;
-
-					data.fish.salmon += 1;
-					break;
-				case 'bass':
-					description = `${message.author.username} has caught a bass!`;
-
-					data.fish.bass += 1;
-					break;
-				case 'eel':
-					description = `${message.author.username} has caught an eel!`;
-
-					data.fish.eel += 1;
-					break;
-				case 'pufferfish':
-					description = `${message.author.username} has a caught a pufferfish!`;
-
-					data.fish.pufferfish += 1;
-			}
-			const embed = new Discord.MessageEmbed()
-				.setTitle('What a catch!')
-				.setDescription(description)
-				.setFooter('Asomataru RPG v0.2 Beta!');
-
-			message.channel.send(embed);
-			data.save();
 		}
+		switch (fishRNG) {
+			case 'salmon':
+				description = `${message.author.username} has a caught a salmon!`;
+
+				data.fish.salmon += 1;
+				break;
+			case 'bass':
+				description = `${message.author.username} has caught a bass!`;
+
+				data.fish.bass += 1;
+				break;
+			case 'eel':
+				description = `${message.author.username} has caught an eel!`;
+
+				data.fish.eel += 1;
+				break;
+			case 'pufferfish':
+				description = `${message.author.username} has a caught a pufferfish!`;
+
+				data.fish.pufferfish += 1;
+		}
+		const embed = new Discord.MessageEmbed()
+			.setTitle('What a catch!')
+			.setDescription(description)
+			.setFooter('Asomataru RPG v0.2 Beta!');
+
+		message.channel.send(embed);
+		data.save();
 	},
 };

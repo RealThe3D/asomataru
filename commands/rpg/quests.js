@@ -9,8 +9,13 @@ module.exports = {
 	exec: async (client, message, args) => {
 		const User = require('../../models/userModel.js');
 
-		let data = await User.findOne({ userID: message.author.id });
+		let userData = await User.findOne({ userID: message.author.id });
 
+		if (!userData) {
+			return message.channel.send(
+				'Please use the profile command to register for the bot.'
+			);
+		}
 		const Discord = require('discord.js');
 
 		const embed = new Discord.MessageEmbed()

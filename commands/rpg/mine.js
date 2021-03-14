@@ -25,23 +25,22 @@ module.exports = {
 		let data = await User.findOne({ userID: message.author.id });
 
 		if (!data) {
-			message.channel.send(
+			return message.channel.send(
 				"You've have not registered yet, please use a!profile"
 			);
-		} else {
-			if (oreRNG === 'copper ore') {
-				message.channel.send(
-					`${message.author.username} has mined 1 copper ore!`
-				);
-				data.resources.copperore + 1;
-			}
-			if (fishRNG === 'iron ore') {
-				message.channel.send(
-					`${message.author.username} has mined 1 iron ore!`
-				);
-				data.resources.ironore + 1;
-			}
-			data.save();
 		}
+		if (oreRNG === 'copper ore') {
+			message.channel.send(
+				`${message.author.username} has mined 1 copper ore!`
+			);
+			data.resources.copperore + 1;
+		}
+		if (fishRNG === 'iron ore') {
+			message.channel.send(
+				`${message.author.username} has mined 1 iron ore!`
+			);
+			data.resources.ironore + 1;
+		}
+		data.save();
 	},
 };
