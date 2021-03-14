@@ -18,9 +18,8 @@ module.exports = {
 			user = message.mentions.users.first() || message.author;
 		}
 
-		const avatarEmbed = new Discord.MessageEmbed()
-			.setColor(0x333333)
-			.setAuthor(`${user.username}'s Profile Picture`)
+		const embed = new Discord.MessageEmbed()
+			.setTitle('Avatar')
 			.setImage(
 				user.displayAvatarURL({
 					size: 512,
@@ -28,6 +27,7 @@ module.exports = {
 					dynamic: true,
 				})
 			);
-		message.channel.send(avatarEmbed);
+
+		message.channel.send(embed);
 	},
 };
