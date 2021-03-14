@@ -43,14 +43,9 @@ module.exports = {
 				true
 			)
 			.addField('Bot', `${bot}`, inline, true)
-			.addField(
-				'Status',
-				`${status[member.presence.status]}`,
-				inline,
-				true
-			)
-			.addField('Joined Discord At', member.createdAt)
-			.setFooter(`Information about ${member.username}`)
+			.addField('Status', `${status[user.presence.status]}`, inline, true)
+			.addField('Joined Discord At', user.createdAt)
+			.setFooter(`Information about ${user.username}`)
 			.setTimestamp();
 		message.channel.send(embed);
 	},

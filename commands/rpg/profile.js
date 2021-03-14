@@ -21,7 +21,7 @@ module.exports = {
 		}
 
 		if (messageUser.bot) return message.reply(`That is a bot.`);
-		let data = await User.findOne({ userID: messageUser.user.id });
+		let data = await User.findOne({ userID: messageUser.id });
 
 		if (!data) {
 			await User.create({ userID: message.author.id });
