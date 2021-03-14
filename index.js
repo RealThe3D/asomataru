@@ -14,9 +14,10 @@ mongoose.connect(process.env.MONGODB_URI, {
 });
 
 db.once('open', () => {
-	require('./models/index');
-	require('./handlers/eventHandler')(client);
-	require('./handlers/moduleHandler')(client);
+	console.log('Database connected:', url);
+	require('./models/index.js');
+	require('./handlers/commandHandler.js')(client);
+	require('./handlers/eventHandler.js')(client);
 });
 
 db.on('error', (err) => {
