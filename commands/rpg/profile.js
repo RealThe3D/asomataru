@@ -10,20 +10,20 @@ module.exports = {
 		const User = require('../../models/userModel.js');
 		const Discord = require('discord.js');
 
-		var messageUser;
+		var user;
 
 		if (!isNaN(args[0]) && args[0].length === 18) {
 			var member =
 				message.guild.users.cache.get(args[0]) ||
 				message.guild.members.cache.get(args[0]) ||
 				message.member;
-			messageUser = member.user;
+			user = member.user;
 		} else {
-			messageUser = message.mentions.users.first() || message.author;
+			user = message.mentions.users.first() || message.author;
 		}
 
-		if (messageUser.bot) return message.reply(`That is a bot.`);
-		let data = await User.findOne({ userID: messageUser.id });
+		if (user.bot) return message.reply(`That is a bot.`);
+		let data = await User.findOne({ userID: user.id });
 
 		if (!data) {
 			await User.create({ userID: message.author.id });
@@ -46,7 +46,7 @@ module.exports = {
 		];
 
 		const embed = new Discord.MessageEmbed()
-			.setTitle(`${member.user.username}'s Stats`)
+			.setTitle(`${user.username}'s Stats`)
 			.setDescription(userStats)
 			.setFooter('Asomataru RPG System v0.2 Beta!');
 		message.channel.send(embed);
