@@ -7,10 +7,4 @@ app.all('/', (req, res) => {
 
 app.use(express.static(__dirname));
 
-function keepAlive() {
-	app.listen(8080, () => {
-		console.log("Asomataru's app is ready!");
-	});
-}
-
-module.exports = keepAlive;
+app.listen(3000);
