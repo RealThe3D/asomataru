@@ -9,26 +9,20 @@ module.exports = {
 	exec: async (client, message, args) => {
 		const Discord = require('discord.js');
 
-		var user;
+		if (message.author.bot) return;
 
-		if (!isNaN(args[0]) && args[0].length === 18) {
-			var member =
-				(await message.guild.members.cache.get(args[0])) ||
-				message.member;
-			user = member.user;
+		const author = message.author;
+		const PUser = args.member.user;
+		const AvatarEmbed = new Discord.MessageEmbed();
+
+		if (!args.member || args.member.id == message.author.id) {
+			AvatarEmbed.setTitle(`${author.username} Avatar!`);
+			AvatarEmbed.setImage(author.avatarURL());
 		} else {
-			user = message.mentions.users.first() || message.author;
+			AvatarEmbed.setTitle(`${PUser.username} Avatar!`);
+			AvatarEmbed.setImage(PUser.avatarURL());
 		}
-		const embed = new Discord.MessageEmbed()
-			.setTitle(`${user.username}'s Avatar`)
-			.setImage(
-				user.displayAvatarURL({
-					size: 512,
-					format: 'jpg',
-					dynamic: true,
-				})
-			);
-
-		message.channel.send(embed);
+		AvatarEmbed.setColor('RANDOM');
+		message.channel.send(AvatarEmbed);
 	},
 };
