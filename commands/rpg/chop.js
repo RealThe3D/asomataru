@@ -26,7 +26,7 @@ module.exports = {
 			message.channel.send(
 				`${message.author.username} has chopped down a tree and got 1 oak wood!`
 			);
-			data.resources.oakwood = data.resources.oakwood + 1;
+			data.resources.oakwood += 1;
 		}
 		data.save();
 	},
