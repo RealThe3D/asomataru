@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
-const client = new Discord.Client();
-
 const mongoose = require('mongoose');
+
+const client = new Discord.Client();
 const db = mongoose.connection;
 
 const TOKEN = process.env.BOT_TOKEN;

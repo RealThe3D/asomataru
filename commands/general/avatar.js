@@ -6,18 +6,15 @@ module.exports = {
 	enabled: true,
 	cooldown: 2,
 	usage: 'avatar (@mention or userID)',
-	exec: async (client, message, args) => {
+	exec: (client, message, args) => {
 		const Discord = require('discord.js');
 
 		if (message.author.bot) return;
 
-		const author = message.author;
-		const PUser = args.member.member.user;
-		const AvatarEmbed = new Discord.MessageEmbed();
-
-		if (!args.member || args.member.id == message.author.id) {
-			AvatarEmbed.setTitle(`${author.username} Avatar!`);
-			AvatarEmbed.setImage(author.avatarURL());
+		if (!isNaN(args[0]) && args[0].length === 18) {
+			var member =
+				message.guild.members.cache.get(args[0]) || message.member;
+			user = member.user;
 		} else {
 			AvatarEmbed.setTitle(`${PUser.username} Avatar!`);
 			AvatarEmbed.setImage(PUser.avatarURL());
