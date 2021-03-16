@@ -6,7 +6,7 @@ module.exports = {
 	enabled: true,
 	cooldown: 0,
 	usage: 'profile (@mention or userID)',
-	exec: async (client, message, args) => {
+	exec: (client, message, args) => {
 		const User = require('../../models/userModel.js');
 		const Discord = require('discord.js');
 
@@ -14,9 +14,7 @@ module.exports = {
 
 		if (!isNaN(args[0]) && args[0].length === 18) {
 			var member =
-				message.guild.members.cache.get(args[0]) ||
-				message.guild.users.cache.get(args[0]) ||
-				message.member;
+				message.guild.members.cache.get(args[0]) || message.member;
 			user = member.user;
 		} else {
 			user = message.mentions.users.first() || message.author;
