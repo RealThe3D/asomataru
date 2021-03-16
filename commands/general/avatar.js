@@ -9,17 +9,25 @@ module.exports = {
 	exec: (client, message, args) => {
 		const Discord = require('discord.js');
 
-		if (message.author.bot) return;
+		var user;
 
 		if (!isNaN(args[0]) && args[0].length === 18) {
 			var member =
 				message.guild.members.cache.get(args[0]) || message.member;
 			user = member.user;
 		} else {
-			AvatarEmbed.setTitle(`${PUser.username} Avatar!`);
-			AvatarEmbed.setImage(PUser.avatarURL());
+			user = message.mentions.users.first() || message.author;
 		}
-		AvatarEmbed.setColor('RANDOM');
-		message.channel.send(AvatarEmbed);
+		const embed = new Discord.MessageEmbed()
+			.setTitle(`${user.username}'s Avatar`)
+			.setImage(
+				user.displayAvatarURL({
+					size: 512,
+					format: 'jpg',
+					dynamic: true,
+				})
+			);
+
+		message.channel.send(embed);
 	},
 };
