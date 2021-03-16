@@ -6,15 +6,14 @@ module.exports = {
 	enabled: true,
 	cooldown: 2,
 	usage: 'avatar (@mention or userID)',
-	exec: async (client, message, args) => {
+	exec: (client, message, args) => {
 		const Discord = require('discord.js');
 
 		var user;
 
 		if (!isNaN(args[0]) && args[0].length === 18) {
 			var member =
-				(await message.guild.members.cache.get(args[0])) ||
-				message.member;
+				message.guild.members.cache.get(args[0]) || message.member;
 			user = member.user;
 		} else {
 			user = message.mentions.users.first() || message.author;
