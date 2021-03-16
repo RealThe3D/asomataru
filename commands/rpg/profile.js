@@ -6,7 +6,7 @@ module.exports = {
 	enabled: true,
 	cooldown: 0,
 	usage: 'profile (@mention or userID)',
-	exec: (client, message, args) => {
+	exec: async (client, message, args) => {
 		const User = require('../../models/userModel.js');
 		const Discord = require('discord.js');
 
