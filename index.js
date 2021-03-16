@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 
 const mongoose = require('mongoose');
+const keepAlive = require('./dashboard/server.js');
 const db = mongoose.connection;
 
 const TOKEN = process.env.BOT_TOKEN;
@@ -21,5 +22,7 @@ db.once('open', () => {
 db.on('error', (err) => {
 	throw err;
 });
+
+keepAlive();
 
 client.login(TOKEN);

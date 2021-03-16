@@ -1,9 +1,14 @@
 const express = require('express');
-const path = require('path');
-const https = require('https');
-const app = express();
+const server = express();
 
-const PORT = process.env.PORT || 8080;
+server.all('/', (req, res) => {
+	res.send('NameB - Server is ready!');
+});
 
-app.use(express.static(__dirname));
-app.listen(PORT);
+function keepAlive() {
+	server.listen(3000, () => {
+		console.log('NameB Server is Ready!');
+	});
+}
+
+module.exports = keepAlive;
