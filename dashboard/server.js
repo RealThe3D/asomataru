@@ -1,13 +1,13 @@
 const express = require('express');
-const server = express();
+const app = express();
 
-server.all('/', (req, res) => {
+app.all('/', (req, res) => {
 	res.send('Asomataru is ready!');
 });
-server.use(__dirname);
+app.use(express.static(__dirname));
 function keepAlive() {
-	server.listen(3000, () => {
-		console.log("Asomataru's server is ready!");
+	app.listen(3000, () => {
+		console.log("Asomataru's app is ready!");
 	});
 }
 
