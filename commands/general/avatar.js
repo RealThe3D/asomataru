@@ -12,7 +12,7 @@ module.exports = {
 		if (message.author.bot) return;
 
 		const author = message.author;
-		const PUser = args.member.user;
+		const PUser = args.member.member.user;
 		const AvatarEmbed = new Discord.MessageEmbed();
 
 		if (!args.member || args.member.id == message.author.id) {
