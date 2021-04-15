@@ -1,6 +1,6 @@
 {
 	"name": "asomataru",
-	"version": "2.4",
+	"version": "2.4.1",
 	"description": "A discord bot made by The3D#1120",
 	"main": "index.js",
 	"scripts": {
