@@ -36,6 +36,6 @@ module.exports = {
 		}
 		embed.setImage(body.url);
 
-		message.channel.send(kiss);
+		message.channel.send(embed);
 	},
 };
