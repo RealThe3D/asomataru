@@ -34,6 +34,7 @@ module.exports = {
 			);
 		}
 
+		embed.setColor('RED');
 		embed.setImage(body.url);
 		message.channel.send(embed);
 	},

@@ -7,12 +7,13 @@ module.exports = {
 	cooldown: 3,
 	usage: 'kiss (@mention or userID)',
 	exec: async (client, message, args) => {
+		const User = require('../../models/userModel');
 		const { MessageEmbed } = require('discord.js');
 		const superagent = require('superagent');
 		const member = message.mentions.users.first() || message.member;
 		const embed = new MessageEmbed()
 			.setDescription(`${member.username} you got a kiss!`)
-			.setColor(0x00ae86);
+			.setColor('PINK');
 
 		let userData = await User.findOne({ userID: message.author.id });
 
