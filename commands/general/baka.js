@@ -13,7 +13,7 @@ module.exports = {
 		const member = message.mentions.users.first() || message.member;
 		const embed = new MessageEmbed();
 
-		let userData = User.findOne({ userID: message.author.id });
+		let userData = await User.findOne({ userID: message.author.id });
 
 		if (!userData) {
 			return message.channel.send('No data about you, use a!profile!');
