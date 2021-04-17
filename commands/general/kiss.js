@@ -11,9 +11,7 @@ module.exports = {
 		const { MessageEmbed } = require('discord.js');
 		const superagent = require('superagent');
 		const member = message.mentions.users.first() || message.member;
-		const embed = new MessageEmbed()
-			.setDescription(`${member.username} you got a kiss!`)
-			.setColor('PINK');
+		const embed = new MessageEmbed().setColor('#FFB6C1');
 
 		let userData = await User.findOne({ userID: message.author.id });
 
@@ -25,7 +23,7 @@ module.exports = {
 		);
 
 		if (member.id == message.author.id) {
-			embed.setTitle(`They.. kissed themselves?`);
+			embed.setTitle(`They... kissed themselves?`);
 		} else {
 			embed.setTitle(`${message.author.id} kissed ${member.username}!`);
 			userData.affection += 5;
