@@ -24,9 +24,9 @@ module.exports = {
 		);
 
 		if (member.id == message.author.id) {
-			embed.setTitle(`**They are calling themselves.. a baka?`);
+			embed.setTitle(`They are calling themselves.. a baka?`);
 		} else {
-			embed.setTitle(`**Here is a neko! UwU**`);
+			embed.setTitle(`${member.username} is a baka!`);
 		}
 
 		userData.affection -= 5;
@@ -34,7 +34,7 @@ module.exports = {
 
 		embed.setImage(body.url);
 		embed.setFooter(
-			`You loss 5 affection for being mean! You now have ${userData.affection} Affection.`
+			`You've loss 5 affection for being mean! You now have ${userData.affection} Affection.`
 		);
 
 		message.channel.send(embed);

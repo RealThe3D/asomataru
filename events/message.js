@@ -6,7 +6,7 @@ module.exports = (client) => {
 		const User = require('../models/userModel');
 		let guildData = await Guild.findOne({ guildID: message.guild.id });
 
-		await Guild.updateMany({}, { affection: 0 });
+		await User.updateMany({}, { affection: 0 });
 
 		if (!guildData) {
 			await Guild.create({ guildID: message.guild.id });
