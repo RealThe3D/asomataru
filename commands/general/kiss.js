@@ -12,8 +12,7 @@ module.exports = {
 		const member = message.mentions.users.first() || message.member;
 		const embed = new MessageEmbed()
 			.setDescription(`${member.username} you got a kiss!`)
-			.setColor(0x00ae86)
-			.setImage(body.url);
+			.setColor(0x00ae86);
 
 		let userData = await User.findOne({ userID: message.author.id });
 
@@ -34,6 +33,7 @@ module.exports = {
 				`You've gained 5 affection for being generous! You now have ${userData.affection} Affection!`
 			);
 		}
+		embed.setImage(body.url);
 
 		message.channel.send(kiss);
 	},

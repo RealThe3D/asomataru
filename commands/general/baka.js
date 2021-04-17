@@ -24,6 +24,7 @@ module.exports = {
 		);
 
 		if (member.id == message.author.id) {
+			embed.setTitle(`They're calling themselves... a baka?`);
 		} else {
 			embed.setTitle(`${member.username} is a baka!`);
 			userData.affection -= 5;
