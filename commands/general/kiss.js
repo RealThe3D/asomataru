@@ -25,7 +25,9 @@ module.exports = {
 		if (member.id == message.author.id) {
 			embed.setTitle(`They... kissed themselves?`);
 		} else {
-			embed.setTitle(`${message.author.id} kissed ${member.username}!`);
+			embed.setTitle(
+				`${message.author.username} kissed ${member.username}!`
+			);
 			userData.affection += 5;
 			userData.save();
 			embed.setFooter(
