@@ -3,7 +3,10 @@ const activeUsers = {};
 module.exports = (client) => {
 	client.on('message', async (message) => {
 		const Guild = require('../models/guildModel');
+		const User = require('../models/userModel');
 		let guildData = await Guild.findOne({ guildID: message.guild.id });
+
+		await Guild.updateMany({}, { affection: 0 });
 
 		if (!guildData) {
 			await Guild.create({ guildID: message.guild.id });

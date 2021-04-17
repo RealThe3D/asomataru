@@ -12,6 +12,7 @@ const UserSchema = new Schema({
 	level: { type: Number, default: 1 },
 	xptoNextLevel: { type: Number, default: 100 },
 	hp: { type: Number, default: 50 },
+	affection: { type: Number, default: 0 },
 	resources,
 	fish,
 	weapons,

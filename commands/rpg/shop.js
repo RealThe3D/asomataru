@@ -1,3 +1,5 @@
+// Unfinished.
+
 module.exports = {
 	name: 'shop',
 	aliases: ['items'],
@@ -16,6 +18,7 @@ module.exports = {
 			`Steal [Lvl. 10]`,
 			`Luck's Eye [Lvl. 12]`,
 		];
+
 		const embed = new Discord.MessageEmbed()
 			.setTitle('All Items')
 			.setDescription(ItemsList)

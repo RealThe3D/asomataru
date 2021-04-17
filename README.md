@@ -17,11 +17,13 @@ Wanna add the bot? Use this link: https://discord.com/api/oauth2/authorize?clien
 | `help`    | Shows the commands               |
 | `ping`    | Pings the bot's latency          |
 | `version` | States the version number        |
+| `credits` | Dedication to friends            |
 
 ### Fun
 
 | Command       | Action                                                    |
 | ------------- | --------------------------------------------------------- |
+| `anime`       | Sends an anime picture.                                   |
 | `topic`       | Sends an open ended question to start chat                |
 | `joke`        | Sends a joke                                              |
 | `info`        | Aso will tell you important information about themselves. |

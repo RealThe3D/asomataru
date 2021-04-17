@@ -4,7 +4,7 @@
 	"description": "A discord bot made by The3D#1120",
 	"main": "index.js",
 	"scripts": {
-		"start": "node index.js"
+		"start": "node ."
 	},
 	"engines": {
 		"node": "14.16.0",
