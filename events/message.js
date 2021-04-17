@@ -6,8 +6,6 @@ module.exports = (client) => {
 		const User = require('../models/userModel');
 		let guildData = await Guild.findOne({ guildID: message.guild.id });
 
-		await User.updateMany({}, { affection: 0 });
-
 		if (!guildData) {
 			await Guild.create({ guildID: message.guild.id });
 			return message.channel.send(
@@ -15,10 +13,7 @@ module.exports = (client) => {
 			);
 		}
 		// Guild Updater
-
-		if (guildData && !guildData.prefix) {
-			await Guild.updateMany({}, { prefix: 'a!' });
-		}
+		await Guild.updateMany({}, { prefix: 'a!' });
 
 		const prefix = guildData.prefix;
 		const config = require('../config.json');
