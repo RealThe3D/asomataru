@@ -7,27 +7,34 @@ module.exports = {
 	cooldown: 3,
 	usage: 'kiss (@mention or userID)',
 	exec: async (client, message, args) => {
-		const Discord = require('discord.js');
+		const { MessageEmbed } = require('discord.js');
 		const superagent = require('superagent');
+		const member = message.mentions.users.first() || message.member;
+		const embed = new MessageEmbed()
+			.setDescription(`${member.username} you got a kiss!`)
+			.setColor(0x00ae86)
+			.setImage(body.url);
 
-		var user;
+		let userData = await User.findOne({ userID: message.author.id });
 
-		if (!isNaN(args[0]) && args[0].length === 18) {
-			var member =
-				message.guild.members.cache.get(args[0]) || message.member;
-			user = member.user;
-		} else {
-			user = message.mentions.users.first() || message.author;
+		if (!userData) {
+			return message.channel.send('No data on you! Use a!profile');
 		}
-
 		let { body } = await superagent.get(
 			'https://nekos.life/api/v2/img/kiss'
 		);
 
-		const kiss = new Discord.MessageEmbed()
-			.setDescription(`${user.username} you got a kiss!`)
-			.setColor(0x00ae86)
-			.setImage(body.url);
+		if (member.id == message.author.id) {
+			embed.setTitle(`They.. kissed themselves?`);
+		} else {
+			embed.setTitle(`${message.author.id} kissed ${member.username}!`);
+			userData.affection += 5;
+			userData.save();
+			embed.setFooter(
+				`You've gained 5 affection for being generous! You now have ${userData.affection} Affection!`
+			);
+		}
+
 		message.channel.send(kiss);
 	},
 };

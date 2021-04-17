@@ -24,19 +24,16 @@ module.exports = {
 		);
 
 		if (member.id == message.author.id) {
-			embed.setTitle(`They are calling themselves.. a baka?`);
 		} else {
 			embed.setTitle(`${member.username} is a baka!`);
+			userData.affection -= 5;
+			userData.save();
+			embed.setFooter(
+				`You've loss 5 affection for being mean! You now have ${userData.affection} Affection.`
+			);
 		}
 
-		userData.affection -= 5;
-		userData.save();
-
 		embed.setImage(body.url);
-		embed.setFooter(
-			`You've loss 5 affection for being mean! You now have ${userData.affection} Affection.`
-		);
-
 		message.channel.send(embed);
 	},
 };

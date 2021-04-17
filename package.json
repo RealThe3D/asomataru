@@ -12,9 +12,9 @@
 	},
 	"license": "MIT",
 	"dependencies": {
-		"discord.js": "^12.5.1",
+		"discord.js": "^12.5.3",
 		"express": "4.17.1",
-		"mongoose": "^5.11.19",
+		"mongoose": "^5.12.24",
 		"superagent": "^6.1.0"
 	}
 }

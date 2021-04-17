@@ -12,8 +12,6 @@ module.exports = (client) => {
 				"For some odd reason, your guild is not on our database, possibly because the bot joined when it was offline.\nAs a failsafe, your guild's data is now stored on your database.\n Please disregard for the interruption."
 			);
 		}
-		// Guild Updater
-		await Guild.updateMany({}, { prefix: 'a!' });
 
 		const prefix = guildData.prefix;
 		const config = require('../config.json');
