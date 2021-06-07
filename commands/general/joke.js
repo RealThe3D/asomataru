@@ -10,7 +10,7 @@ module.exports = {
 	exec: async (client, message, args) => {
 		const Discord = require('discord.js');
 		const axios = require('axios');
-		let { data } = axios
+		let data = axios
 			.get('https://v2.jokeapi.dev/joke/Any?safe-mode&type=single')
 			.then((res) => res.data);
 
