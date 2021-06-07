@@ -10,11 +10,11 @@ module.exports = {
 		const Discord = require('discord.js');
 		const axios = require('axios');
 
-		let { body } = await axios.get('http://aws.random.cat/meow');
+		let { data } = await axios.get('http://aws.random.cat/meow');
 
 		const embed = new Discord.MessageEmbed()
 			.setTitle(`**__Who is a good cuddly kitten!__**`)
-			.setImage(body.file)
+			.setImage(data.file)
 			.setFooter(`Powered by aws.random.cat API`);
 
 		message.channel.send(embed);

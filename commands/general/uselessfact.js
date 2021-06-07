@@ -10,13 +10,13 @@ module.exports = {
 		const Discord = require('discord.js');
 		const axios = require('axios');
 
-		let { body } = await axios.get(
+		let { data } = await axios.get(
 			'https://uselessfacts.jsph.pl/random.json?language=en'
 		);
 
 		const embed = new Discord.MessageEmbed()
 			.setTitle(`**__Useless Fact!__**`)
-			.setDescription(body.text)
+			.setDescription(data.text)
 			.setFooter(`Powered by uselessfacts.jsph.pl`);
 
 		message.channel.send(embed);

@@ -10,11 +10,11 @@ module.exports = {
 		const Discord = require('discord.js');
 		const axios = require('axios');
 
-		let { body } = await axios.get('https://random.dog/woof.json');
+		let { data } = await axios.get('https://random.dog/woof.json');
 
 		const embed = new Discord.MessageEmbed()
 			.setTitle(`**__Who is a good doggo!__**`)
-			.setImage(body.url)
+			.setImage(data.url)
 			.setFooter(`Powered by random.dog API`);
 
 		message.channel.send(embed);

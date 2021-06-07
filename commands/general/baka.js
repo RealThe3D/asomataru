@@ -19,7 +19,7 @@ module.exports = {
 			return message.channel.send('No data about you, use a!profile!');
 		}
 
-		let { body } = await axios.get('https://nekos.life/api/v2/img/baka');
+		let { data } = await axios.get('https://nekos.life/api/v2/img/baka');
 
 		if (member.id == message.author.id) {
 			embed.setTitle(`They're calling themselves... a baka?`);
@@ -33,7 +33,7 @@ module.exports = {
 		}
 
 		embed.setColor('RED');
-		embed.setImage(body.url);
+		embed.setImage(data.url);
 		message.channel.send(embed);
 	},
 };

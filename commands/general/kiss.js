@@ -18,7 +18,7 @@ module.exports = {
 		if (!userData) {
 			return message.channel.send('No data on you! Use a!profile');
 		}
-		let { body } = await axios.get('https://nekos.life/api/v2/img/kiss');
+		let { data } = await axios.get('https://nekos.life/api/v2/img/kiss');
 
 		if (member.id == message.author.id) {
 			embed.setTitle(`They... kissed themselves?`);
@@ -32,7 +32,7 @@ module.exports = {
 				`You've gained 5 affection for being generous! You now have ${userData.affection} Affection!`
 			);
 		}
-		embed.setImage(body.url);
+		embed.setImage(data.url);
 
 		message.channel.send(embed);
 	},

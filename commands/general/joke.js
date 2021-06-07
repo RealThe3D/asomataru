@@ -10,14 +10,13 @@ module.exports = {
 	exec: async (client, message, args) => {
 		const Discord = require('discord.js');
 		const axios = require('axios');
-
-		axios
+		let { data } = axios
 			.get('https://v2.jokeapi.dev/joke/Any?safe-mode&type=single')
-			.then((res) => console.log(res.data));
+			.then((res) => res.data);
 
 		const embed = new Discord.MessageEmbed()
 			.setTitle('Stand-up Comedian Joke!')
-			.setDescription(body.joke)
+			.setDescription(data.joke)
 			.setFooter('Powered by JokeAPI');
 
 		message.channel.send(embed);

@@ -9,15 +9,15 @@ module.exports = {
 	exec: async (client, message, args) => {
 		const Discord = require('discord.js');
 		const axios = require('axios');
-		let { body } = await axios.get(
+		let { data } = await axios.get(
 			'https://meme-api.herokuapp.com/gimme/moemorphism'
 		);
 
 		const embed = new Discord.MessageEmbed()
-			.setImage(body.url)
+			.setImage(data.url)
 			.setTitle(`**__Moemorphism__**`)
-			.setURL(`https://reddit.com/r/${body.subreddit}`)
-			.setFooter(`From r/${body.subreddit}`);
+			.setURL(`https://reddit.com/r/${data.subreddit}`)
+			.setFooter(`From r/${data.subreddit}`);
 
 		message.channel.send(embed);
 	},
