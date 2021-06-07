@@ -13,7 +13,7 @@ module.exports = {
 
 		axios
 			.get('https://v2.jokeapi.dev/joke/Any?safe-mode&type=single')
-			.then((res) => console.log(res));
+			.then((res) => console.log(res.body));
 
 		const embed = new Discord.MessageEmbed()
 			.setTitle('Stand-up Comedian Joke!')
