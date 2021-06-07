@@ -1,4 +1,3 @@
-const axios = require('axios');
 module.exports = {
 	name: 'joke',
 	aliases: [],
@@ -12,7 +11,8 @@ module.exports = {
 		const axios = require('axios');
 		let data = axios
 			.get('https://v2.jokeapi.dev/joke/Any?safe-mode&type=single')
-			.then((res) => res.data);
+			.then((res) => console.log(res.data));
+		console.log(data);
 
 		const embed = new Discord.MessageEmbed()
 			.setTitle('Stand-up Comedian Joke!')
