@@ -8,9 +8,9 @@ module.exports = {
 	usage: 'cat',
 	exec: async (client, message, args) => {
 		const Discord = require('discord.js');
-		const superagent = require('superagent');
+		const axios = require('axios');
 
-		let { body } = await superagent.get('http://aws.random.cat/meow');
+		let { body } = await axios.get('http://aws.random.cat/meow');
 
 		const embed = new Discord.MessageEmbed()
 			.setTitle(`**__Who is a good cuddly kitten!__**`)

@@ -8,9 +8,9 @@ module.exports = {
 	usage: 'uselessfact',
 	exec: async (client, message, args) => {
 		const Discord = require('discord.js');
-		const superagent = require('superagent');
+		const axios = require('axios');
 
-		let { body } = await superagent.get(
+		let { body } = await axios.get(
 			'https://uselessfacts.jsph.pl/random.json?language=en'
 		);
 

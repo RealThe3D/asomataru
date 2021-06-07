@@ -9,7 +9,7 @@ module.exports = {
 	exec: async (client, message, args) => {
 		const User = require('../../models/userModel');
 		const { MessageEmbed } = require('discord.js');
-		const superagent = require('superagent');
+		const axios = require('axios');
 		const member = message.mentions.users.first() || message.member;
 		const embed = new MessageEmbed().setColor('#FFB6C1');
 
@@ -18,9 +18,7 @@ module.exports = {
 		if (!userData) {
 			return message.channel.send('No data on you! Use a!profile');
 		}
-		let { body } = await superagent.get(
-			'https://nekos.life/api/v2/img/kiss'
-		);
+		let { body } = await axios.get('https://nekos.life/api/v2/img/kiss');
 
 		if (member.id == message.author.id) {
 			embed.setTitle(`They... kissed themselves?`);

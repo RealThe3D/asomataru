@@ -8,9 +8,8 @@ module.exports = {
 	usage: 'moemorphism',
 	exec: async (client, message, args) => {
 		const Discord = require('discord.js');
-		const superagent = require('superagent');
-
-		let { body } = await superagent.get(
+		const axios = require('axios');
+		let { body } = await axios.get(
 			'https://meme-api.herokuapp.com/gimme/moemorphism'
 		);
 

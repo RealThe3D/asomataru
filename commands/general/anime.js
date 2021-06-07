@@ -8,11 +8,9 @@ module.exports = {
 	usage: 'anime',
 	exec: async (client, message, args) => {
 		const Discord = require('discord.js');
-		const superagent = require('superagent');
+		const axios = require('axios');
 
-		let { body } = await superagent.get(
-			'https://nekos.life/api/v2/img/waifu'
-		);
+		let { body } = await axios.get('https://nekos.life/api/v2/img/waifu');
 
 		const embed = new Discord.MessageEmbed()
 			.setTitle(`**Here is an waifu! OwO**`)
