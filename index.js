@@ -18,11 +18,6 @@ mongoose
 		require('./handlers/eventHandler.js')(client)
 	);
 
-// db.once('open', () => {
-// 	require('./models/index.js');
-// 	require('./handlers/commandHandler.js')(client);
-// 	require('./handlers/eventHandler.js')(client);
-// });
 db.on('error', (err) => {
 	throw err;
 });

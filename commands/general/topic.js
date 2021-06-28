@@ -21,7 +21,7 @@ module.exports = {
 			'What’s the story behind how you met your best friend?',
 			'What would your perfect house look like?',
 			'Anime sub or Anime dub?',
-			'Opinion on GrubHub Ad?',
+			"What's a superpower you wish to have?",
 		];
 		var response = options[Math.floor(Math.random() * options.length)];
 		message.channel.send(response).then().catch(console.error);

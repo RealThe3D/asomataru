@@ -29,18 +29,15 @@ module.exports = {
 			let str = '';
 			for (let category in help) {
 				embed.addField(
-					`**${
-						category.charAt(0).toUpperCase() + category.slice(1)
-					}**`,
-					help[category].join(' | ')
+					`**${category.charAt(0).toUpperCase() + category.slice(1)}**`
+					// help[category].join(' | ')
 				);
 			}
 			await message.channel.send(embed);
 		} else {
 			let command = args[0];
 			if (client.commands.has(command)) {
-				command =
-					client.commands.get(command) || client.aliases.get(command);
+				command = client.commands.get(command) || client.aliases.get(command);
 				const embed = new Discord.MessageEmbed()
 					.setTitle(command.name)
 					.addField('Name', command.name)
@@ -65,11 +62,7 @@ module.exports = {
 				await message.channel.send(embed);
 			} else {
 				message.channel.send(
-					'Command with name ' +
-						'`' +
-						`${command}` +
-						'`' +
-						' was not found.'
+					'Command with name ' + '`' + `${command}` + '`' + ' was not found.'
 				);
 			}
 		}
