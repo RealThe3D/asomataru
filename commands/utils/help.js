@@ -29,8 +29,8 @@ module.exports = {
 			let str = '';
 			for (let category in help) {
 				embed.addField(
-					`**${category.charAt(0).toUpperCase() + category.slice(1)}**`
-					// help[category].join(' | ')
+					`**${category.charAt(0).toUpperCase() + category.slice(1)}**`,
+					help[category].join(' ')
 				);
 			}
 			await message.channel.send(embed);
