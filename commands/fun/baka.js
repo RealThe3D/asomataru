@@ -1,3 +1,6 @@
+const { MessageEmbed } = require('discord.js');
+const axios = require('axios');
+
 module.exports = {
 	name: 'baka',
 	aliases: ['idiot'],
@@ -7,9 +10,8 @@ module.exports = {
 	cooldown: 0,
 	usage: 'baka (@mention)',
 	exec: async (client, message, args) => {
-		const { MessageEmbed } = require('discord.js');
 		const User = require('../../models/userModel');
-		const axios = require('axios');
+
 		const member = message.mentions.users.first() || message.member;
 		const embed = new MessageEmbed();
 

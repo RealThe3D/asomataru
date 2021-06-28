@@ -1,9 +1,10 @@
-module.exports = (client) => {
-	client.once('ready', () => {
-		console.log(`${client.user.tag} is ready!`);
-		client.user.setPresence({
-			activity: { name: 'Asomataru! | v2.5.1', type: 'PLAYING' },
-			status: 'online',
-		});
+const package = require('../package.json');
+const { client } = require('../index');
+
+client.once('ready', () => {
+	console.log(`${client.user.tag} is ready!`);
+	client.user.setPresence({
+		activity: { name: `Asomataru! | v${package.version}`, type: 'PLAYING' },
+		status: 'online',
 	});
-};
+});

@@ -23,3 +23,5 @@ db.on('error', (err) => {
 });
 
 client.login(TOKEN);
+
+export { client };
