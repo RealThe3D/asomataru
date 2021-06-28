@@ -1,10 +1,7 @@
 const { Client } = require('discord.js');
 const mongoose = require('mongoose');
-
-const client = new Client();
-module.exports.client = client;
 const db = mongoose.connection;
-
+const client = new Client();
 const TOKEN = process.env.BOT_TOKEN;
 const url = process.env.MONGODB_URI;
 
@@ -24,3 +21,4 @@ db.on('error', (err) => {
 });
 
 client.login(TOKEN);
+exports.client = client;
