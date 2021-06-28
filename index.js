@@ -4,6 +4,7 @@ const db = mongoose.connection;
 const client = new Client();
 const TOKEN = process.env.BOT_TOKEN;
 const url = process.env.MONGODB_URI;
+exports.client = client;
 
 mongoose
 	.connect(url, {
@@ -17,8 +18,7 @@ mongoose
 	);
 
 db.on('error', (err) => {
-	throw err;
+	console.log(err);
 });
 
 client.login(TOKEN);
-exports.client = client;
