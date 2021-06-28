@@ -1,5 +1,5 @@
 const package = require('../package.json');
-const { client } = require('../index');
+const { client } = require('../index.js');
 
 client.once('ready', () => {
 	console.log(`${client.user.tag} is ready!`);

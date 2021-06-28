@@ -1,6 +1,6 @@
-const { client } = require('../index.js');
 const fs = require('fs');
 const Discord = require('discord.js');
+const { client } = require('../index.js');
 
 client.commands = new Discord.Collection();
 
