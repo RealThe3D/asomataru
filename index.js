@@ -2,6 +2,7 @@ const { Client } = require('discord.js');
 const mongoose = require('mongoose');
 
 const client = new Client();
+export { client };
 const db = mongoose.connection;
 
 const TOKEN = process.env.BOT_TOKEN;
@@ -23,5 +24,3 @@ db.on('error', (err) => {
 });
 
 client.login(TOKEN);
-
-export { client };
