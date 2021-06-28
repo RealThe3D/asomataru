@@ -14,8 +14,8 @@ mongoose
 	})
 	.then(
 		require('./models/index.js'),
-		require('./handlers/commandHandler.js')(client),
-		require('./handlers/eventHandler.js')(client)
+		require('./handlers/commandHandler.js'),
+		require('./handlers/eventHandler.js')
 	);
 
 db.on('error', (err) => {
