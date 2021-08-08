@@ -16,6 +16,11 @@ module.exports = {
 			return message.channel.send('Please use a!profile.');
 		}
 
+		let randomNum = Math.floor(Math.random() * 10);
+
+		userData.bj += randomNum;
+		userData.enemyBj += randomNum;
+
 		const embed = new MessageEmbed()
 			.setTitle('Blackjack')
 			.addField('Your stand', userData.bj, false)
@@ -23,11 +28,13 @@ module.exports = {
 
 		message.channel.send(embed);
 
-		if (User.bj > 21) {
+		if (userData.bj > 21) {
 			message.channel.send('You lose.');
-			User.bj = 0;
-		} else if (User.enemyBj > 21) {
+			userData.bj = 0;
+			userData.enemyBj = 0;
+		} else if (userData.enemyBj > 21) {
 			message.channel.send('You win!');
 		}
+		userData.save();
 	},
 };
