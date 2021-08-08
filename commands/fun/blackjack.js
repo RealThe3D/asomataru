@@ -1,8 +1,8 @@
 const { MessageEmbed } = require('discord.js');
 
 module.exports = {
-	name: 'ping', // set command name
-	aliases: ['p'], // set command aliases
+	name: 'blackjack', // set command name
+	aliases: ['bj'], // set command aliases
 	permissions: [], // set command permissions
 	ownerOnly: true, // set true if command is owner only
 	enabled: true, // set true if command enabled
