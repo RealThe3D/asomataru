@@ -18,10 +18,16 @@ module.exports = {
 
 		const embed = new MessageEmbed()
 			.setTitle('Blackjack')
-			.addField('Your stand', User.bj, false)
-			.addField('Enemy stand', User.enemyBj, false);
+			.addField('Your stand', userData.bj, false)
+			.addField('Enemy stand', userData.enemyBj, false);
 
 		message.channel.send(embed);
-		message.react('🎈');
+
+		if (User.bj > 21) {
+			message.channel.send('You lose.');
+			User.bj = 0;
+		} else if (User.enemyBj > 21) {
+			message.channel.send('You win!');
+		}
 	},
 };
