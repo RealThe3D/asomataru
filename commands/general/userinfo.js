@@ -20,8 +20,7 @@ module.exports = {
 		var user;
 
 		if (!isNaN(args[0]) && args[0].length === 18) {
-			var member =
-				message.guild.members.cache.get(args[0]) || message.member;
+			var member = message.guild.members.cache.get(args[0]) || message.member;
 			user = member.user;
 		} else {
 			user = message.mentions.users.first() || message.author;
@@ -39,7 +38,7 @@ module.exports = {
 			.addField('ID', user.id, inline)
 			.addField('Nickname', user.nickname ? user.nickname : 'None', true)
 			.addField('Bot', `${bot}`, inline, true)
-			.addField('Status', `${status[user.presence.status]}`, inline, true)
+			.addField('Status', `${status[user.presence.status]}`, true)
 			.addField('Joined Discord At', user.createdAt)
 			.setFooter(`Information about ${user.username}`)
 			.setTimestamp();
