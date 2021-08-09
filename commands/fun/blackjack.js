@@ -17,9 +17,10 @@ module.exports = {
 		}
 
 		let randomNum = Math.floor(Math.random() * 10);
+		let randomNum2 = Math.floor(Math.random() * 10);
 
-		userData.bj += randomNum;
-		userData.enemyBj += randomNum;
+		!args[0] == 'stand' && (userData.bj += randomNum);
+		userData.enemyBj += randomNum2;
 
 		const embed = new MessageEmbed()
 			.setTitle('Blackjack')
@@ -27,6 +28,14 @@ module.exports = {
 			.addField('Enemy stand', userData.enemyBj, false);
 
 		message.channel.send(embed);
+
+		if (args[0] == 'stand') {
+			if (userData.bj > userData.enemyBj && userData.bj <= 21) {
+				return message.channel.send('You win');
+			} else if (userData.bj < userData.enemyBj && userData.enemyBj <= 21) {
+				return message.channel.send('You lose!');
+			}
+		}
 
 		if (userData.bj > 21) {
 			message.channel.send('You lose.');
