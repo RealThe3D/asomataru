@@ -6,9 +6,18 @@ const { Schema, model } = require('mongoose');
 
 const UserSchema = new Schema({
 	userID: String,
-	bj: Number,
-	betAmount: Number,
-	enemyBj: Number,
+	bj: {
+		default: 0,
+		type: Number,
+	},
+	betAmount: {
+		default: 0,
+		type: Number,
+	},
+	enemyBj: {
+		default: 0,
+		type: Number,
+	},
 });
 
 module.exports = model('User', UserSchema);
