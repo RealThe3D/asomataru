@@ -56,7 +56,10 @@ module.exports = {
 				userData.betAmount = 0;
 				userData.save();
 				return message.channel.send('You lose!');
-			} else if (userData.bj == 21 && userData.enemyBj == 21) {
+			} else if (
+				(userData.bj == 21 && userData.enemyBj == 21) ||
+				userData.bj == userData.enemyBj
+			) {
 				userData.bj = 0;
 				userData.enemyBj = 0;
 				userData.betAmount = 0;
