@@ -50,6 +50,11 @@ module.exports = {
 				userData.coins -= userData.betAmount;
 				userData.betAmount = 0;
 				return message.channel.send('You lose!');
+			} else if (userData.bj == 21 && userData.enemyBj == 21) {
+				userData.bj = 0;
+				userData.enemyBj = 0;
+				userData.betAmount = 0;
+				return message.channel.send('You tied! No coins lost.');
 			}
 		}
 
@@ -65,6 +70,11 @@ module.exports = {
 			userData.enemyBj = 0;
 			userData.coins += userData.betAmount;
 			userData.betAmount = 0;
+		} else if (userData.bj == 21 && userData.enemyBj == 21) {
+			userData.bj = 0;
+			userData.enemyBj = 0;
+			userData.betAmount = 0;
+			message.channel.send('You tied! No coins lost.');
 		}
 		userData.save();
 	},
