@@ -19,16 +19,11 @@ module.exports = {
 		let randomNum = Math.floor(Math.random() * 10) + 1;
 		let randomNum2 = Math.floor(Math.random() * 10) + 1;
 
-		if (
-			args[0] == 'bet' &&
-			!isNaN(args[1]) &&
-			userData.bj == 0 &&
-			userData.enemyBj == 0
-		) {
+		if (!isNaN(args[0]) && userData.bj == 0) {
 			userData.betAmount = args[0];
 		}
 
-		if (!args[0] == 'stand' || !args[0]) {
+		if (!args[0] == 'stand') {
 			userData.bj += randomNum;
 		}
 
