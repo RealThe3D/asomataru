@@ -39,8 +39,16 @@ module.exports = {
 
 		if (args[0] == 'stand') {
 			if (userData.bj > userData.enemyBj && userData.bj <= 21) {
+				userData.bj = 0;
+				userData.enemyBj = 0;
+				userData.coins += userData.betAmount;
+				userData.betAmount = 0;
 				return message.channel.send('You win');
 			} else if (userData.bj < userData.enemyBj && userData.enemyBj <= 21) {
+				userData.bj = 0;
+				userData.enemyBj = 0;
+				userData.coins -= userData.betAmount;
+				userData.betAmount = 0;
 				return message.channel.send('You lose!');
 			}
 		}
