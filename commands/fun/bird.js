@@ -2,13 +2,13 @@ const { MessageEmbed } = require('discord.js');
 const axios = require('axios');
 
 module.exports = {
-	name: 'neko',
+	name: 'bird',
 	aliases: [],
 	permissions: [],
 	ownerOnly: false,
 	enabled: true,
 	cooldown: 0,
-	usage: 'neko',
+	usage: 'bird',
 	exec: async (client, message, args) => {
 		let { data } = await axios.get(
 			'https://meme-api.herokuapp.com/gimme/birds'

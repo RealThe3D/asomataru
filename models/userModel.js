@@ -10,6 +10,10 @@ const UserSchema = new Schema({
 		default: 0,
 		type: Number,
 	},
+	affection: {
+		default: 0,
+		type: Number,
+	},
 	bj: {
 		default: 0,
 		type: Number,

@@ -20,6 +20,9 @@ module.exports = {
 		let randomNum2 = Math.floor(Math.random() * 10) + 1;
 
 		if (!isNaN(args[0]) && userData.bj == 0) {
+			if (args[0] > userData.coins) {
+				return message.channel.send(`You can't bet more than what you have!`);
+			}
 			userData.betAmount = args[0];
 		}
 
@@ -32,6 +35,7 @@ module.exports = {
 
 		const embed = new MessageEmbed()
 			.setTitle('Blackjack')
+			.setColor('WHITE')
 			.addField('Your stand', userData.bj, false)
 			.addField('Enemy stand', userData.enemyBj, false);
 
@@ -76,6 +80,7 @@ module.exports = {
 			userData.betAmount = 0;
 			message.channel.send('You tied! No coins lost.');
 		}
+
 		userData.save();
 	},
 };
