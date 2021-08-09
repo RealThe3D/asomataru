@@ -6,7 +6,7 @@ module.exports = {
 	permissions: [], // set command permissions
 	ownerOnly: true, // set true if command is owner only
 	enabled: true, // set true if command enabled
-	cooldown: 5, // in seconds
+	cooldown: 2, // in seconds
 	usage: '', // usage of command
 	exec: async (client, message, args) => {
 		const User = require('../../models/userModel');
@@ -47,17 +47,20 @@ module.exports = {
 				userData.enemyBj = 0;
 				userData.coins += userData.betAmount;
 				userData.betAmount = 0;
+				userData.save();
 				return message.channel.send('You win');
 			} else if (userData.bj < userData.enemyBj && userData.enemyBj <= 21) {
 				userData.bj = 0;
 				userData.enemyBj = 0;
 				userData.coins -= userData.betAmount;
 				userData.betAmount = 0;
+				userData.save();
 				return message.channel.send('You lose!');
 			} else if (userData.bj == 21 && userData.enemyBj == 21) {
 				userData.bj = 0;
 				userData.enemyBj = 0;
 				userData.betAmount = 0;
+				userData.save();
 				return message.channel.send('You tied! No coins lost.');
 			}
 		}

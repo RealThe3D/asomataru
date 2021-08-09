@@ -24,6 +24,6 @@ module.exports = {
 
         message.channel.send(embed) 
         */
-		message.channel.send("No one's birthday soon!");
+		message.channel.send("The3D#1120's Birthday is September 17th!");
 	},
 };

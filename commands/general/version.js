@@ -12,7 +12,7 @@ module.exports = {
 		const version = package.version;
 		const embed = new Discord.MessageEmbed()
 			.setColor('006400')
-			.setTitle('Asomataru Bot')
+			.setTitle('Asomataru!')
 			.setDescription(`I'm on version ${version}`)
 			.setFooter('Made by The3D#1120.');
 		message.channel.send(embed);
