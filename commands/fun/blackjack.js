@@ -23,11 +23,12 @@ module.exports = {
 			userData.betAmount = args[0];
 		}
 
-		if (!args[0] == 'stand') {
+		if (args[0] == 'hit') {
 			userData.bj += randomNum;
+			userData.enemyBj += randomNum2;
+		} else if (args[0] == 'stand') {
+			userData.enemyBj += randomNum2;
 		}
-
-		userData.enemyBj += randomNum2;
 
 		const embed = new MessageEmbed()
 			.setTitle('Blackjack')
