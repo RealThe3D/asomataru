@@ -6,6 +6,10 @@ const { Schema, model } = require('mongoose');
 
 const UserSchema = new Schema({
 	userID: String,
+	coins: {
+		default: 0,
+		type: Number,
+	},
 	bj: {
 		default: 0,
 		type: Number,
