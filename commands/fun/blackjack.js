@@ -16,10 +16,15 @@ module.exports = {
 			return message.channel.send('Please use a!profile.');
 		}
 
-		let randomNum = Math.floor(Math.random() * 10);
-		let randomNum2 = Math.floor(Math.random() * 10);
+		let randomNum = Math.floor(Math.random() * 10) + 1;
+		let randomNum2 = Math.floor(Math.random() * 10) + 1;
 
-		if (!isNaN(args[0]) && userData.bj == 0 && userData.enemyBj == 0) {
+		if (
+			args[0] == 'bet' &&
+			!isNaN(args[1]) &&
+			userData.bj == 0 &&
+			userData.enemyBj == 0
+		) {
 			userData.betAmount = args[0];
 		}
 
@@ -54,6 +59,7 @@ module.exports = {
 			userData.bj = 0;
 			userData.enemyBj = 0;
 			userData.coins += userData.betAmount;
+			userData.betAmount = 0;
 		}
 		userData.save();
 	},
