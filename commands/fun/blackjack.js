@@ -19,10 +19,14 @@ module.exports = {
 		let randomNum = Math.floor(Math.random() * 10);
 		let randomNum2 = Math.floor(Math.random() * 10);
 
-		// if (!args[0] == 'stand') {
-		// 	userData.bj += randomNum;
-		// }
-		userData.bj += randomNum;
+		if (!isNaN(args[0]) && userData.bj == 0 && userData.enemyBj == 0) {
+			userData.betAmount = args[0];
+		}
+
+		if (!args[0] == 'stand') {
+			userData.bj += randomNum;
+		}
+
 		userData.enemyBj += randomNum2;
 
 		const embed = new MessageEmbed()
@@ -44,10 +48,12 @@ module.exports = {
 			message.channel.send('You lose.');
 			userData.bj = 0;
 			userData.enemyBj = 0;
+			userData.coins -= userData.betAmount;
 		} else if (userData.enemyBj > 21) {
 			message.channel.send('You win!');
 			userData.bj = 0;
 			userData.enemyBj = 0;
+			userData.coins += userData.betAmount;
 		}
 		userData.save();
 	},
