@@ -68,13 +68,13 @@ module.exports = {
 			}
 		}
 
-		if (userData.bj > 21) {
+		if (userData.bj > 21 || userData.enemyBj == 21) {
 			message.channel.send('You lose.');
 			userData.bj = 0;
 			userData.enemyBj = 0;
 			userData.coins -= userData.betAmount;
 			userData.betAmount = 0;
-		} else if (userData.enemyBj > 21) {
+		} else if (userData.enemyBj > 21 || userData.bj == 21) {
 			message.channel.send('You win!');
 			userData.bj = 0;
 			userData.enemyBj = 0;
