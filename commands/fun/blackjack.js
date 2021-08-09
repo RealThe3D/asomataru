@@ -54,6 +54,7 @@ module.exports = {
 			userData.bj = 0;
 			userData.enemyBj = 0;
 			userData.coins -= userData.betAmount;
+			userData.betAmount = 0;
 		} else if (userData.enemyBj > 21) {
 			message.channel.send('You win!');
 			userData.bj = 0;
