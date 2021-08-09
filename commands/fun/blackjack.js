@@ -19,7 +19,7 @@ module.exports = {
 		let randomNum = Math.floor(Math.random() * 10);
 		let randomNum2 = Math.floor(Math.random() * 10);
 
-		if (args[0] == 'stand') {
+		if (!args[0] == 'stand') {
 			userData.bj += randomNum;
 		}
 		userData.enemyBj += randomNum2;
