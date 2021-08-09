@@ -19,9 +19,10 @@ module.exports = {
 		let randomNum = Math.floor(Math.random() * 10);
 		let randomNum2 = Math.floor(Math.random() * 10);
 
-		if (!args[0] == 'stand') {
-			userData.bj += randomNum;
-		}
+		// if (!args[0] == 'stand') {
+		// 	userData.bj += randomNum;
+		// }
+		userData.bj += randomNum;
 		userData.enemyBj += randomNum2;
 
 		const embed = new MessageEmbed()
