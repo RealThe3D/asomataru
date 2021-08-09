@@ -28,7 +28,7 @@ module.exports = {
 			userData.betAmount = args[0];
 		}
 
-		if (!args[0] == 'stand') {
+		if (!args[0] == 'stand' || !args[0]) {
 			userData.bj += randomNum;
 		}
 
