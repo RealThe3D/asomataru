@@ -3,7 +3,8 @@
 	"version": "2.6.0",
 	"description": "A discord bot made by The3D#1120 in discord.js v12.",
 	"private": "true",
-	"main": "index.js",
+	"main": "dist/index.js",
+	"type": "module",
 	"scripts": {
 		"start": "node ."
 	},
@@ -13,8 +14,8 @@
 	},
 	"license": "MIT",
 	"dependencies": {
-		"axios": "^0.21.1",
-		"discord.js": "^12.5.3",
+		"axios": "^0.21.4",
+		"discord.js": "^13.1.0",
 		"mongoose": "^5.12.7"
 	}
 }
