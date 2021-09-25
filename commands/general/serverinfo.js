@@ -16,27 +16,21 @@ module.exports = {
 			VERY_HIGH: '(ノಠ益ಠ)ノ彡┻━┻',
 		};
 
-		let inline = true;
-		let servericon = message.guild.iconURL;
-		let serverembed = new Discord.MessageEmbed()
+		let serverEmbed = new Discord.MessageEmbed()
 			.setColor('#00ff00')
-			.setThumbnail(servericon)
+			.setThumbnail(message.guild.iconURL)
 			.setAuthor(message.guild.name)
-			.addField('Name', message.guild.name, inline)
-			.addField('ID', message.guild.id, inline)
-			.addField('Owner', message.guild.owner, inline)
-			.addField('Region', message.guild.region, inline)
-			.addField(
-				'Verification Level',
-				veriLevel[message.guild.verificationLevel],
-				inline
-			)
-			.addField('Members', `${message.guild.memberCount}`, inline)
-			.addField('Roles', message.guild.roles.cache.size, inline)
-			.addField('Channels', message.guild.channels.cache.size, inline)
+			.addField('Name', message.guild.name, true)
+			.addField('ID', message.guild.id, true)
+			.addField('Owner', message.guild.owner, true)
+			.addField('Region', message.guild.region, true)
+			.addField('Verification Level', veriLevel[message.guild.verificationLevel], true)
+			.addField('Members', `${message.guild.memberCount}`, true)
+			.addField('Roles', message.guild.roles.cache.size, true)
+			.addField('Channels', message.guild.channels.cache.size, true)
 			.addField('You Joined', message.member.joinedAt)
 			.setFooter(`Created ${message.guild.createdAt}`);
 
-		message.channel.send(serverembed);
+		message.channel.send(serverEmbed);
 	},
 };

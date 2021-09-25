@@ -23,7 +23,7 @@ module.exports = {
 		if (member.id == message.author.id) {
 			embed.setTitle(`They... hugged themselves?`);
 		} else {
-			embed.setTitle(`${message.author.username} kissed ${member.username}!`);
+			embed.setTitle(`${message.author.username} hugged ${member.username}!`);
 			userData.affection += 10;
 			userData.save();
 			embed.setFooter(

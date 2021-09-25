@@ -7,9 +7,9 @@ module.exports = {
 	cooldown: 0,
 	usage: 'coinflip',
 	exec: async (client, message, args) => {
-		var choices = [`had landed on heads!`, `had landed on tails!`];
-		var coinResult = choices[Math.floor(Math.random() * choices.length)];
-		var memName = `${message.author.username}`;
+		const choices = [`had landed on heads!`, `had landed on tails!`];
+		const coinResult = choices[Math.floor(Math.random() * choices.length)];
+		const memName = `${message.author.username}`;
 		message.channel.send(`${memName} ${coinResult}`);
 	},
 };

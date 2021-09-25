@@ -14,7 +14,7 @@ module.exports = {
 		);
 
 		const embed = new Discord.MessageEmbed()
-			.setTitle('Stand-up Comedian Joke!')
+			.setTitle('A joke for you!')
 			.setDescription(data.joke)
 			.setFooter('Powered by JokeAPI');
 

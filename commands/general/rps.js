@@ -75,7 +75,7 @@ module.exports = {
 					message.channel.send(sissembed);
 				}
 			})
-			.catch((collected) => {
+			.catch(() => {
 				message.channel.send(
 					'Query cancelled. Please select an reaction.'
 				);
