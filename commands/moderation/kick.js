@@ -1,3 +1,4 @@
+const { MessageEmbed } = require('discord.js');
 module.exports = {
 	name: 'kick',
 	aliases: [],
@@ -7,8 +8,6 @@ module.exports = {
 	cooldown: 0,
 	usage: 'kick (@mention or userID) (reason)',
 	exec: async (client, message, args) => {
-		const Discord = require('discord.js');
-
 		var user;
 
 		if (!isNaN(args[0]) && args[0].length === 18) {
@@ -47,7 +46,7 @@ module.exports = {
 				message.reply(`Sorry, I couldn't kick because of : ${error}`)
 			);
 
-		let kick = new Discord.MessageEmbed()
+		let kick = new MessageEmbed()
 			.setColor('RED')
 			.setTitle(`Kick | ${user.tag}`)
 			.addField('User', user, true)

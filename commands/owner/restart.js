@@ -1,3 +1,5 @@
+const { MessageEmbed } = require('discord.js');
+
 module.exports = {
 	name: 'restart',
 	aliases: [],
@@ -7,7 +9,12 @@ module.exports = {
 	cooldown: 10,
 	usage: 'restart',
 	exec: async (client, message, args) => {
-		message.channel.send(`Ok, ${message.author}, I'll restart....`);
+		const embed = new MessageEmbed()
+			.setTitle('Restarting!')
+			.setDescription("I'll restart...")
+			.setTimestamp(new Date());
+
+		message.channel.send(embed);
 		setTimeout(() => {
 			process.exit(0);
 		}, 5000);

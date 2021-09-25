@@ -1,3 +1,5 @@
+const { MessageEmbed } = require('discord.js');
+
 module.exports = {
 	name: 'credits',
 	aliases: ['halloffame'],
@@ -7,7 +9,6 @@ module.exports = {
 	cooldown: 0,
 	usage: 'credits',
 	exec: async (client, message, args) => {
-		const Discord = require('discord.js');
 		const credits = [
 			'Davska#6229 - Pro smash player, and loves the Sinnoh region! Happy about the announced remakes!',
 			'Kandrina#1426 - Lovely woman from Austria, but plays too much Genshin!',
@@ -21,7 +22,7 @@ module.exports = {
 			'InfiniteTime#0463 aka Asomataru-Chan, the person this bot is named after! Subscribe to their YouTube and Twitch!',
 			'Mirjan#9930 - Fatal memer!',
 		];
-		const creditsEmbed = new Discord.MessageEmbed()
+		const creditsEmbed = new MessageEmbed()
 			.setColor('FFFFFF')
 			.setTitle(`A dedication to my friends!`)
 			.setDescription(credits);

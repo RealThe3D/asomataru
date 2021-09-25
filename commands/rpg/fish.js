@@ -1,3 +1,4 @@
+const { MessageEmbed } = require('discord.js');
 module.exports = {
 	name: 'fish',
 	aliases: [],
@@ -7,11 +8,9 @@ module.exports = {
 	cooldown: 300,
 	usage: 'fish',
 	exec: async (client, message, args) => {
-		const Discord = require('discord.js');
-		var description;
 		const fishNames = ['bass', 'salmon', 'eel', 'pufferfish'];
-		var fishRNG = fishNames[Math.floor(Math.random() * fishNames.length)];
-
+		const fishRNG = fishNames[Math.floor(Math.random() * fishNames.length)];
+		var description;
 		// MongoDB Scripts
 		const User = require('../../models/userModel.js');
 		// Check for data
@@ -25,22 +24,18 @@ module.exports = {
 		switch (fishRNG) {
 			case 'salmon':
 				description = `${message.author.username} has a caught a salmon!`;
-
 				data.fish.salmon += 1;
 				break;
 			case 'bass':
 				description = `${message.author.username} has caught a bass!`;
-
 				data.fish.bass += 1;
 				break;
 			case 'eel':
 				description = `${message.author.username} has caught an eel!`;
-
 				data.fish.eel += 1;
 				break;
 			case 'pufferfish':
 				description = `${message.author.username} has a caught a pufferfish!`;
-
 				data.fish.pufferfish += 1;
 		}
 		const embed = new Discord.MessageEmbed()

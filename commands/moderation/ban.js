@@ -1,3 +1,4 @@
+const { MessageEmbed } = require('discord.js');
 module.exports = {
 	name: 'ban',
 	aliases: [],
@@ -7,8 +8,6 @@ module.exports = {
 	cooldown: 0,
 	usage: 'ban (@mention or userID) (reason)',
 	exec: async (client, message, args) => {
-		const Discord = require('discord.js');
-
 		var user;
 
 		if (!isNaN(args[0]) && args[0].length === 18) {
@@ -45,12 +44,10 @@ module.exports = {
 		await user
 			.ban(reason)
 			.catch((error) =>
-				message.channel.send(
-					`Sorry, I couldn't ban because of: ${error}`
-				)
+				message.channel.send(`Sorry, I couldn't ban because of: ${error}`)
 			);
 
-		let bean = new Discord.MessageEmbed()
+		let bean = new MessageEmbed()
 			.setColor('RED')
 			.setTitle(`Ban | ${user.tag}`)
 			.addField('User', user, true)

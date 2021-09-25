@@ -1,3 +1,4 @@
+const { MessageEmbed } = require('discord.js');
 module.exports = {
 	name: 'avatar',
 	aliases: [],
@@ -7,18 +8,15 @@ module.exports = {
 	cooldown: 2,
 	usage: 'avatar (@mention or userID)',
 	exec: (client, message, args) => {
-		const Discord = require('discord.js');
-
 		var user;
 
 		if (!isNaN(args[0]) && args[0].length === 18) {
-			var member =
-				message.guild.members.cache.get(args[0]) || message.member;
+			var member = message.guild.members.cache.get(args[0]) || message.member;
 			user = member.user;
 		} else {
 			user = message.mentions.users.first() || message.author;
 		}
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.setTitle(`${user.username}'s Avatar`)
 			.setImage(
 				user.displayAvatarURL({

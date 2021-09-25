@@ -1,6 +1,8 @@
+// Remake in discord.js v13 with buttons
+
 module.exports = {
 	name: 'rps',
-	aliases: ['rockpaperscissors'],
+	aliases: [],
 	permissions: [],
 	ownerOnly: false,
 	enabled: true,
@@ -11,8 +13,8 @@ module.exports = {
 		message
 			.react('🗿')
 			.then(() => message.react('📄'))
-			.then(() => message.react('✂️'))
-			.catch((err) => {});
+			.then(() => message.react('✂️'));
+			
 
 		const filter = (reaction, user) => {
 			return (

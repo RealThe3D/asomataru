@@ -1,3 +1,4 @@
+const { MessageEmbed } = require('discord.js');
 module.exports = {
 	name: 'prefix',
 	aliases: ['p'],
@@ -6,16 +7,15 @@ module.exports = {
 	cooldown: 3,
 	usage: 'prefix <prefix>',
 	exec: async (client, message, args) => {
-		const Discord = require('discord.js');
 		const Guild = require('../../models/guildModel');
 		let guildData = await Guild.findOne({ guildID: message.guild.id });
 
-		const embed = new Discord.MessageEmbed();
+		const embed = new MessageEmbed();
 
 		if (!args[0]) {
-			embed.setTitle('No Arguments')
-			embed.setColor('RED')	
-			embed.setDescription('Please specify a prefix!');	
+			embed.setTitle('No Arguments');
+			embed.setColor('RED');
+			embed.setDescription('Please specify a prefix!');
 		}
 		if (args[0].length > 5) {
 			embed.setTitle('Prefix is too long!');
@@ -24,11 +24,9 @@ module.exports = {
 		} else if (args[0]) {
 			guildData.prefix = args[0];
 			guildData.save();
-			embed.setTitle('Success!')
-			embed.setColor('00FF00')
-			embed.setDescription(
-				`Success! The new prefix is ${guildData.prefix}`
-			);
+			embed.setTitle('Success!');
+			embed.setColor('00FF00');
+			embed.setDescription(`Success! The new prefix is ${guildData.prefix}`);
 		}
 		message.channel.send(embed);
 	},

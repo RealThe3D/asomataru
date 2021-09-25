@@ -1,3 +1,5 @@
+const { MessageEmbed } = require('discord.js');
+
 module.exports = {
 	name: 'userinfo',
 	aliases: ['user'],
@@ -7,9 +9,6 @@ module.exports = {
 	cooldown: 0,
 	usage: 'userinfo (@mention or userID)',
 	exec: (client, message, args) => {
-		const Discord = require('discord.js');
-
-		let inline = true;
 		const status = {
 			online: 'Online',
 			idle: 'Idle',
@@ -17,6 +16,7 @@ module.exports = {
 			offline: 'Offline/Invisible',
 		};
 
+		var isBot;
 		var user;
 
 		if (!isNaN(args[0]) && args[0].length === 18) {
@@ -27,19 +27,19 @@ module.exports = {
 		}
 
 		if (user.bot === true) {
-			var bot = 'Yes';
+			isBot = 'Yes';
 		} else {
-			var bot = 'No';
+			isBot = 'No';
 		}
-		var embed = new Discord.MessageEmbed()
+		var embed = new MessageEmbed()
 			.setThumbnail(user.displayAvatarURL)
 			.setColor('#00ff00')
-			.addField('Full username', `${user.tag}`, inline)
-			.addField('ID', user.id, inline)
+			.addField('Full username', `${user.tag}`, true)
+			.addField('ID', user.id, true)
 			.addField('Nickname', user.nickname ? user.nickname : 'None', true)
-			.addField('Bot', `${bot}`, inline, true)
+			.addField('Bot', `${isBot}`, true)
 			.addField('Status', `${status[user.presence.status]}`, true)
-			.addField('Joined Discord At', user.createdAt)
+			.addField('Joined Discord on', user.createdAt)
 			.setFooter(`Information about ${user.username}`)
 			.setTimestamp();
 		message.channel.send(embed);

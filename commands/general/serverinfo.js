@@ -1,3 +1,4 @@
+const { MessageEmbed } = require('discord.js');
 module.exports = {
 	name: 'serverinfo',
 	aliases: [],
@@ -7,7 +8,6 @@ module.exports = {
 	cooldown: 0,
 	usage: 'serverinfo',
 	exec: async (client, message, args) => {
-		const Discord = require('discord.js');
 		const veriLevel = {
 			NONE: 'None',
 			LOW: 'Low',
@@ -16,7 +16,7 @@ module.exports = {
 			VERY_HIGH: '(ノಠ益ಠ)ノ彡┻━┻',
 		};
 
-		let serverEmbed = new Discord.MessageEmbed()
+		let serverEmbed = new MessageEmbed()
 			.setColor('#00ff00')
 			.setThumbnail(message.guild.iconURL)
 			.setAuthor(message.guild.name)
@@ -24,7 +24,11 @@ module.exports = {
 			.addField('ID', message.guild.id, true)
 			.addField('Owner', message.guild.owner, true)
 			.addField('Region', message.guild.region, true)
-			.addField('Verification Level', veriLevel[message.guild.verificationLevel], true)
+			.addField(
+				'Verification Level',
+				veriLevel[message.guild.verificationLevel],
+				true
+			)
 			.addField('Members', `${message.guild.memberCount}`, true)
 			.addField('Roles', message.guild.roles.cache.size, true)
 			.addField('Channels', message.guild.channels.cache.size, true)

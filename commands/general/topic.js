@@ -1,3 +1,4 @@
+const { MessageEmbed } = require('discord.js');
 module.exports = {
 	name: 'topic',
 	aliases: [],
@@ -7,7 +8,9 @@ module.exports = {
 	cooldown: 0,
 	usage: 'topic',
 	exec: async (client, message, args) => {
-		var options = [
+		const embed = new MessageEmbed().setTitle('Topic!');
+
+		const options = [
 			'What is something you are obsessed with?',
 			'What would be your perfect weekend?',
 			'What’s your favorite number? Why?',
@@ -23,7 +26,8 @@ module.exports = {
 			'Anime sub or Anime dub?',
 			"What's a superpower you wish to have?",
 		];
-		var response = options[Math.floor(Math.random() * options.length)];
-		message.channel.send(response).then().catch(console.error);
+		const response = options[Math.floor(Math.random() * options.length)];
+		embed.addField('TOPIC:', response, true);
+		message.channel.send(embed);
 	},
 };

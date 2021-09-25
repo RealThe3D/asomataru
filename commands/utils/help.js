@@ -1,3 +1,4 @@
+const { MessageEmbed } = require('discord.js');
 module.exports = {
 	name: 'help',
 	aliases: ['h'],
@@ -7,14 +8,13 @@ module.exports = {
 	cooldown: 0,
 	usage: 'help (command)',
 	exec: async (client, message, args) => {
-		const Discord = require('discord.js');
 		const Guild = require('../../models/guildModel');
 
 		const guildData = await Guild.findOne({ guildID: message.guild.id });
 		const prefix = guildData.prefix;
 
 		if (!args[0]) {
-			const embed = new Discord.MessageEmbed()
+			const embed = new MessageEmbed()
 				.setDescription(
 					'For more information about a command, use `help <command_name>` command'
 				)
@@ -38,7 +38,7 @@ module.exports = {
 			let command = args[0];
 			if (client.commands.has(command)) {
 				command = client.commands.get(command) || client.aliases.get(command);
-				const embed = new Discord.MessageEmbed()
+				const embed = new MessageEmbed()
 					.setTitle(command.name)
 					.addField('Name', command.name)
 					.addField(

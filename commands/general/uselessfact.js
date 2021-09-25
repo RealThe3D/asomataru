@@ -1,3 +1,4 @@
+const { MessageEmbed } = require('discord.js');
 module.exports = {
 	name: 'uselessfact',
 	aliases: ['uf'],
@@ -7,14 +8,13 @@ module.exports = {
 	cooldown: 3,
 	usage: 'uselessfact',
 	exec: async (client, message, args) => {
-		const Discord = require('discord.js');
 		const axios = require('axios');
 
 		let { data } = await axios.get(
 			'https://uselessfacts.jsph.pl/random.json?language=en'
 		);
 
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.setTitle(`**__Useless Fact!__**`)
 			.setDescription(data.text)
 			.setFooter(`Powered by uselessfacts.jsph.pl`);

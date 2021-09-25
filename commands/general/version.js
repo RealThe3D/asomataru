@@ -1,3 +1,4 @@
+const { MessageEmbed } = require('discord.js');
 module.exports = {
 	name: 'version',
 	aliases: [],
@@ -7,10 +8,9 @@ module.exports = {
 	cooldown: 0,
 	usage: 'version',
 	exec: async (client, message, args) => {
-		const Discord = require('discord.js');
 		const package = require('../../package.json');
 		const version = package.version;
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.setColor('006400')
 			.setTitle('Asomataru!')
 			.setDescription(`I'm on version ${version}`)

@@ -1,3 +1,5 @@
+const { MessageEmbed } = require('discord.js');
+
 module.exports = {
 	name: 'coinflip',
 	aliases: ['coin'],
@@ -7,9 +9,13 @@ module.exports = {
 	cooldown: 0,
 	usage: 'coinflip',
 	exec: async (client, message, args) => {
-		const choices = [`had landed on heads!`, `had landed on tails!`];
+		const embed = new MessageEmbed();
+		const choices = ['on heads!', 'on tails!'];
 		const coinResult = choices[Math.floor(Math.random() * choices.length)];
-		const memName = `${message.author.username}`;
-		message.channel.send(`${memName} ${coinResult}`);
+
+		embed.setTitle(`${message.author.username} flipped a coin!`);
+		embed.addField('Result: ', 'You have landed' + coinResult, false);
+
+		message.channel.send(embed);
 	},
 };

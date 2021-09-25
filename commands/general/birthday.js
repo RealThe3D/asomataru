@@ -7,7 +7,8 @@ module.exports = {
 	cooldown: 0,
 	usage: 'birthday',
 	exec: async (client, message, args) => {
-		/* const Discord = require('discord.js');
+		/* 
+        const Discord = require('discord.js');
         const Eri = ['https://media1.tenor.com/images/f282775bfa181e9251023892a726037b/tenor.gif?itemid=16645535',
                      'https://media.tenor.com/images/804187a5ae8a39af449d06d353800692/tenor.gif',
                      'https://media.tenor.com/images/f81582db3a15b82df5a0b44f378b7898/tenor.gif',

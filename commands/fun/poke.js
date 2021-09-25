@@ -1,3 +1,5 @@
+const { MessageEmbed } = require('discord.js');
+const axios = require('axios');
 module.exports = {
 	name: 'poke',
 	aliases: [],
@@ -8,8 +10,7 @@ module.exports = {
 	usage: 'poke (@mention or userID)',
 	exec: async (client, message, args) => {
 		const User = require('../../models/userModel');
-		const { MessageEmbed } = require('discord.js');
-		const axios = require('axios');
+
 		const member = message.mentions.users.first() || message.member;
 		const embed = new MessageEmbed().setColor('#FFB6C1');
 

@@ -1,3 +1,4 @@
+const { MessageEmbed } = require('discord.js');
 module.exports = {
 	name: 'invite',
 	aliases: [],
@@ -7,13 +8,9 @@ module.exports = {
 	cooldown: 10,
 	usage: 'invite',
 	exec: async (client, message, args) => {
-		const Discord = require('discord.js');
-
 		const embed = new Discord.MessageEmbed()
 			.setTitle("Asomataru's support server!")
-			.setDescription(
-				'Join the support server! https://discord.gg/vRPgqtb'
-			);
+			.setDescription('Join the support server! https://discord.gg/vRPgqtb');
 		message.channel.send(embed);
 	},
 };
