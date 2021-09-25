@@ -1,6 +1,6 @@
 {
 	"name": "asomataru",
-	"version": "2.5.0",
+	"version": "2.6.0",
 	"description": "A discord bot made by The3D#1120 in discord.js v12.",
 	"private": "true",
 	"main": "index.js",

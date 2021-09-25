@@ -4,6 +4,34 @@
 
 ## Asomataru v2.0
 
+### 2.6
+
+**Asomataru 2.6 | Prelude V3 Update!**
+
+**_Prelude update for Asomataru v3!_**
+
+Many commands were refactored to be embedded or faster!
+`blackjack` - New command, can bet a price to win coins!
+`hug` - fixed issue where it said kissed instead of hugged.
+
+**RPG is getting removed in v3.**
+
+- I haven't really did anything to the rpg aspect of Asomataru in over a year. It's just too complex for me to maintain. I really wish I had more knowledge to finish it, but I will leave it at a dead end.
+
+**V3.0 Sneak Peek!**
+
+- Slash Commands will be added.
+- Even more new commands!
+- Rewriting the bot from JavaScript to TypeScript to prevent less errors for this update.
+- Button and Replys added!
+- Discord.js v13 support!
+- Node.js v16 support!
+- Many, many, more visual changes to the bot.
+
+**This update may take all the way till January of 2022 to launch.**
+
+- Sep 25, 2021
+
 ### 2.5
 
 Asomataru v2.5!
