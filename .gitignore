@@ -1,2 +1,7 @@
+# Node stuff 
 node_modules
-command.template.js
+
+# Typescript Build
+dist
+# Secrets.
+.env
