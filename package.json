@@ -5,10 +5,9 @@
 	"private": "true",
 	"main": "dist/src/index.js",
 	"scripts": {
+		"prestart": "tsc -b",
 		"start": "node .",
-		"dev": "tsc -w",
-		"build": "tsc -b",
-		"postbuild": "node ."
+		"dev": "tsc -w"
 	},
 	"engines": {
 		"node": "16.10.0",
