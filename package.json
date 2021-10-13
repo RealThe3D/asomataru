@@ -3,7 +3,7 @@
 	"version": "3.0.0",
 	"description": "A discord bot made by The3D#1120 in discord.js v13 and TypeScript.",
 	"private": "true",
-	"main": "dist/index.js",
+	"main": "dist/src/index.js",
 	"scripts": {
 		"start": "node .",
 		"dev": "tsc -w",
