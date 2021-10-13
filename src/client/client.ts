@@ -4,9 +4,8 @@ import mongoose, { Connection } from 'mongoose';
 import { Command } from '../interfaces/Command';
 import { Event } from '../interfaces/Event';
 import { config } from 'dotenv';
+config();
 
-//TODO: make this only run on dev
-// config();
 class ExtendedClient extends Client {
 	public commands: Collection<string, Command> = new Collection();
 	public events: Collection<string, Event> = new Collection();
