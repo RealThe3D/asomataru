@@ -7,8 +7,7 @@
 	"scripts": {
 		"start": "node .",
 		"dev": "tsc -w",
-		"build": "tsc -b",
-		"postbuild": "node ."
+		"build": "tsc -b"
 	},
 	"engines": {
 		"node": "16.10.0",
