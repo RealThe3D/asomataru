@@ -11,9 +11,7 @@ export const event: Event = {
 
 		if (!guildData) {
 			await guildSchema.create({ guildID: message.guild?.id });
-			return message.channel.send(
-				"Unfortunately, your guild was not found in the database. I ran a failsafe to include your guild's data now. \n Please disregard this interruption."
-			);
+			return;
 		}
 		const prefix: string = guildData.prefix;
 
