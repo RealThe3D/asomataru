@@ -38,7 +38,7 @@ export const event: Event = {
 				// 		` in order to execute this command.`
 				// );
 				return message.reply(
-					'You dont have the permissions to use this command.'
+					'You do\'t have the permissions to use this command.'
 				);
 			}
 		}
@@ -78,7 +78,12 @@ export const event: Event = {
 		} else {
 			timestamps?.set(message.author.id, now);
 		}
+		try {
+			command.execute(client, message, args);
 
-		command.execute(client, message, args);
+		} catch (e) {
+			message.channel.send('An error had occured!')
+			console.log(e)
+		}
 	},
 };

@@ -9,6 +9,5 @@ export interface Command {
 	enabled: boolean;
 	cooldown: number;
 	usage: string;
-	[key: string]: string | any;
 	execute: (client: Client, message: Message, args: string[]) => void;
 }

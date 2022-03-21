@@ -5,21 +5,25 @@
 	"private": "true",
 	"main": "dist/src/index.js",
 	"scripts": {
-		"prestart": "tsc -b",
 		"start": "node .",
-		"dev": "tsc -w"
+		"dev": "nodemon .",
+		"watch": "tsc -w",
+		"build": "tsc",
+		"deploy": "tsc && node ."
 	},
 	"engines": {
-		"node": "16.10.0",
-		"npm": "7.24.0"
+		"node": "16.13.0",
+		"npm": "8.1.0"
 	},
 	"license": "MIT",
 	"dependencies": {
 		"axios": "^0.21.4",
 		"discord.js": "^13.1.0",
+		"dotenv": "^10.0.0",
 		"mongoose": "^5.12.7",
-		"typescript": "^4.4.3",
-		"dotenv": "^10.0.0"
+		"typescript": "^4.4.3"
 	},
-	"devDependencies": {}
+	"devDependencies": {
+		"nodemon": "^2.0.15"
+	}
 }
