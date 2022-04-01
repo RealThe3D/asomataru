@@ -8,9 +8,8 @@ config();
 
 class ExtendedClient extends Client {
 	public commands: Collection<string, Command> = new Collection();
-	public events: Collection<string, Event> = new Collection();
-	public cooldowns: Collection<string, Collection<Snowflake, number>> =
-		new Collection();
+	public events: Collection<string, Event<never>> = new Collection();
+	public cooldowns: Collection<string, Collection<Snowflake, number>> = new Collection();
 
 	constructor(
 		intents = [
@@ -31,11 +30,11 @@ class ExtendedClient extends Client {
 
 		/* Commands */
 		const commandFolders = fs.readdirSync('dist/src/commands');
-		for (let folder of commandFolders) {
+		for (const folder of commandFolders) {
 			const commandFiles = fs
 				.readdirSync(`dist/src/commands/${folder}`)
 				.filter((file) => file.endsWith('.js'));
-			for (let file of commandFiles) {
+			for (const file of commandFiles) {
 				const { command } = await import(`../commands/${folder}/${file}`);
 				command.module = folder;
 				this.commands.set(command.name, command);
@@ -46,7 +45,7 @@ class ExtendedClient extends Client {
 		const eventFiles = fs
 			.readdirSync('dist/src/events')
 			.filter((file) => file.endsWith('.js'));
-		for (let file of eventFiles) {
+		for (const file of eventFiles) {
 			const { event } = await import(`../events/${file}`);
 			this.events.set(event.name, event);
 			this.on(event.name, event.on.bind(null, this));

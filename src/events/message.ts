@@ -1,13 +1,14 @@
-import { Message, Collection } from 'discord.js';
+import { type Message, Collection } from 'discord.js';
 import { Event } from '../interfaces/Event';
 import { modelSchema as guildSchema } from '../models/guildModel';
 import config from '../../config.json';
+import { Command } from '../interfaces/Command';
 
 // TODO: Object with perms
-export const event: Event = {
+export const event: Event<Message> = {
 	name: 'messageCreate',
 	on: async (client, message: Message) => {
-		let guildData = await guildSchema.findOne({ guildID: message.guild?.id });
+		const guildData = await guildSchema.findOne({ guildID: message.guild?.id });
 
 		if (!guildData) {
 			await guildSchema.create({ guildID: message.guild?.id });
@@ -23,7 +24,7 @@ export const event: Event = {
 		const command =
 			client.commands.get(commandName) ||
 			client.commands.find(
-				(cmd: any) => cmd.aliases && cmd.aliases.includes(commandName)
+				(cmd: Command) => cmd.aliases && cmd.aliases.includes(commandName)
 			);
 
 		if (!command) return;
@@ -57,9 +58,9 @@ export const event: Event = {
 		const cooldownAmount = command.cooldown * 1000;
 
 		if (timestamps?.has(message.author.id)) {
-			const expirationTime =
-				timestamps.get(message.author.id)! + cooldownAmount;
-			var timeLeft = (expirationTime - now) / 1000;
+			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+			const expirationTime = timestamps.get(message.author.id)! + cooldownAmount;
+			const timeLeft = (expirationTime - now) / 1000;
 			if (now < expirationTime && timeLeft < 60) {
 				return message.channel.send(
 					`Please wait ${timeLeft.toFixed(
@@ -80,10 +81,9 @@ export const event: Event = {
 		}
 		try {
 			command.execute(client, message, args);
-
 		} catch (e) {
-			message.channel.send('An error had occured!')
-			console.log(e)
+			message.channel.send('An error had occured!');
+			console.log(e);
 		}
 	},
 };
