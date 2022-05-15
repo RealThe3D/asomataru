@@ -54,8 +54,14 @@ class ExtendedClient extends Client {
 		db.on('error', (err) => {
 			console.log(err);
 		});
+		
 
-		this.login(process.env.TOKEN);
+		if(process.env.NODE_ENV == 'production') {
+			this.login(process.env.TOKEN);
+			
+		} else {
+			this.login(process.env.TEST_TOKEN);
+		}
 	}
 }
 export default ExtendedClient;

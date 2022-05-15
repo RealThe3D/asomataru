@@ -10,7 +10,7 @@ export const command: Command = {
 	usage: '',
 	execute: (client, message, args) => {
 		const embed = new MessageEmbed()
-			.setTitle(`Asomataru's Bot Stats`)
+			.setTitle('Asomataru\'s Bot Stats')
 			.addField('Guilds', `${client.guilds.cache.size} Guilds`, false)
 			.addField('Users', `${client.users.cache.size} Users`, false);
 

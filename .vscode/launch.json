@@ -11,5 +11,11 @@
 			"request": "launch",
 			"type": "node-terminal"
 		},
+		{
+			"command":"npm run dev",
+			"name": "Run dev server",
+			"request": "launch",
+			"type": "node-terminal"
+		}
 	]
 }
