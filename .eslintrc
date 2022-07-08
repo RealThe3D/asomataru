@@ -17,16 +17,8 @@
     ],
     "rules": {
         "no-var": "error",
-        "indent": [
-            "error",
-            "tab"
-        ],
-        "linebreak-style": [
-            "error",
-            "windows"
-        ],
         "quotes": [
-            "error",
+            "warn",
             "single"
         ],
         "semi": [
