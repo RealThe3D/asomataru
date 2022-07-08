@@ -31,7 +31,7 @@ export const event: Event<true> = {
 		
 		client.user?.setPresence({
 			status: 'online',
-			activities: [{ name: 'Asomataru v3 Beta 2.1', type: 'PLAYING' }],
+			activities: [{ name: 'Asomataru v3 Beta Phase 2', type: 'PLAYING' }],
 		});
 	},
 };
