@@ -1,23 +1,24 @@
 // TODO: Make it look nicer.
 import { Command } from '../../interfaces/Command';
 import { MessageEmbed } from 'discord.js';
+import { SlashCommandBuilder } from '@discordjs/builders';
 
 export const command: Command = {
 	name: 'coinflip',
-	aliases: ['coin'],
 	permissions: [],
 	ownerOnly: false,
 	enabled: true,
 	cooldown: 0,
 	usage: 'coinflip',
-	execute: async (client, message, args) => {
-		const embed = new MessageEmbed();
+	data: new SlashCommandBuilder().setName('coinflip').setDescription('Flip a coin.'),
+	execute: async (client, interaction) => {
+		
 		const choices = ['on heads!', 'on tails!'];
 		const coinResult = choices[Math.floor(Math.random() * choices.length)];
+		const embed = new MessageEmbed()
+			.setTitle(`${interaction.user.username} flipped a coin!`)
+			.addField('Result: ', 'You have landed '+ coinResult, false);
 
-		embed.setTitle(`${message.author.username} flipped a coin!`);
-		embed.addField('Result: ', 'You have landed ' + coinResult, false);
-
-		message.channel.send({ embeds: [embed] });
+		await interaction.reply({ embeds: [embed] });
 	},
 };

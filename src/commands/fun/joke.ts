@@ -1,17 +1,18 @@
 import { Command } from '../../interfaces/Command';
 import { MessageEmbed } from 'discord.js';
 import axios from 'axios';
+import { SlashCommandBuilder } from '@discordjs/builders';
 
 export const command: Command = {
 	name: 'joke',
-	aliases: [],
 	permissions: [],
 	ownerOnly: false,
 	enabled: true,
 	cooldown: 3,
 	usage: 'joke',
-	execute: async (client, message, args) => {
-		let { data } = await axios.get(
+	data: new SlashCommandBuilder().setName('joke').setDescription('Sends a joke in chat'),
+	execute: async (client, interaction) => {
+		const { data } = await axios.get(
 			'https://v2.jokeapi.dev/joke/Any?safe-mode&type=single'
 		);
 
@@ -20,6 +21,6 @@ export const command: Command = {
 			.setDescription(data.joke)
 			.setFooter('Powered by JokeAPI');
 
-		message.channel.send({ embeds: [embed] });
+		await interaction.reply({ embeds: [embed] });
 	},
 };

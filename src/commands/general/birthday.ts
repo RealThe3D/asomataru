@@ -1,14 +1,15 @@
+import { SlashCommandBuilder } from '@discordjs/builders';
 import { Command } from '../../interfaces/Command';
 
 export const command: Command = {
 	name: 'birthday',
-	aliases: ['bday'],
 	permissions: [],
 	ownerOnly: false,
 	enabled: true,
-	cooldown: 0,
+	cooldown: 10,
 	usage: 'birthday',
-	execute: (client, message, args) => {
+	data: new SlashCommandBuilder().setName('birthday').setDescription('Displays upcoming birthdays.'),
+	execute: async (client, interaction) => {
 		/* 
         import { MessageEmbed } from 'discord.js';
         const Eri = ['https://media1.tenor.com/images/f282775bfa181e9251023892a726037b/tenor.gif?itemid=16645535',
@@ -27,6 +28,6 @@ export const command: Command = {
 
         message.channel.send({embeds: [embed]}) 
         */
-		message.channel.send("The3D#1120's Birthday is September 17th!");
+		await interaction.reply('InfiniteTime\'s birthday is July 29th!');
 	},
 };

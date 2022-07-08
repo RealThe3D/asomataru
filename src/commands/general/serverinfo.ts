@@ -1,39 +1,42 @@
-import { MessageEmbed } from 'discord.js';
+import { Guild, MessageEmbed } from 'discord.js';
 import { Command } from '../../interfaces/Command';
 import { verification } from '../../declarations/verification';
+import { SlashCommandBuilder } from '@discordjs/builders';
 
 export const command: Command = {
 	name: 'serverinfo',
-	aliases: ['si', 'sinfo'],
 	permissions: [],
 	ownerOnly: false,
 	enabled: true,
 	cooldown: 3,
 	usage: 'serverinfo',
-	execute: async (client, message, args) => {
-		let embed = new MessageEmbed()
+	data: new SlashCommandBuilder().setName('serverinfo').setDescription('Info on the current guild this command is executed on.'),
+	execute: async (client, interaction) => {
+		const guild = interaction.guild as Guild;
+		
+		const embed = new MessageEmbed()
 			.setColor('GREEN')
-			.setThumbnail(`${message.guild?.iconURL()}`)
-			.setAuthor(`${message.guild?.name}`)
-			.addField('Name', `${message.guild?.name}`, true)
-			.addField('ID', `${message.guild?.id}`, true)
+			.setThumbnail(`${guild.iconURL()}`)
+			.setAuthor(`${guild.name}`)
+			.addField('Name', `${guild.name}`, true)
+			.addField('ID', `${guild.id}`, true)
 			.addField(
 				'Owner',
-				`${(await message.guild?.fetchOwner())?.user.tag}`,
+				`${(await guild.fetchOwner())?.user.tag}`,
 				true
 			)
 			// .addField('Region', message.guild?., true)
 			.addField(
 				'Verification Level',
-				verification[`${message.guild?.verificationLevel!}`],
+				verification[`${guild.verificationLevel}`],
 				true
 			)
-			.addField('Members', `${message.guild?.memberCount}`, true)
-			.addField('Roles', `${message.guild?.roles.cache.size}`, true)
-			.addField('Channels', `${message.guild?.channels.cache.size}`, true)
-			.addField('You Joined', `${message.member?.joinedAt}`, true)
-			.setFooter(`Created ${message.guild?.createdAt}`);
+			.addField('Members', `${guild.memberCount}`, true)
+			.addField('Roles', `${guild.roles.cache.size}`, true)
+			.addField('Channels', `${guild.channels.cache.size}`, true)
+			// .addField('You Joined', `${interaction.user..joinedAt}`, true)
+			.setFooter(`Created ${guild.createdAt}`);
 
-		message.channel.send({ embeds: [embed] });
+		await interaction.reply({ embeds: [embed] });
 	},
 };

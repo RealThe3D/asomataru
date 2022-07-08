@@ -1,13 +1,14 @@
-import type { Message, PermissionResolvable } from 'discord.js';
-import Client from '../client/client';
+import type { SlashCommandBuilder } from '@discordjs/builders';
+import type { CommandInteraction, PermissionResolvable } from 'discord.js';
+import ExtendedClient from '../structures/client';
 
 export interface Command {
 	name: string;
-	aliases: string[];
 	permissions: PermissionResolvable[];
 	ownerOnly: boolean;
 	enabled: boolean;
 	cooldown: number;
 	usage: string;
-	execute: (client: Client, message: Message, args?: string[]) => void;
+	data: SlashCommandBuilder | Omit<SlashCommandBuilder, 'addSubcommand' | 'addSubcommandGroup'>;
+	execute: (client: ExtendedClient, interaction: CommandInteraction) => void;
 }

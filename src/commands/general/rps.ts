@@ -1,84 +1,103 @@
-// TODO: Remake in discord.js v13 with buttons
-
-import { MessageReaction, User, MessageEmbed } from 'discord.js';
+import { SlashCommandBuilder } from '@discordjs/builders';
+import { MessageEmbed, MessageActionRow, MessageButton, CacheType, MessageComponentInteraction } from 'discord.js';
+import { randomIndexOfArray } from '../../constants';
 import { Command } from '../../interfaces/Command';
+
+enum RPS {
+	ROCK,
+	PAPER,
+	SCISSORS
+}
 
 export const command: Command = {
 	name: 'rps',
-	aliases: [],
 	permissions: [],
 	ownerOnly: false,
 	enabled: true,
-	cooldown: 0,
+	cooldown: 15,
 	usage: 'rps <react to message>',
-	execute: async (client, message, args) => {
-		message
-			.react('🗿')
-			.then(() => message.react('📄'))
-			.then(() => message.react('✂️'));
+	data: new SlashCommandBuilder().setName('rps').setDescription('Starts a game of rock-paper-scissors'),
+	execute: async (client, interaction) => {
+		const botSelections = [RPS.ROCK, RPS.PAPER, RPS.SCISSORS];
+		const botSelection = randomIndexOfArray(botSelections);
 
-		const filter = (reaction: MessageReaction, user: User): boolean => {
+		const buttons = new MessageActionRow()
+			.addComponents(
+				new MessageButton().setStyle('SECONDARY').setEmoji('🗿').setCustomId('rock'),
+				new MessageButton().setStyle('SECONDARY').setEmoji('📃').setCustomId('paper'),
+				new MessageButton().setStyle('SECONDARY').setEmoji('✂️').setCustomId('scissors')
+			);
+			
+		const filter = (i: MessageComponentInteraction<CacheType>) => {
 			return (
-				['🗿', '📄', '✂️'].includes(reaction.emoji.name!) &&
-				user.id === message.author.id
+				(i.customId == 'rock' || i.customId == 'paper' || i.customId == 'scissors') && i.user.id == interaction.user.id
 			);
 		};
 
-		message
-			// .awaitReactions(filter, { max: 1, time: 10000, errors: ['time'] })
-			.awaitReactions({ filter, max: 1, time: 10000, errors: ['time'] })
-			.then((collected) => {
-				const reaction = collected.first();
+		const embed = new MessageEmbed()
+			.setTitle('Rock Paper Scissors')
+			.setColor('NOT_QUITE_BLACK');
+	
+		await interaction.reply({embeds: [embed], components: [buttons]});
+		const collector = interaction.channel?.createMessageComponentCollector({filter, time: 12000});
+		collector?.on('collect', async i => {
+			await i.deferUpdate();
 
-				if (reaction?.emoji.name === '🗿') {
-					var moyai = ['🗿', '📄', '✂️'];
-					let moyaiembed = new MessageEmbed()
-						.setColor('#6b6b6b')
-						.setTitle('Rock-Paper-Scissors')
-						.setFooter(
-							message.author.username,
-							message.author.displayAvatarURL()
-						)
-						.setDescription(
-							`Result... 🗿 vs ${
-								moyai[Math.floor(Math.random() * moyai.length)]
-							}`
-						);
-					message.channel.send({ embeds: [moyaiembed] });
-				}
-				if (reaction?.emoji.name === '📄') {
-					var paper = ['🗿', '📄', '✂️'];
-					let paperembed = new MessageEmbed()
-						.setColor('#f2f2f2')
-						.setAuthor('Rock-Paper-Scissors')
-						.setFooter(
-							message.author.username,
-							message.author.displayAvatarURL()
-						)
-						.setDescription(
-							`Result... 📄 vs ${
-								paper[Math.floor(Math.random() * paper.length)]
-							}`
-						);
-					message.channel.send({ embeds: [paperembed] });
-				}
-				if (reaction?.emoji.name === '✂️') {
-					var siss = ['🗿', '📄', '✂️'];
-					let sissembed = new MessageEmbed()
-						.setColor('#ed5353')
-						.setAuthor('Rock-Paper-Scissors')
-						.setFooter(
-							message.author.username,
-							message.author.displayAvatarURL()
-						)
-						.setDescription(
-							`Result... ✂️ vs ${siss[Math.floor(Math.random() * siss.length)]}`
-						);
-					message.channel.send({ embeds: [sissembed] });
-				}
-			})
-			.catch(() => {
-				message.channel.send('Query cancelled. Please select an reaction.');
-			});
+			switch(i.customId) {
+				case 'rock':
+					checkWinner(RPS.ROCK, botSelection);
+					break;
+				case 'paper':
+					checkWinner(RPS.PAPER, botSelection);
+					break;
+				case 'scissors':
+					checkWinner(RPS.SCISSORS, botSelection);
+					break;
+			}
+			
+			await i.editReply({embeds: [embed], components: [buttons]});
+		});
+
+		function checkWinner(user: RPS, enemy: RPS) {
+			let msg = '';
+			if(user == enemy) {
+				// tie
+				embed.setColor('GREY');
+				msg = 'You\'ve tied with your opponent.';
+			}
+			else if(user < enemy) {
+				// loss
+				embed.setColor('RED');
+				msg = 'You\'ve loss to your opponent...';
+			}
+			else if(user > enemy) {
+				// win
+				embed.setColor('GREEN');
+				msg = 'You\'ve won against your opponent!';
+			} 
+			
+			embed.setFields([
+				{name: 'Your choice', value: `${choices(user)}`, inline: false},
+				{name: 'Enemy choice', value: `${choices(enemy)}`, inline: false},
+				{name: 'Result', value: `${msg}`, inline: false}
+			]);
+		}
+
+		function choices(choice: RPS): string {
+			let _choice = '';
+			switch(choice) {
+				case RPS.ROCK:
+					_choice = '🪨';
+					break;
+				case RPS.PAPER:
+					_choice = '📃';
+					break;
+				case RPS.SCISSORS: 
+					_choice = '✂️';
+					break;
+			}
+			return _choice;
+		}
+
 	},
 };

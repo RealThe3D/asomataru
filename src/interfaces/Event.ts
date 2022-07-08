@@ -1,4 +1,4 @@
-import Client from '../client/client';
+import Client from '../structures/client';
 import type { ClientEvents } from 'discord.js';
 
 export interface Event<T> {

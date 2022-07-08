@@ -1,31 +1,37 @@
+import { SlashCommandBuilder } from '@discordjs/builders';
 import { MessageEmbed } from 'discord.js';
+import prisma from '../../structures/prisma';
 import { Command } from '../../interfaces/Command';
-import { modelSchema as User } from '../../models/userModel';
+
 export const command: Command = {
 	name: 'daily',
-	aliases: [],
 	permissions: [],
 	ownerOnly: false,
 	enabled: true,
 	cooldown: 86400,
 	usage: 'daily',
-	execute: async (client, message, args) => {
-		let randomAmount = Math.floor(Math.random() * Math.floor(750)); // 1-750
-		let data = await User.findOne({ userID: message.author.id });
+	data: new SlashCommandBuilder().setName('daily').setDescription('Redeem your dailies.'),
+	execute: async (client, interaction) => {
+		const randomAmount = Math.floor(Math.random() * Math.floor(750)); // 1-750
+		
+		const user = await prisma.user.update({
+			where: {
+				userId: interaction.user.id
+			},
+			data: {
+				coins: {
+					increment: randomAmount
+				}
+			},
+			select: {
+				coins: true
+			},
+		});
 
-		if (!data) {
-			message.channel.send(
-				`You've have not registered yet, please use a!profile`
-			);
-		} else {
-			data.coins += randomAmount;
-
-			const embed = new MessageEmbed()
-				.setColor('GREEN')
-				.setTitle(`${message.author.username}'s Daily Rewards`)
-				.setDescription(`Your daily reward is ${randomAmount} coins!`);
-			message.channel.send({ embeds: [embed] });
-			data.save();
-		}
+		const embed = new MessageEmbed()
+			.setColor('GREEN')
+			.setTitle(`${interaction.user.username}'s Daily Rewards`)
+			.setDescription(`Your daily reward is ${randomAmount} coins! You now have ${user.coins} coins.`);
+		await interaction.reply({ embeds: [embed], ephemeral: true });
 	},
 };
