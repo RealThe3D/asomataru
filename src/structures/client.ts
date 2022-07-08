@@ -23,7 +23,7 @@ class ExtendedClient extends Client {
 	public async init(): Promise<void> {
 		/* DB */
 		// Needed for DB migration.
-		const mongoDbUri = process.env.MONGODB_URI ?? '';
+		const mongoDbUri = process.env.DATABASE_URL ?? '';
 		await mongoose.connect(mongoDbUri, {
 			useNewUrlParser: true,
 			useUnifiedTopology: true,
