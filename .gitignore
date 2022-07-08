@@ -1,7 +1,8 @@
 # Node stuff 
 node_modules
 
-# Typescript Build
-dist
 # Secrets.
 .env
+
+# Misc
+.vscode
