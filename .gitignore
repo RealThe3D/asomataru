@@ -3,6 +3,3 @@ node_modules
 
 # Secrets.
 .env
-
-# Misc
-.vscode
