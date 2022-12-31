@@ -1,5 +1,4 @@
-import { SlashCommandBuilder } from '@discordjs/builders';
-import { MessageEmbed } from 'discord.js';
+import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 import { Command } from '../../interfaces/Command';
 
 export const command: Command = {
@@ -9,15 +8,19 @@ export const command: Command = {
 	enabled: true,
 	cooldown: 10,
 	usage: 'invite',
-	data: new SlashCommandBuilder().setName('invite').setDescription('Sends an invite to the support server!'),
+	data: new SlashCommandBuilder()
+		.setName('invite')
+		.setDescription('Sends an invite to the support server!'),
 	execute: async (client, interaction) => {
-		const embed = new MessageEmbed()
-			.setTitle('Asomataru\'s support server!')
-			.addField(
-				'Support Server!',
-				'Join the support server! https://discord.gg/vRPgqtb',
-				false
-			);
+		const embed = new EmbedBuilder()
+			.setTitle("Asomataru's support server!")
+			.setFields([
+				{
+					name: 'Support Server',
+					value: 'Join the support server! https://discord.gg/vRPgqtb',
+					inline: false,
+				},
+			]);
 
 		await interaction.reply({ embeds: [embed] });
 	},

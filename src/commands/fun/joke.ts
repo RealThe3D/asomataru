@@ -1,7 +1,6 @@
 import { Command } from '../../interfaces/Command';
-import { MessageEmbed } from 'discord.js';
+import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 import axios from 'axios';
-import { SlashCommandBuilder } from '@discordjs/builders';
 
 export const command: Command = {
 	name: 'joke',
@@ -10,16 +9,18 @@ export const command: Command = {
 	enabled: true,
 	cooldown: 3,
 	usage: 'joke',
-	data: new SlashCommandBuilder().setName('joke').setDescription('Sends a joke in chat'),
+	data: new SlashCommandBuilder()
+		.setName('joke')
+		.setDescription('Sends a joke in chat'),
 	execute: async (client, interaction) => {
 		const { data } = await axios.get(
 			'https://v2.jokeapi.dev/joke/Any?safe-mode&type=single'
 		);
 
-		const embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
 			.setTitle('A joke for you!')
 			.setDescription(data.joke)
-			.setFooter('Powered by JokeAPI');
+			.setFooter({ text: 'Powered by JokeAPI' });
 
 		await interaction.reply({ embeds: [embed] });
 	},

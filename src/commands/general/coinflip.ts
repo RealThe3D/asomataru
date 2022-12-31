@@ -1,7 +1,6 @@
 // TODO: Make it look nicer.
 import { Command } from '../../interfaces/Command';
-import { MessageEmbed } from 'discord.js';
-import { SlashCommandBuilder } from '@discordjs/builders';
+import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 
 export const command: Command = {
 	name: 'coinflip',
@@ -10,14 +9,19 @@ export const command: Command = {
 	enabled: true,
 	cooldown: 0,
 	usage: 'coinflip',
-	data: new SlashCommandBuilder().setName('coinflip').setDescription('Flip a coin.'),
+	data: new SlashCommandBuilder()
+		.setName('coinflip')
+		.setDescription('Flip a coin.'),
 	execute: async (client, interaction) => {
-		
 		const choices = ['on heads!', 'on tails!'];
 		const coinResult = choices[Math.floor(Math.random() * choices.length)];
-		const embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
 			.setTitle(`${interaction.user.username} flipped a coin!`)
-			.addField('Result: ', 'You have landed '+ coinResult, false);
+			.addFields({
+				name: 'Result: ',
+				value: 'You have landed ' + coinResult,
+				inline: false,
+			});
 
 		await interaction.reply({ embeds: [embed] });
 	},

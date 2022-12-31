@@ -1,6 +1,5 @@
-import { SlashCommandBuilder } from '@discordjs/builders';
+import { SlashCommandBuilder, EmbedBuilder } from 'discord.js';
 import axios from 'axios';
-import { MessageEmbed } from 'discord.js';
 import { Command } from '../../interfaces/Command';
 
 export const command: Command = {
@@ -10,16 +9,18 @@ export const command: Command = {
 	enabled: true,
 	cooldown: 3,
 	usage: 'uselessfact',
-	data: new SlashCommandBuilder().setName('uselessfact').setDescription('Sends a utterly, useless fact.'),
+	data: new SlashCommandBuilder()
+		.setName('uselessfact')
+		.setDescription('Sends a utterly, useless fact.'),
 	execute: async (client, interaction) => {
 		const { data } = await axios.get(
 			'https://uselessfacts.jsph.pl/random.json?language=en'
 		);
 
-		const embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
 			.setTitle('**__Useless Fact!__**')
 			.setDescription(data.text)
-			.setFooter('Powered by uselessfacts.jsph.pl');
+			.setFooter({ text: 'Powered by uselessfacts.jsph.pl' });
 
 		await interaction.reply({ embeds: [embed] });
 	},

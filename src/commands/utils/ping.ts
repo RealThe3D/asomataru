@@ -1,7 +1,6 @@
-import { MessageEmbed } from 'discord.js';
+import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 import { Command } from '../../interfaces/Command';
 import * as PACKAGE from '../../../package.json';
-import { SlashCommandBuilder } from '@discordjs/builders';
 
 export const command: Command = {
 	name: 'ping',
@@ -10,26 +9,28 @@ export const command: Command = {
 	enabled: true,
 	ownerOnly: false,
 	usage: '',
-	data: new SlashCommandBuilder().setName('ping').setDescription('Replies with pong with milliseconds'),
+	data: new SlashCommandBuilder()
+		.setName('ping')
+		.setDescription('Replies with pong with milliseconds'),
 	execute: async (client, interaction) => {
-		const ping = new MessageEmbed()
+		const ping = new EmbedBuilder()
 			.setTitle('Ping')
 			.setDescription('Ping?')
 			.setColor(0xdff8eb)
-			.setFooter(`Asomataru v${PACKAGE.version}`);
-		await interaction.reply({embeds: [ping]});
+			.setFooter({ text: `Asomataru v${PACKAGE.version}` });
+		await interaction.reply({ embeds: [ping] });
 
-		// const m = await interaction.channel?.send({embeds: [ping]}) as Message;
-		const pong = new MessageEmbed()
+		const m = await interaction.channel?.send({ embeds: [ping] });
+		const pong = new EmbedBuilder()
 			.setTitle('Ping')
 			.setDescription(
-				'Pong!'
-				//  Latency is ${
-				// 	interaction.createdTimestamp - interaction.
-				// }ms. 🏓`
+				'Pong!' +
+					`Latency is ${
+						interaction.createdTimestamp - m?.createdTimestamp!
+					}ms. 🏓`
 			)
 			.setColor(0xdff8eb)
-			.setFooter(`Asomataru v${PACKAGE.version}`);
-		await interaction.editReply({embeds: [pong]});
+			.setFooter({ text: `Asomataru v${PACKAGE.version}` });
+		await interaction.editReply({ embeds: [pong] });
 	},
 };

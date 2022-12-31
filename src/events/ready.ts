@@ -1,16 +1,20 @@
-import { REST } from '@discordjs/rest';
-import { Routes } from 'discord-api-types/rest/v9';
 import ExtendedClient from '../structures/client';
 import { Event } from '../interfaces/Event';
 import fs from 'fs';
+import { ActivityType, Events, REST, Routes } from 'discord.js';
 
 export const event: Event<true> = {
-	name: 'ready',
+	type: Events.ClientReady,
 	on: async (client: ExtendedClient) => {
-		const TOKEN = (process.env.NODE_ENV == 'production' ? process.env.TOKEN : process.env.TEST_TOKEN) as string;
+		const TOKEN = (
+			process.env.NODE_ENV == 'production'
+				? process.env.TOKEN
+				: process.env.TEST_TOKEN
+		) as string;
 		const commandsArr = [];
 		const commandFolders = fs.readdirSync('./src/commands');
 		for (const folder of commandFolders) {
+			// if (folder !== 'moderation') continue;
 			const commandFiles = fs
 				.readdirSync(`src/commands/${folder}`)
 				.filter((file) => file.endsWith('.ts'));
@@ -25,13 +29,20 @@ export const event: Event<true> = {
 				commandsArr.push(command.data.toJSON());
 			}
 		}
-		const rest = new REST({version: '9'}).setToken(TOKEN);
-		await rest.put(Routes.applicationCommands(client.user?.id as string), { body: commandsArr }).then(() => console.log('Commands loaded!')).catch(console.error);
+		const rest = new REST({ version: '10' }).setToken(TOKEN);
+		await rest
+			.put(Routes.applicationCommands(client.user?.id as string), {
+				body: commandsArr,
+			})
+			.then(() => console.log('Commands loaded!'))
+			.catch(console.error);
 		console.log(`${client.user?.tag} is ready! | ${new Date()}`);
-		
+
 		client.user?.setPresence({
 			status: 'online',
-			activities: [{ name: 'Asomataru v3 Beta Phase 2', type: 'PLAYING' }],
+			activities: [
+				{ name: 'Asomataru v3 Beta Phase 3', type: ActivityType.Playing },
+			],
 		});
 	},
 };

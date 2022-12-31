@@ -1,4 +1,4 @@
-import { SlashCommandBuilder } from '@discordjs/builders';
+import { SlashCommandBuilder } from 'discord.js';
 import { Command } from '../../interfaces/Command';
 
 export const command: Command = {
@@ -8,7 +8,9 @@ export const command: Command = {
 	enabled: true,
 	cooldown: 10,
 	usage: 'birthday',
-	data: new SlashCommandBuilder().setName('birthday').setDescription('Displays upcoming birthdays.'),
+	data: new SlashCommandBuilder()
+		.setName('birthday')
+		.setDescription('Displays upcoming birthdays.'),
 	execute: async (client, interaction) => {
 		/* 
         import { MessageEmbed } from 'discord.js';
@@ -28,6 +30,6 @@ export const command: Command = {
 
         message.channel.send({embeds: [embed]}) 
         */
-		await interaction.reply('InfiniteTime\'s birthday is July 29th!');
+		await interaction.reply("InfiniteTime's birthday is July 29th!");
 	},
 };

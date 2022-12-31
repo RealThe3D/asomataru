@@ -1,6 +1,6 @@
 import { Command } from '../../interfaces/Command';
-import { MessageEmbed } from 'discord.js';
-import { SlashCommandBuilder } from '@discordjs/builders';
+import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
+
 export const command: Command = {
 	name: 'botstats',
 	permissions: [],
@@ -8,12 +8,24 @@ export const command: Command = {
 	enabled: true,
 	cooldown: 10,
 	usage: '',
-	data: new SlashCommandBuilder().setName('botstats').setDescription('Display\'s Asomataru\'s stats.'),
-	execute: async(client, interaction) => {
-		const embed = new MessageEmbed()
-			.setTitle('Asomataru\'s Bot Stats')
-			.addField('Guilds', `${client.guilds.cache.size} Guilds`, false)
-			.addField('Users', `${client.users.cache.size} Users`, false);
+	data: new SlashCommandBuilder()
+		.setName('botstats')
+		.setDescription("Display's Asomataru's stats."),
+	execute: async (client, interaction) => {
+		const embed = new EmbedBuilder()
+			.setTitle("Asomataru's Bot Stats")
+			.setFields([
+				{
+					name: 'Guilds',
+					value: `${client.guilds.cache.size} guilds`,
+					inline: false,
+				},
+				{
+					name: 'Users',
+					value: `${client.users.cache.size} users`,
+					inline: false,
+				},
+			]);
 
 		await interaction.reply({ embeds: [embed] });
 	},
