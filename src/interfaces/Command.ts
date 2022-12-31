@@ -1,5 +1,9 @@
-import type { SlashCommandBuilder } from '@discordjs/builders';
-import type { CommandInteraction, PermissionResolvable } from 'discord.js';
+import type {
+	CommandInteraction,
+	PermissionResolvable,
+	SlashCommandBuilder,
+	ChatInputCommandInteraction,
+} from 'discord.js';
 import ExtendedClient from '../structures/client';
 
 export interface Command {
@@ -9,6 +13,12 @@ export interface Command {
 	enabled: boolean;
 	cooldown: number;
 	usage: string;
-	data: SlashCommandBuilder | Omit<SlashCommandBuilder, 'addSubcommand' | 'addSubcommandGroup'>;
-	execute: (client: ExtendedClient, interaction: CommandInteraction) => void;
+	data:
+		| SlashCommandBuilder
+		| Omit<SlashCommandBuilder, 'addSubcommand' | 'addSubcommandGroup'>;
+
+	execute: (
+		client: ExtendedClient,
+		interaction: ChatInputCommandInteraction
+	) => void | Promise<void>;
 }
