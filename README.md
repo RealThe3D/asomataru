@@ -1,7 +1,6 @@
 # Asomataru by The3D#1120
 
-
-Asomataru is a discord bot that is running on Discord.js v13 and Heroku for 24/7 Hosting!!
+Asomataru is a open-source discord bot that is running on discord.js v14, using TypeScript!
 
 ## Wanna add the bot? Use this link:
 
