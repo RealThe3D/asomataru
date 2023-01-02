@@ -22,10 +22,8 @@ export const command: Command = {
 	execute: async (client, interaction) => {
 		const user = interaction.options.getUser('user') || interaction.user;
 
-		if (user.bot) {
-			await interaction.reply('That is a bot.');
-			return;
-		}
+		if (user.bot) return await interaction.reply('That is a bot.');
+
 		const userData = await prisma.user.findUnique({
 			where: {
 				userId: interaction.user.id,
