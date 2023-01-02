@@ -26,7 +26,7 @@ export const command: Command = {
 			.setImage(
 				user.displayAvatarURL({
 					size: 512,
-					extension: 'jpg',
+					extension: 'png',
 				})
 			);
 
