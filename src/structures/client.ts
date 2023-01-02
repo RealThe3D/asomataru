@@ -6,9 +6,9 @@ import { config } from 'dotenv';
 config();
 
 class Asomataru extends Client {
-	public commands: Collection<string, Command> = new Collection();
-	public events: Collection<string, Event<never>> = new Collection();
-	public cooldowns: Collection<string, Collection<Snowflake, number>> =
+	commands: Collection<string, Command> = new Collection();
+	events: Collection<string, Event> = new Collection();
+	cooldowns: Collection<string, Collection<Snowflake, number>> =
 		new Collection();
 
 	constructor(
@@ -20,7 +20,7 @@ class Asomataru extends Client {
 	) {
 		super({ intents });
 	}
-	public async init() {
+	async init() {
 		/* Events */
 		const eventFiles = fs
 			.readdirSync('src/events')
@@ -31,11 +31,9 @@ class Asomataru extends Client {
 			this.on(event.type, event.on.bind(null, this));
 		}
 
-		if (process.env.NODE_ENV == 'production') {
-			this.login(process.env.TOKEN);
-		} else {
-			this.login(process.env.TEST_TOKEN);
-		}
+		process.env.NODE_ENV == 'production'
+			? this.login(process.env.TOKEN)
+			: this.login(process.env.TEST_TOKEN);
 	}
 }
 export default Asomataru;
