@@ -15,22 +15,26 @@ export const command: Command = {
 	execute: async (client, interaction) => {
 		const ping = new EmbedBuilder()
 			.setTitle('Ping')
-			.setDescription('Ping?')
+			.setDescription('Pong!')
 			.setColor(0xdff8eb)
 			.setFooter({ text: `Asomataru v${PACKAGE.version}` });
-		await interaction.reply({ embeds: [ping] });
+		// await interaction.reply({ embeds: [ping] });
 
-		const m = await interaction.channel?.send({ embeds: [ping] });
-		const pong = new EmbedBuilder()
-			.setTitle('Ping')
-			.setDescription(
-				'Pong!' +
-					`Latency is ${
-						interaction.createdTimestamp - m?.createdTimestamp!
-					}ms. 🏓`
-			)
-			.setColor(0xdff8eb)
-			.setFooter({ text: `Asomataru v${PACKAGE.version}` });
-		await interaction.editReply({ embeds: [pong] });
+		// const m = await interaction.reply({ embeds: [ping] });
+		// const pong = new EmbedBuilder()
+		// 	.setTitle('Ping')
+		// 	.setDescription(
+		// 		'Pong!' +
+		// 			`Latency is ${
+		// 				 - m?.interaction.createdTimestamp!
+		// 			}ms. 🏓`
+		// 	)
+		// 	.setColor(0xdff8eb)
+		// 	.setFooter({ text: `Asomataru v${PACKAGE.version}` });
+		// pong.setDescription(
+		// 	`${Number(pong.data.timestamp) - m.interaction.createdTimestamp}`
+		// );
+		// await interaction.editReply({ embeds: [pong] });
+		await interaction.reply({ embeds: [ping] });
 	},
 };
