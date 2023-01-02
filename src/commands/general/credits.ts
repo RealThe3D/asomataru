@@ -10,7 +10,7 @@ export const command: Command = {
 	usage: 'credits',
 	data: new SlashCommandBuilder()
 		.setName('credits')
-		.setDescription('Dedication towards friends or supporters.'),
+		.setDescription('Dedication towards friends and/or supporters.'),
 	execute: async (client, interaction) => {
 		const credits = [
 			'Davska#6229 - Pro smash player, and loves the Sinnoh region! Happy about the remakes!',
@@ -23,7 +23,6 @@ export const command: Command = {
 			'SirSailor Star#3528 - Loves Xenoblade and Fire Emblem!',
 			"Daniel Diaz#9198 - Luxembourg's flag looks like aquafresh.",
 			'InfiniteTime#0463 aka Asomataru-Chan, the person this bot is named after! Subscribe to their YouTube and Twitch!',
-			'Mirjan#9930 - Fatal memer!',
 		];
 		const creditsEmbed = new EmbedBuilder()
 			.setTitle('A dedication to my friends!')
