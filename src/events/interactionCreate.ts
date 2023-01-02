@@ -7,11 +7,15 @@ import {
 } from 'discord.js';
 import { Event } from '../interfaces/Event';
 import config from '../../config.json';
+import ExtendedClient from '../structures/client';
 
 // TODO: Object with perms
-export const event: Event<ChatInputCommandInteraction> = {
+export const event: Event = {
 	type: Events.InteractionCreate,
-	on: async (client, interaction: ChatInputCommandInteraction) => {
+	on: async (
+		client: ExtendedClient,
+		interaction: ChatInputCommandInteraction
+	) => {
 		if (!interaction.isCommand()) return;
 
 		const command = client.commands.get(interaction.commandName);

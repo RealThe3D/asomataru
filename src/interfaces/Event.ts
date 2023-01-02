@@ -1,7 +1,8 @@
 import Client from '../structures/client';
 import { Events } from 'discord.js';
 
-export interface Event<T> {
+export interface Event {
 	type?: Events;
-	on: (client: Client, ...args: T[]) => void;
+	// Define type for args.
+	on: (...args: any) => void;
 }

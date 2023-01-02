@@ -3,7 +3,7 @@ import { Event } from '../interfaces/Event';
 import fs from 'fs';
 import { ActivityType, Events, REST, Routes } from 'discord.js';
 
-export const event: Event<true> = {
+export const event: Event = {
 	type: Events.ClientReady,
 	on: async (client: ExtendedClient) => {
 		const TOKEN = (
@@ -30,14 +30,17 @@ export const event: Event<true> = {
 			}
 		}
 		const rest = new REST({ version: '10' }).setToken(TOKEN);
-		await rest
-			.put(Routes.applicationCommands(client.user?.id as string), {
-				body: commandsArr,
-			})
-			.then(() => console.log('Commands loaded!'))
-			.catch(console.error);
-		console.log(`${client.user?.tag} is ready! | ${new Date()}`);
 
+		try {
+			await rest.put(Routes.applicationCommands(client.user?.id as string), {
+				body: commandsArr,
+			});
+			console.log('Commands loaded!');
+		} catch (e) {
+			console.error(e);
+		}
+
+		console.log(`${client.user?.tag} is ready! | ${new Date()}`);
 		client.user?.setPresence({
 			status: 'online',
 			activities: [
