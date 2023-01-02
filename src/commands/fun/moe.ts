@@ -6,6 +6,7 @@ import {
 	underscore,
 } from 'discord.js';
 import axios from 'axios';
+import { randomIndexOfArray } from '../../constants';
 
 export const command: Command = {
 	name: 'moemorphism',
@@ -19,14 +20,22 @@ export const command: Command = {
 		.setDescription('Sends an random moemorphism of something'),
 	execute: async (client, interaction) => {
 		const { data } = await axios.get(
-			'https://meme-api.herokuapp.com/gimme/moemorphism'
+			'https://www.reddit.com/r/moemorphism/top.json?sort=top&t=day&limit=100'
 		);
 
+		const randomMemeData = randomIndexOfArray(data.data.children).data;
+
 		const embed = new EmbedBuilder()
-			.setImage(data.url)
-			.setTitle(bold(underscore('Moemorphism')))
-			.setURL(`https://reddit.com/r/${data.subreddit}`)
-			.setFooter({ text: `From r/${data.subreddit}` });
+			.setTitle(randomMemeData.title)
+			.setImage(randomMemeData.url)
+			.setFields([
+				{
+					name: 'Votes',
+					value: `${randomMemeData.ups} / ${randomMemeData.downs}`,
+					inline: false,
+				},
+			])
+			.setURL(`https://www.reddit.com${randomMemeData.permalink}`);
 
 		await interaction.reply({ embeds: [embed] });
 	},
