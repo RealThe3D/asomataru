@@ -7,6 +7,7 @@ import {
 	MessageComponentInteraction,
 	ButtonStyle,
 	Colors,
+	ComponentType,
 } from 'discord.js';
 import { randomIndexOfArray } from '../../constants';
 import { Command } from '../../interfaces/Command';
@@ -46,7 +47,7 @@ export const command: Command = {
 				.setCustomId('scissors')
 		);
 
-		const filter = (i: MessageComponentInteraction<CacheType>) => {
+		const filter = (i: MessageComponentInteraction) => {
 			return (
 				(i.customId == 'rock' ||
 					i.customId == 'paper' ||
@@ -63,6 +64,7 @@ export const command: Command = {
 		const collector = interaction.channel?.createMessageComponentCollector({
 			filter,
 			time: 12000,
+			componentType: ComponentType.Button,
 		});
 		collector?.on('collect', async (i) => {
 			await i.deferUpdate();
