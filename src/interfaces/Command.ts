@@ -6,6 +6,7 @@ import type {
 } from 'discord.js';
 import ExtendedClient from '../structures/client';
 
+type Interactions = ChatInputCommandInteraction;
 export interface Command {
 	name: string;
 	permissions: PermissionResolvable[];
@@ -20,5 +21,5 @@ export interface Command {
 	execute: (
 		client: ExtendedClient,
 		interaction: ChatInputCommandInteraction
-	) => void | Promise<void>;
+	) => void;
 }
