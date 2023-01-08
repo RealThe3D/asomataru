@@ -16,7 +16,7 @@ export const command: Command = {
 	permissions: [],
 	ownerOnly: false,
 	enabled: true,
-	cooldown: 70,
+	cooldown: 10,
 	usage: 'anime',
 	data: new SlashCommandBuilder()
 		.setName('anime')
