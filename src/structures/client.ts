@@ -12,11 +12,7 @@ class Asomataru extends Client {
 		new Collection();
 
 	constructor(
-		intents = [
-			GatewayIntentBits.Guilds,
-			GatewayIntentBits.GuildMessages,
-			GatewayIntentBits.GuildMessageReactions,
-		]
+		intents = [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages]
 	) {
 		super({ intents });
 	}
