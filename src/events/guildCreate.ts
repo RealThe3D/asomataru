@@ -4,7 +4,7 @@ import { Event } from '../interfaces/Event';
 
 export const event: Event = {
 	type: Events.GuildCreate,
-	on: async (guild: Guild) => {
+	on: async (client, guild: Guild) => {
 		console.log(`Joined server: ${guild.name} | ${guild.id}`);
 		await prisma.guild.create({
 			data: {
