@@ -1,11 +1,17 @@
 import ExtendedClient from '../structures/client';
 import { Event } from '../interfaces/Event';
 import fs from 'fs';
-import { ActivityType, Events, REST, Routes } from 'discord.js';
+import {
+	ActivityType,
+	Events,
+	PresenceUpdateStatus,
+	REST,
+	Routes,
+} from 'discord.js';
 
 export const event: Event = {
 	type: Events.ClientReady,
-	on: async (client: ExtendedClient) => {
+	on: async (client) => {
 		const TOKEN = (
 			process.env.NODE_ENV == 'production'
 				? process.env.TOKEN
@@ -42,7 +48,7 @@ export const event: Event = {
 
 		console.log(`${client.user?.tag} is ready! | ${new Date()}`);
 		client.user?.setPresence({
-			status: 'online',
+			status: PresenceUpdateStatus.Online,
 			activities: [
 				{ name: 'Asomataru v3 Beta Phase 3', type: ActivityType.Playing },
 			],
