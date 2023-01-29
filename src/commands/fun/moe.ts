@@ -10,9 +10,9 @@ import { randomIndexOfArray } from '../../constants';
 
 export const command: Command = {
 	name: 'moemorphism',
-	permissions: [],
+
 	ownerOnly: false,
-	enabled: true,
+
 	cooldown: 0,
 	usage: 'moemorphism',
 	data: new SlashCommandBuilder()

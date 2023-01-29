@@ -5,9 +5,9 @@ import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 
 export const command: Command = {
 	name: 'meme',
-	permissions: [],
+
 	ownerOnly: false,
-	enabled: true,
+
 	cooldown: 10,
 	usage: 'a!meme',
 	data: new SlashCommandBuilder()

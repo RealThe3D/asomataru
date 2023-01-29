@@ -4,9 +4,9 @@ import { verification } from '../../declarations/verification';
 
 export const command: Command = {
 	name: 'serverinfo',
-	permissions: [],
+
 	ownerOnly: false,
-	enabled: true,
+
 	cooldown: 3,
 	usage: 'serverinfo',
 	data: new SlashCommandBuilder()

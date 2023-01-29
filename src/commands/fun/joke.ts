@@ -4,9 +4,7 @@ import axios from 'axios';
 
 export const command: Command = {
 	name: 'joke',
-	permissions: [],
 	ownerOnly: false,
-	enabled: true,
 	cooldown: 3,
 	usage: 'joke',
 	data: new SlashCommandBuilder()

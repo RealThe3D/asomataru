@@ -2,25 +2,26 @@ import { Command } from '../../interfaces/Command';
 import {
 	EmbedBuilder,
 	SlashCommandBuilder,
-	PermissionsBitField,
 	User,
 	Colors,
+	PermissionFlagsBits,
 } from 'discord.js';
 
 export const command: Command = {
 	name: 'kick',
-	permissions: [PermissionsBitField.Flags.KickMembers],
 	ownerOnly: false,
-	enabled: true,
 	cooldown: 0,
 	usage: 'ban (@mention or userID) (reason)',
 	data: new SlashCommandBuilder()
 		.setName('kick')
 		.setDescription('Kick a user.')
+		.setDefaultMemberPermissions(
+			PermissionFlagsBits.BanMembers | PermissionFlagsBits.KickMembers
+		)
 		.addUserOption((option) =>
 			option
 				.setName('mention')
-				.setDescription('Mention a user')
+				.setDescription('The user you are trying to ban')
 				.setRequired(true)
 		)
 		.addStringOption((option) =>

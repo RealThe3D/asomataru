@@ -5,14 +5,14 @@ import prisma from '../../structures/prisma';
 
 export const command: Command = {
 	name: 'poke',
-	permissions: [],
+
 	ownerOnly: false,
-	enabled: false,
 	cooldown: 3,
 	usage: 'poke (@mention or userID)',
 	data: new SlashCommandBuilder()
 		.setName('poke')
 		.setDescription('Poke someone')
+		.setDefaultMemberPermissions(0)
 		.addUserOption((option) =>
 			option
 				.setName('user')

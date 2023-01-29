@@ -13,9 +13,9 @@ import axios from 'axios';
 
 export const command: Command = {
 	name: 'anime',
-	permissions: [],
+
 	ownerOnly: false,
-	enabled: true,
+
 	cooldown: 10,
 	usage: 'anime',
 	data: new SlashCommandBuilder()

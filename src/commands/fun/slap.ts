@@ -1,13 +1,11 @@
 import axios from 'axios';
 import prisma from '../../structures/prisma';
-import { Colors, Embed, EmbedBuilder, SlashCommandBuilder } from 'discord.js';
+import { Colors, EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 import { Command } from '../../interfaces/Command';
 
 export const command: Command = {
 	name: 'slap',
-	permissions: [],
 	ownerOnly: false,
-	enabled: true,
 	cooldown: 3,
 	usage: 'slap (@mention or userID)',
 	data: new SlashCommandBuilder()

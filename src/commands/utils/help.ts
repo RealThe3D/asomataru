@@ -3,8 +3,7 @@ import { Colors, EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 
 export const command: Command = {
 	name: 'help',
-	permissions: [],
-	enabled: true,
+
 	ownerOnly: false,
 	cooldown: 0,
 	usage: 'help (command)',

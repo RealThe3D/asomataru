@@ -5,19 +5,18 @@ import {
 	User,
 	SlashCommandBuilder,
 	Colors,
-	ChatInputCommandInteraction,
+	PermissionFlagsBits,
 } from 'discord.js';
 
 export const command: Command = {
 	name: 'ban',
-	permissions: [PermissionsBitField.Flags.BanMembers],
 	ownerOnly: false,
-	enabled: true,
 	cooldown: 0,
 	usage: 'ban (@mention or userID) (reason)',
 	data: new SlashCommandBuilder()
 		.setName('ban')
 		.setDescription('Ban a user.')
+		.setDefaultMemberPermissions(PermissionFlagsBits.BanMembers)
 		.addUserOption((option) =>
 			option
 				.setName('mention')
@@ -34,7 +33,7 @@ export const command: Command = {
 		const reason = interaction.options.getString('reason') || 'No reason given';
 
 		try {
-			await interaction.guild?.members.ban(mentioned);
+			// await interaction.guild?.members.ban(mentioned);
 		} catch (e) {
 			console.log(e);
 		}

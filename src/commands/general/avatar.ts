@@ -3,9 +3,7 @@ import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 
 export const command: Command = {
 	name: 'avatar',
-	permissions: [],
 	ownerOnly: false,
-	enabled: true,
 	cooldown: 2,
 	usage: 'avatar (@mention or userID)',
 	data: new SlashCommandBuilder()

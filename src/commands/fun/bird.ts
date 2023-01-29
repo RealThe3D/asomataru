@@ -10,9 +10,9 @@ import { randomIndexOfArray } from '../../constants';
 
 export const command: Command = {
 	name: 'bird',
-	permissions: [],
+
 	ownerOnly: false,
-	enabled: true,
+
 	cooldown: 3,
 	usage: 'bird',
 	data: new SlashCommandBuilder()

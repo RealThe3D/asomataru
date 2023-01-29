@@ -4,9 +4,9 @@ import { SlashCommandBuilder, time } from 'discord.js';
 export const command: Command = {
 	name: 'time',
 	cooldown: 10,
-	enabled: true,
+
 	ownerOnly: false,
-	permissions: [],
+
 	usage: 'a!time',
 	data: new SlashCommandBuilder()
 		.setName('time')

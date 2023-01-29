@@ -3,9 +3,9 @@ import { Command } from '../../interfaces/Command';
 
 export const command: Command = {
 	name: 'userinfo',
-	permissions: [],
+
 	ownerOnly: false,
-	enabled: true,
+
 	cooldown: 0,
 	usage: 'userinfo (@mention or userID)',
 	data: new SlashCommandBuilder()

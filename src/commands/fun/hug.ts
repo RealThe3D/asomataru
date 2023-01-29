@@ -5,9 +5,9 @@ import prisma from '../../structures/prisma';
 
 export const command: Command = {
 	name: 'hug',
-	permissions: [],
+
 	ownerOnly: false,
-	enabled: true,
+
 	cooldown: 3,
 	usage: 'hug (@mention or userID)',
 	data: new SlashCommandBuilder()

@@ -12,28 +12,25 @@ import ExtendedClient from '../structures/client';
 // TODO: Object with perms
 export const event: Event = {
 	type: Events.InteractionCreate,
-	on: async (
-		client: ExtendedClient,
-		interaction: ChatInputCommandInteraction
-	) => {
+	on: async (client, interaction: ChatInputCommandInteraction) => {
 		if (!interaction.isCommand()) return;
 
 		const command = client.commands.get(interaction.commandName);
-		const interactionPerms = interaction.member
-			?.permissions as Readonly<PermissionsBitField>;
+		// const interactionPerms = interaction.member
+		// 	?.permissions as Readonly<PermissionsBitField>;
 		if (!command) return;
-		if (command.permissions && !interactionPerms.has(command.permissions)) {
-			return interaction.reply({
-				content: "You don't have the permissions to use this command.",
-				ephemeral: true,
-			});
-		}
-		if (!command.enabled) {
-			return interaction.reply({
-				content: 'This command is disabled.',
-				ephemeral: true,
-			});
-		}
+		// if (command.permissions && !interactionPerms.has(command.permissions)) {
+		// 	return interaction.reply({
+		// 		content: "You don't have the permissions to use this command.",
+		// 		ephemeral: true,
+		// 	});
+		// }
+		// if (!command.enabled) {
+		// 	return interaction.reply({
+		// 		content: 'This command is disabled.',
+		// 		ephemeral: true,
+		// 	});
+		// }
 		if (command.ownerOnly && !config.owners.includes(interaction.user.id)) {
 			return interaction.reply({
 				content: 'Only the bot owner can use this!',

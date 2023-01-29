@@ -4,9 +4,9 @@ import * as PACKAGE from '../../../package.json';
 
 export const command: Command = {
 	name: 'ping',
-	permissions: [],
+
 	cooldown: 3,
-	enabled: true,
+
 	ownerOnly: false,
 	usage: '',
 	data: new SlashCommandBuilder()

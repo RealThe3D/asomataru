@@ -3,9 +3,9 @@ import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 
 export const command: Command = {
 	name: 'topic',
-	permissions: [],
+
 	ownerOnly: false,
-	enabled: true,
+
 	cooldown: 0,
 	usage: 'topic',
 	data: new SlashCommandBuilder()

@@ -3,9 +3,9 @@ import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 
 export const command: Command = {
 	name: 'botstats',
-	permissions: [],
+
 	ownerOnly: false,
-	enabled: true,
+
 	cooldown: 10,
 	usage: '',
 	data: new SlashCommandBuilder()

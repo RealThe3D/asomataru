@@ -20,9 +20,9 @@ enum RPS {
 
 export const command: Command = {
 	name: 'rps',
-	permissions: [],
+
 	ownerOnly: false,
-	enabled: true,
+
 	cooldown: 15,
 	usage: 'rps <react to message>',
 	data: new SlashCommandBuilder()

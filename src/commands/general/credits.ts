@@ -3,9 +3,9 @@ import { Command } from '../../interfaces/Command';
 
 export const command: Command = {
 	name: 'credits',
-	permissions: [],
+
 	ownerOnly: false,
-	enabled: true,
+
 	cooldown: 0,
 	usage: 'credits',
 	data: new SlashCommandBuilder()

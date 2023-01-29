@@ -9,9 +9,9 @@ import { Command } from '../../interfaces/Command';
 
 export const command: Command = {
 	name: 'cat',
-	permissions: [],
+
 	ownerOnly: false,
-	enabled: true,
+
 	cooldown: 0,
 	usage: 'cat',
 	data: new SlashCommandBuilder()
