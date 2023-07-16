@@ -15,7 +15,7 @@ export const command: Command = {
 			'Kandrina (kandrina) - Lovely woman from Austria, but eats too many ribs',
 			"Akashic Bearer (akashicbearer) - A discord bot programmer who totally has a better bot than me, except it's not running V13.",
 			'Mochi (mo_mochi) - Cool person, loves to eat mochi and plays a lot of Minecraft!',
-			'Dr. Mathew (dr. mathew), worthy player and awesome artist',
+			'Dr. Mathew (dr.mathew), worthy player and awesome artist',
 			'Incineroar (incine_) - Fatal memer and pro smash player',
 			'SteelyMite (steelymite) - Busy with schoolwork but can manage to tell me oyasumi',
 			'SirSailor Star (sirsailorstar) - Loves Xenoblade and Fire Emblem!',
