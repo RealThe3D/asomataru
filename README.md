@@ -1,4 +1,4 @@
-# Asomataru by The3D#1120
+# Asomataru by The3D
 
 Asomataru is a open-source discord bot that is running on discord.js v14, using TypeScript!
 
