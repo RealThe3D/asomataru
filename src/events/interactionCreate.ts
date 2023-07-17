@@ -13,7 +13,7 @@ import ExtendedClient from '../structures/client';
 export const event: Event = {
 	type: Events.InteractionCreate,
 	on: async (client, interaction: ChatInputCommandInteraction) => {
-		if (!interaction.isCommand()) return;
+		if (!interaction.isChatInputCommand()) return;
 
 		const command = client.commands.get(interaction.commandName);
 		// const interactionPerms = interaction.member
@@ -71,11 +71,18 @@ export const event: Event = {
 		try {
 			await command.execute(client, interaction);
 		} catch (e) {
-			await interaction.reply({
-				content: 'An error had occured',
-				ephemeral: true,
-			});
-			console.log(e);
+			console.error(e);
+			if (interaction.deferred || interaction.replied) {
+				await interaction.followUp({
+					content: 'An error had occurred',
+					ephemeral: true,
+				});
+			} else {
+				await interaction.reply({
+					content: 'An error had occurred',
+					ephemeral: true,
+				});
+			}
 		}
 	},
 };
