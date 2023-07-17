@@ -21,6 +21,6 @@ export const command: Command = {
 			.setTitle('USELESS FACT')
 			.setDescription(data.text);
 
-		await interaction.reply({ embeds: [embed] });
+		await interaction.editReply({ embeds: [embed] });
 	},
 };
