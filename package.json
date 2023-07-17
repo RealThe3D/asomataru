@@ -1,7 +1,7 @@
 {
 	"name": "asomataru",
 	"version": "3.0.0",
-	"description": "A discord bot made by The3D#1120 in discord.js v13 and TypeScript.",
+	"description": "A discord bot made by The3D (the3d) in discord.js and TypeScript.",
 	"private": "true",
 	"main": "src/index.ts",
 	"scripts": {
