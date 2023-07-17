@@ -50,7 +50,7 @@ export const event: Event = {
 		client.user?.setPresence({
 			status: PresenceUpdateStatus.Online,
 			activities: [
-				{ name: 'Asomataru v3 Beta Phase 3', type: ActivityType.Playing },
+				{ name: 'Asomataru v3 Beta Phase 4', type: ActivityType.Playing },
 			],
 		});
 	},
