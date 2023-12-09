@@ -20,14 +20,24 @@ export const command: Command = {
 	execute: async (client, interaction) => {
 		const user = interaction.options.getUser('user') || interaction.user;
 
-		if (user.bot) return await interaction.reply('That is a bot.');
+		if (user.bot)
+			return await interaction.reply({
+				content: 'That is a bot.',
+				ephemeral: true,
+			});
 
 		const userData = await prisma.user.findUnique({
 			where: {
 				userId: interaction.user.id,
 			},
-			rejectOnNotFound: true,
 		});
+
+		if (!userData) {
+			return await interaction.reply({
+				content: 'This user has not set up a profile.',
+				ephemeral: true,
+			});
+		}
 
 		const embed = new EmbedBuilder()
 			.setTitle(`${user.username}'s Stats`)
