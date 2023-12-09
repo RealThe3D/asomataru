@@ -1,7 +1,6 @@
-export enum verification {
-	NONE = 'None',
+export enum Verification {
 	LOW = 'Low',
 	MEDIUM = 'Medium',
 	HIGH = '(╯°□°）╯︵ ┻━┻',
-	VERY_HIGH = '(ノಠ益ಠ)ノ彡┻━┻',
+	HIGHEST = '(ノಠ益ಠ)ノ彡┻━┻',
 }
