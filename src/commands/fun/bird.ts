@@ -1,24 +1,18 @@
-import {
-	EmbedBuilder,
-	SlashCommandBuilder,
-	bold,
-	underscore,
-} from 'discord.js';
+import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 import axios from 'axios';
 import { Command } from '../../interfaces/Command';
 import { randomIndexOfArray } from '../../constants';
 
 export const command: Command = {
 	name: 'bird',
-
 	ownerOnly: false,
-
 	cooldown: 3,
 	usage: 'bird',
 	data: new SlashCommandBuilder()
 		.setName('bird')
 		.setDescription('Displays an image of a bird.'),
 	execute: async (client, interaction) => {
+		await interaction.deferReply();
 		const { data } = await axios.get(
 			'https://www.reddit.com/r/birding/top.json?sort=top&t=day&limit=100'
 		);
@@ -41,6 +35,6 @@ export const command: Command = {
 		// 	.setImage(data.url)
 		// 	.setFooter({ text: 'From Reddit' });
 
-		await interaction.reply({ embeds: [embed] });
+		await interaction.followUp({ embeds: [embed] });
 	},
 };

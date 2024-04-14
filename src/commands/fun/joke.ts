@@ -11,6 +11,7 @@ export const command: Command = {
 		.setName('joke')
 		.setDescription('Sends a joke in chat'),
 	execute: async (client, interaction) => {
+		await interaction.deferReply();
 		const { data } = await axios.get(
 			'https://v2.jokeapi.dev/joke/Any?safe-mode&type=single'
 		);
@@ -20,6 +21,6 @@ export const command: Command = {
 			.setDescription(data.joke)
 			.setFooter({ text: 'Powered by JokeAPI' });
 
-		await interaction.reply({ embeds: [embed] });
+		await interaction.followUp({ embeds: [embed] });
 	},
 };

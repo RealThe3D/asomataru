@@ -10,15 +10,14 @@ import { randomIndexOfArray } from '../../constants';
 
 export const command: Command = {
 	name: 'moemorphism',
-
 	ownerOnly: false,
-
 	cooldown: 0,
 	usage: 'moemorphism',
 	data: new SlashCommandBuilder()
 		.setName('moemorphism')
 		.setDescription('Sends an random moemorphism of something'),
 	execute: async (client, interaction) => {
+		await interaction.deferReply();
 		const { data } = await axios.get(
 			'https://www.reddit.com/r/moemorphism/top.json?sort=top&t=day&limit=100'
 		);
@@ -37,6 +36,6 @@ export const command: Command = {
 			])
 			.setURL(`https://www.reddit.com${randomMemeData.permalink}`);
 
-		await interaction.reply({ embeds: [embed] });
+		await interaction.followUp({ embeds: [embed] });
 	},
 };
