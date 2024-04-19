@@ -13,9 +13,7 @@ import axios from 'axios';
 
 export const command: Command = {
 	name: 'anime',
-
 	ownerOnly: false,
-
 	cooldown: 10,
 	usage: 'anime',
 	data: new SlashCommandBuilder()
@@ -28,25 +26,21 @@ export const command: Command = {
 				.setRequired(true)
 		),
 	execute: async (client, interaction) => {
-		const buttons = new ActionRowBuilder<ButtonBuilder>()
-			.addComponents(
-				new ButtonBuilder()
-					.setCustomId('backwards')
-					.setLabel('Previous')
-					.setStyle(ButtonStyle.Secondary)
-			)
-			.addComponents(
-				new ButtonBuilder()
-					.setCustomId('stop')
-					.setLabel('Stop')
-					.setStyle(ButtonStyle.Secondary)
-			)
-			.addComponents(
-				new ButtonBuilder()
-					.setCustomId('forward')
-					.setLabel('Next')
-					.setStyle(ButtonStyle.Secondary)
-			);
+		const buttons = new ActionRowBuilder<ButtonBuilder>().addComponents([
+			new ButtonBuilder()
+				.setCustomId('backwards')
+				.setLabel('Previous')
+				.setStyle(ButtonStyle.Secondary),
+			new ButtonBuilder()
+				.setCustomId('stop')
+				.setLabel('Stop')
+				.setStyle(ButtonStyle.Secondary),
+			new ButtonBuilder()
+				.setCustomId('forward')
+				.setLabel('Next')
+				.setStyle(ButtonStyle.Secondary),
+		]);
+
 		const filter = (i: MessageComponentInteraction) => {
 			return (
 				(i.customId == 'backwards' ||
@@ -145,7 +139,6 @@ export const command: Command = {
 				case 'stop':
 					collector.dispose(i);
 					buttons.components.splice(0, 3);
-					// buttons.spliceComponents(0, 3);
 					buttons.addComponents(
 						new ButtonBuilder()
 							.setCustomId('finished')
