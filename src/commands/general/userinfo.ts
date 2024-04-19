@@ -3,9 +3,7 @@ import { Command } from '../../interfaces/Command';
 
 export const command: Command = {
 	name: 'userinfo',
-
 	ownerOnly: false,
-
 	cooldown: 0,
 	usage: 'userinfo (@mention or userID)',
 	data: new SlashCommandBuilder()
@@ -19,16 +17,15 @@ export const command: Command = {
 				)
 		),
 	execute: async (client, interaction) => {
-		let user = interaction.options.getUser('user') || interaction.user;
+		const user = interaction.options.getUser('user') || interaction.user;
 
 		const embed = new EmbedBuilder()
 			.setThumbnail(`${user.displayAvatarURL()}`)
 			.setColor(Colors.LuminousVividPink)
 			.setFields([
-				{ name: 'Full username', value: `${user.tag}`, inline: true },
+				{ name: 'Full Username', value: `${user.tag}`, inline: true },
 				{ name: 'ID', value: `${user.id}`, inline: true },
-				{ name: 'Bot', value: `${user.bot}`, inline: true },
-				{ name: 'Joined Discord on', value: `${user.createdAt}`, inline: true },
+				{ name: 'Bot', value: `${user.bot ? 'True' : 'False'}`, inline: true },
 			])
 			.setFooter({ text: `Information about ${user.tag}` })
 			.setTimestamp(new Date());

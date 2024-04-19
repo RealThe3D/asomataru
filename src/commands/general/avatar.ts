@@ -17,7 +17,7 @@ export const command: Command = {
 				)
 		),
 	execute: async (client, interaction) => {
-		let user = interaction.options.getUser('user') || interaction.user;
+		const user = interaction.options.getUser('user') || interaction.user;
 
 		const embed = new EmbedBuilder()
 			.setTitle(`${user.username}'s Avatar`)
