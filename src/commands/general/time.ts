@@ -4,10 +4,8 @@ import { SlashCommandBuilder, time } from 'discord.js';
 export const command: Command = {
 	name: 'time',
 	cooldown: 10,
-
 	ownerOnly: false,
-
-	usage: 'a!time',
+	usage: 'time',
 	data: new SlashCommandBuilder()
 		.setName('time')
 		.setDescription('Shows what time it is'),
