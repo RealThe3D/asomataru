@@ -41,6 +41,7 @@ export const command: Command = {
 					value: `${verification}`,
 					inline: true,
 				},
+				{ name: 'Boost Level', value: `${guild.premiumTier}`, inline: true },
 				{ name: 'Members', value: `${guild.memberCount}`, inline: true },
 				{
 					name: 'Roles',
