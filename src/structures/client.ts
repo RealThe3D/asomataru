@@ -1,13 +1,11 @@
 import { Client, Collection, GatewayIntentBits, Snowflake } from 'discord.js';
 import fs from 'fs';
 import { Command } from '../interfaces/Command';
-import { Event } from '../interfaces/Event';
 import { config } from 'dotenv';
 config();
 
 class Asomataru extends Client {
 	commands: Collection<string, Command> = new Collection();
-	events: Collection<string, Event> = new Collection();
 	cooldowns: Collection<string, Collection<Snowflake, number>> =
 		new Collection();
 
@@ -23,8 +21,12 @@ class Asomataru extends Client {
 			.filter((file) => file.endsWith('.ts'));
 		for (const file of eventFiles) {
 			const { event } = await import(`../events/${file}`);
-			this.events.set(event.type, event);
-			this.on(event.type, event.on.bind(null, this));
+
+			if (event.once) {
+				this.once(event.type, (...args) => event.on(this, ...args));
+			} else {
+				this.on(event.type, (...args) => event.on(this, ...args));
+			}
 		}
 
 		process.env.NODE_ENV == 'production'

@@ -1,11 +1,9 @@
 import type {
-	CommandInteraction,
-	SlashCommandBuilder,
 	ChatInputCommandInteraction,
+	SlashCommandBuilder,
 } from 'discord.js';
-import ExtendedClient from '../structures/client';
+import Asomataru from '../structures/client';
 
-type Interactions = ChatInputCommandInteraction;
 export interface Command {
 	name: string;
 	ownerOnly: boolean;
@@ -16,7 +14,7 @@ export interface Command {
 		| Omit<SlashCommandBuilder, 'addSubcommand' | 'addSubcommandGroup'>;
 
 	execute: (
-		client: ExtendedClient,
+		client: Asomataru,
 		interaction: ChatInputCommandInteraction
 	) => void;
 }

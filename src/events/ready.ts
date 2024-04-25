@@ -1,4 +1,3 @@
-import ExtendedClient from '../structures/client';
 import { Event } from '../interfaces/Event';
 import fs from 'fs';
 import {
@@ -11,6 +10,7 @@ import {
 
 export const event: Event = {
 	type: Events.ClientReady,
+	once: true,
 	on: async (client) => {
 		const TOKEN = (
 			process.env.NODE_ENV == 'production'
@@ -30,7 +30,7 @@ export const event: Event = {
 				try {
 					client.commands.set(command.data.name, command);
 				} catch (e) {
-					console.log(console.error(e));
+					console.error(e);
 				}
 				commandsArr.push(command.data.toJSON());
 			}
