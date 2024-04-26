@@ -28,7 +28,7 @@ export const command: Command = {
 			});
 		}
 		const embed = new EmbedBuilder()
-			.setTitle(`${user.username}'s Avatar`)
+			.setTitle(`${user.username}'s Banner`)
 			.setImage(
 				userBanner.bannerURL({
 					size: 512,
