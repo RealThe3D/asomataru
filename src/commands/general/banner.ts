@@ -5,10 +5,10 @@ export const command: Command = {
 	name: 'banner',
 	ownerOnly: false,
 	cooldown: 2,
-	usage: 'avatar (@mention or userID)',
+	usage: 'banner (@mention or userID)',
 	data: new SlashCommandBuilder()
 		.setName('banner')
-		.setDescription("Displays a user's avatar")
+		.setDescription("Displays a user's banner")
 		.addUserOption((option) =>
 			option
 				.setName('user')
