@@ -18,9 +18,9 @@ export const command: Command = {
 
 		const embed = new EmbedBuilder()
 			.setColor(Colors.LuminousVividPink)
-			.setTitle('USELESS FACT')
+			.setTitle('Useless Fact!')
 			.setDescription(data.text);
 
-		await interaction.editReply({ embeds: [embed] });
+		await interaction.followUp({ embeds: [embed] });
 	},
 };
