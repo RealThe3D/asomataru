@@ -5,23 +5,23 @@
 	"private": "true",
 	"main": "src/index.ts",
 	"scripts": {
-		"start": "ts-node src/index.ts NODE_ENV=production",
+		"start": "cross-env NODE_ENV=production ts-node src/index.ts",
 		"dev": "ts-node-dev --respawn src/index.ts"
 	},
 	"license": "MIT",
 	"dependencies": {
-		"@prisma/client": "^5.12.1",
-		"axios": "^1.6.8",
-		"discord.js": "^14.14.1",
-		"dotenv": "^16.4.5",
+		"@prisma/client": "^5.17.0",
+		"axios": "^1.7.2",
+		"cross-env": "^7.0.3",
+		"discord.js": "^14.15.3",
 		"ts-node": "^10.9.2"
 	},
 	"devDependencies": {
 		"@typescript-eslint/eslint-plugin": "^6.13.1",
 		"@typescript-eslint/parser": "^6.13.1",
 		"eslint": "^8.55.0",
-		"prisma": "^5.12.1",
+		"prisma": "^5.17.0",
 		"ts-node-dev": "^2.0.0",
-		"typescript": "^5.4.5"
+		"typescript": "^5.5.4"
 	}
 }
