@@ -17,6 +17,4 @@ model User {
   userId    String     @unique
   affection Int
   coins     Int
-  // for later use
-  dailyCooldown DateTime?
 }
