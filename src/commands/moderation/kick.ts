@@ -37,6 +37,7 @@ export const command: Command = {
 			await interaction.guild?.members.kick(mentioned);
 		} catch (e) {
 			console.log(e);
+			return await interaction.reply({ content: 'An error had occurred.' });
 		}
 
 		const embed = new EmbedBuilder()

@@ -1,7 +1,6 @@
 import { Command } from '../../interfaces/Command';
 import {
 	EmbedBuilder,
-	PermissionsBitField,
 	User,
 	SlashCommandBuilder,
 	Colors,
@@ -33,9 +32,10 @@ export const command: Command = {
 		const reason = interaction.options.getString('reason') || 'No reason given';
 
 		try {
-			// await interaction.guild?.members.ban(mentioned);
+			await interaction.guild?.members.ban(mentioned);
 		} catch (e) {
 			console.log(e);
+			return await interaction.reply({ content: 'An error had occurred.' });
 		}
 
 		const embed = new EmbedBuilder()
