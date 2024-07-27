@@ -1,28 +1,33 @@
 import { Command } from '../../interfaces/Command';
-import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
+import { Colors, EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 
 export const command: Command = {
 	name: 'botstats',
-
 	ownerOnly: false,
-
 	cooldown: 10,
 	usage: '',
 	data: new SlashCommandBuilder()
 		.setName('botstats')
-		.setDescription("Display's Asomataru's stats."),
+		.setDescription("Displays Asomataru's stats."),
 	execute: async (client, interaction) => {
+		const guildCount = (await client.guilds.fetch()).size;
+		const memberCount = await client.guilds.cache.reduce(
+			(acc, guild) => acc + guild.memberCount,
+			0
+		);
+
 		const embed = new EmbedBuilder()
+			.setColor(Colors.White)
 			.setTitle("Asomataru's Bot Stats")
 			.setFields([
 				{
-					name: 'Guilds',
-					value: `${client.guilds.cache.size} guilds`,
+					name: 'Servers',
+					value: `${guildCount} Servers`,
 					inline: false,
 				},
 				{
 					name: 'Users',
-					value: `${client.users.cache.size} users`,
+					value: `${memberCount} Users`,
 					inline: false,
 				},
 			]);
