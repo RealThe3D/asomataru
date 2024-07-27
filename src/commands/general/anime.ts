@@ -10,6 +10,7 @@ import {
 	ComponentType,
 } from 'discord.js';
 import axios from 'axios';
+import { setTimeout } from 'timers/promises';
 
 export const command: Command = {
 	name: 'anime',
@@ -24,6 +25,7 @@ export const command: Command = {
 				.setName('title')
 				.setDescription('Anime to get info on.')
 				.setRequired(true)
+				.setAutocomplete(true)
 		),
 	execute: async (client, interaction) => {
 		const buttons = new ActionRowBuilder<ButtonBuilder>().addComponents([
@@ -196,12 +198,35 @@ export const command: Command = {
 		collector?.on('end', async () => {
 			buttons.components.splice(0, 3);
 		});
+
 		function shorten(text: string): string {
-			if (text.length > 550) {
-				return text.slice(0, 550) + '...';
-			} else {
-				return text;
+			return text.split(' ').slice(0, 50).join(' ') + '...';
+		}
+	},
+	autocomplete: async (client, interaction) => {
+		const focusedValue = interaction.options.getFocused();
+
+		// internal cooldown to prevent potiental rate limits.
+		await setTimeout(1000);
+		const { data } = await axios.get(
+			`https://kitsu.io/api/edge/anime?filter[text]=${focusedValue}`.replaceAll(
+				/ /g,
+				'%20'
+			)
+		);
+		const choices: string[] = [];
+
+		for (let i = 0; i < 10; i++) {
+			try {
+				choices.push(data.data[i].attributes.canonicalTitle);
+			} catch {
+				continue;
 			}
 		}
+		// console.log(choices);
+		const filtered = choices.filter((choice) => choice.search(focusedValue));
+		await interaction.respond(
+			filtered.map((choice) => ({ name: choice, value: choice }))
+		);
 	},
 };
