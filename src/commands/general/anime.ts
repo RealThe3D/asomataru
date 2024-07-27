@@ -206,7 +206,7 @@ export const command: Command = {
 	autocomplete: async (client, interaction) => {
 		const focusedValue = interaction.options.getFocused();
 
-		// internal cooldown to prevent potiental rate limits.
+		// internal cooldown to prevent potential rate limits.
 		await setTimeout(1000);
 		const { data } = await axios.get(
 			`https://kitsu.io/api/edge/anime?filter[text]=${focusedValue}`.replaceAll(
