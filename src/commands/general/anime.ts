@@ -216,12 +216,9 @@ export const command: Command = {
 		);
 		const choices: string[] = [];
 
-		for (let i = 0; i < 10; i++) {
-			try {
-				choices.push(data.data[i].attributes.canonicalTitle);
-			} catch {
-				continue;
-			}
+		// TODO: Actually implement type safety into this
+		for (let i = 0; (i < data.data.length) as unknown; i++) {
+			choices.push(data.data[i].attributes.canonicalTitle);
 		}
 		// console.log(choices);
 		const filtered = choices.filter((choice) => choice.search(focusedValue));
