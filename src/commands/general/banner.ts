@@ -33,7 +33,7 @@ export const command: Command = {
 				userBanner.bannerURL({
 					size: 512,
 					extension: 'png',
-				})!
+				}) as string
 			);
 
 		await interaction.reply({ embeds: [embed] });
