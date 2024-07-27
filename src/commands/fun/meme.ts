@@ -2,6 +2,7 @@ import axios from 'axios';
 import { Command } from '../../interfaces/Command';
 import { randomIndexOfArray } from '../../constants';
 import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
+import { IMemes } from '../../declarations/memes';
 
 export const command: Command = {
 	name: 'meme',
@@ -17,7 +18,7 @@ export const command: Command = {
 			'https://www.reddit.com/r/dankmemes/top.json?sort=top&t=day&limit=100'
 		);
 
-		const randomMemeData = randomIndexOfArray(data.data.children).data;
+		const randomMemeData = randomIndexOfArray<IMemes>(data.data.children).data;
 
 		const embed = new EmbedBuilder()
 			.setTitle(randomMemeData.title)

@@ -2,6 +2,7 @@ import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 import axios from 'axios';
 import { Command } from '../../interfaces/Command';
 import { randomIndexOfArray } from '../../constants';
+import { IMemes } from '../../declarations/memes';
 
 export const command: Command = {
 	name: 'bird',
@@ -16,7 +17,7 @@ export const command: Command = {
 		const { data } = await axios.get(
 			'https://www.reddit.com/r/birding/top.json?sort=top&t=day&limit=100'
 		);
-		const randomMemeData = randomIndexOfArray(data.data.children).data;
+		const randomMemeData = randomIndexOfArray<IMemes>(data.data.children).data;
 		const embed = new EmbedBuilder()
 			.setTitle(randomMemeData.title)
 			.setImage(randomMemeData.url)
