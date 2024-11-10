@@ -4,7 +4,7 @@ import type {
 	// SlashCommandBuilder,
 	SlashCommandOptionsOnlyBuilder,
 } from 'discord.js';
-import Asomataru from '../structures/client';
+import Asomataru from '@/structures/client.ts';
 
 export interface Command {
 	name: string;
@@ -12,15 +12,15 @@ export interface Command {
 	cooldown: number;
 	usage: string;
 	data: // | SlashCommandBuilder
-	// | Omit<SlashCommandBuilder, 'addSubcommand' | 'addSubcommandGroup'>
-	SlashCommandOptionsOnlyBuilder;
+		// | Omit<SlashCommandBuilder, 'addSubcommand' | 'addSubcommandGroup'>
+		SlashCommandOptionsOnlyBuilder;
 
 	execute: (
 		client: Asomataru,
-		interaction: ChatInputCommandInteraction
+		interaction: ChatInputCommandInteraction,
 	) => void;
 	autocomplete?: (
 		client: Asomataru,
-		interaction: AutocompleteInteraction
+		interaction: AutocompleteInteraction,
 	) => void;
 }

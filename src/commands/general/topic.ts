@@ -1,17 +1,15 @@
-import { Command } from '../../interfaces/Command';
+import { Command } from '@/interfaces/Command.ts';
 import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 
 export const command: Command = {
 	name: 'topic',
-
 	ownerOnly: false,
-
 	cooldown: 0,
 	usage: 'topic',
 	data: new SlashCommandBuilder()
 		.setName('topic')
 		.setDescription('Starts up a topic to discuss'),
-	execute: async (client, interaction) => {
+	execute: async (_, interaction) => {
 		const embed = new EmbedBuilder().setTitle('Topic!');
 
 		const options = [

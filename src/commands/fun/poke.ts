@@ -1,11 +1,10 @@
 import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 import axios from 'axios';
-import { Command } from '../../interfaces/Command';
-import prisma from '../../structures/prisma';
+import { Command } from '@/interfaces/Command.ts';
+import prisma from '@/structures/prisma.ts';
 
 export const command: Command = {
 	name: 'poke',
-
 	ownerOnly: false,
 	cooldown: 3,
 	usage: 'poke (@mention or userID)',
@@ -17,10 +16,10 @@ export const command: Command = {
 			option
 				.setName('user')
 				.setDescription(
-					'User to target. If omitted, uses the user of this command as the target.'
+					'User to target. If omitted, uses the user of this command as the target.',
 				)
 		),
-	execute: async (client, interaction) => {
+	execute: async (_, interaction) => {
 		const user = interaction.options.getUser('user') || interaction.user;
 
 		const embed = new EmbedBuilder().setColor('#FFB6C1');
@@ -41,7 +40,8 @@ export const command: Command = {
 				},
 			});
 			embed.setFooter({
-				text: `You've gained 2 affection for poking someone? You now have ${userData.affection} Affection!`,
+				text:
+					`You've gained 2 affection for poking someone? You now have ${userData.affection} Affection!`,
 			});
 		}
 		embed.setImage(data.url);

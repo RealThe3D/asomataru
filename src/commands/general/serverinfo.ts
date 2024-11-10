@@ -1,6 +1,6 @@
-import { Guild, EmbedBuilder, SlashCommandBuilder, Colors } from 'discord.js';
-import { Command } from '../../interfaces/Command';
-import { Verification } from '../../declarations/verification';
+import { Colors, EmbedBuilder, Guild, SlashCommandBuilder } from 'discord.js';
+import { Command } from '@/interfaces/Command.ts';
+import { Verification } from '@/declarations/verification.ts';
 
 export const command: Command = {
 	name: 'serverinfo',
@@ -10,7 +10,7 @@ export const command: Command = {
 	data: new SlashCommandBuilder()
 		.setName('serverinfo')
 		.setDescription('Info on the current server this command is executed on.'),
-	execute: async (client, interaction) => {
+	execute: async (_, interaction) => {
 		const guild = interaction.guild as Guild;
 		let verification;
 		switch (guild.verificationLevel) {

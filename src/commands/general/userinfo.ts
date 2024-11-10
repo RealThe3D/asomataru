@@ -1,5 +1,5 @@
 import { Colors, EmbedBuilder, SlashCommandBuilder } from 'discord.js';
-import { Command } from '../../interfaces/Command';
+import { Command } from '@/interfaces/Command.ts';
 
 export const command: Command = {
 	name: 'userinfo',
@@ -13,10 +13,10 @@ export const command: Command = {
 			option
 				.setName('user')
 				.setDescription(
-					'user to get info on. If omitted, defaults to your information'
+					'user to get info on. If omitted, defaults to your information',
 				)
 		),
-	execute: async (client, interaction) => {
+	execute: async (_, interaction) => {
 		const user = interaction.options.getUser('user') || interaction.user;
 
 		const embed = new EmbedBuilder()

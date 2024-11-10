@@ -1,11 +1,11 @@
 import {
+	AutocompleteInteraction,
+	ChatInputCommandInteraction,
 	Collection,
 	Events,
-	ChatInputCommandInteraction,
-	AutocompleteInteraction,
 } from 'discord.js';
-import { Event } from '../interfaces/Event';
-import config from '../../config.json';
+import { Event } from '@/interfaces/Event.ts';
+import config from '../../config.json' with { type: 'json' };
 
 // TODO: Object with perms
 export const event: Event = {
@@ -13,7 +13,7 @@ export const event: Event = {
 	once: false,
 	on: async (
 		client,
-		interaction: ChatInputCommandInteraction | AutocompleteInteraction
+		interaction: ChatInputCommandInteraction | AutocompleteInteraction,
 	) => {
 		if (interaction.isChatInputCommand()) {
 			const command = client.commands.get(interaction.commandName);
@@ -41,23 +41,27 @@ export const event: Event = {
 				const timeLeft = (expirationTime - now) / 1000;
 				if (now < expirationTime && timeLeft < 60) {
 					return await interaction.reply({
-						content: `Please wait ${timeLeft.toFixed(
-							1
-						)} seconds to use this command again.`,
+						content: `Please wait ${
+							timeLeft.toFixed(
+								1,
+							)
+						} seconds to use this command again.`,
 						ephemeral: true,
 					});
 				} else if (now < expirationTime && timeLeft > 60) {
 					return await interaction.reply({
-						content: `Please wait ${(timeLeft / 60).toFixed(
-							0
-						)} minutes to use this command again.`,
+						content: `Please wait ${
+							(timeLeft / 60).toFixed(
+								0,
+							)
+						} minutes to use this command again.`,
 						ephemeral: true,
 					});
 				}
 				timestamps.set(interaction.user.id, now);
 				setTimeout(
 					() => timestamps.delete(interaction.user.id),
-					cooldownAmount
+					cooldownAmount,
 				);
 			} else {
 				timestamps?.set(interaction.user.id, now);
@@ -83,7 +87,7 @@ export const event: Event = {
 
 			if (!command) {
 				console.error(
-					`No command matching ${interaction.commandName} was found.`
+					`No command matching ${interaction.commandName} was found.`,
 				);
 				return;
 			}

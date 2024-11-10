@@ -1,16 +1,15 @@
-import { Command } from '../../interfaces/Command';
+import { Command } from '@/interfaces/Command.ts';
 import {
-	SlashCommandBuilder,
-	EmbedBuilder,
 	ActionRowBuilder,
 	ButtonBuilder,
-	MessageComponentInteraction,
 	ButtonStyle,
 	Colors,
 	ComponentType,
+	EmbedBuilder,
+	MessageComponentInteraction,
+	SlashCommandBuilder,
 } from 'discord.js';
 import axios from 'axios';
-import { setTimeout } from 'timers/promises';
 
 export const command: Command = {
 	name: 'anime',
@@ -27,7 +26,7 @@ export const command: Command = {
 				.setRequired(true)
 				.setAutocomplete(true)
 		),
-	execute: async (client, interaction) => {
+	execute: async (_, interaction) => {
 		const buttons = new ActionRowBuilder<ButtonBuilder>().addComponents([
 			new ButtonBuilder()
 				.setCustomId('backwards')
@@ -60,13 +59,14 @@ export const command: Command = {
 		let anime = interaction.options.getString('title') as string;
 		anime = anime.replaceAll(/ /g, '%20');
 		const { data } = await axios.get(
-			`https://kitsu.io/api/edge/anime?filter[text]=${anime}`
+			`https://kitsu.io/api/edge/anime?filter[text]=${anime}`,
 		);
 		let animeData = data.data[pageNum];
-		if (!animeData)
+		if (!animeData) {
 			return await interaction.reply(
-				"That anime doesn't exists. Perhaps you misspelled it?"
+				"That anime doesn't exists. Perhaps you misspelled it?",
 			);
+		}
 
 		const embed = new EmbedBuilder()
 			.setTitle(animeData.attributes.canonicalTitle)
@@ -90,8 +90,7 @@ export const command: Command = {
 				},
 				{
 					name: 'Episode Info',
-					value:
-						animeData.attributes.episodeCount +
+					value: animeData.attributes.episodeCount +
 						' episodes, ' +
 						animeData.attributes.episodeLength +
 						' minutes each',
@@ -129,8 +128,7 @@ export const command: Command = {
 							},
 							{
 								name: 'Episode Info',
-								value:
-									animeData.attributes.episodeCount +
+								value: animeData.attributes.episodeCount +
 									' episodes, ' +
 									animeData.attributes.episodeLength +
 									' minutes each',
@@ -146,7 +144,7 @@ export const command: Command = {
 							.setCustomId('finished')
 							.setEmoji('👍')
 							.setStyle(ButtonStyle.Success)
-							.setDisabled(true)
+							.setDisabled(true),
 					);
 					break;
 				case 'forward':
@@ -184,10 +182,7 @@ export const command: Command = {
 							{
 								name: 'Episode Info',
 								value:
-									animeData.attributes.episodeCount +
-									' episodes, ' +
-									animeData.attributes.episodeLength +
-									' minutes each',
+									`${animeData.attributes.episodeCount} episodes, ${animeData.attributes.episodeLength} minutes each`,
 								inline: false,
 							},
 						]);
@@ -195,7 +190,7 @@ export const command: Command = {
 			}
 			await i.editReply({ embeds: [embed], components: [buttons] });
 		});
-		collector?.on('end', async () => {
+		collector?.on('end', () => {
 			buttons.components.splice(0, 3);
 		});
 
@@ -203,16 +198,16 @@ export const command: Command = {
 			return text.split(' ').slice(0, 50).join(' ') + '...';
 		}
 	},
-	autocomplete: async (client, interaction) => {
+	autocomplete: async (_, interaction) => {
 		const focusedValue = interaction.options.getFocused();
 
 		// internal cooldown to prevent potential rate limits.
-		await setTimeout(1000);
+		await setTimeout(() => null, 1000);
 		const { data } = await axios.get(
 			`https://kitsu.io/api/edge/anime?filter[text]=${focusedValue}`.replaceAll(
 				/ /g,
-				'%20'
-			)
+				'%20',
+			),
 		);
 		const choices: string[] = [];
 
@@ -223,7 +218,7 @@ export const command: Command = {
 		// console.log(choices);
 		const filtered = choices.filter((choice) => choice.search(focusedValue));
 		await interaction.respond(
-			filtered.map((choice) => ({ name: choice, value: choice }))
+			filtered.map((choice) => ({ name: choice, value: choice })),
 		);
 	},
 };

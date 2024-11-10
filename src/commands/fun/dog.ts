@@ -1,12 +1,7 @@
-import {
-	EmbedBuilder,
-	SlashCommandBuilder,
-	bold,
-	underscore,
-} from 'discord.js';
+import { bold, EmbedBuilder, SlashCommandBuilder, underline } from 'discord.js';
 import axios from 'axios';
-import { Command } from '../../interfaces/Command';
-import { selectRandomColor } from '../../constants/randomColors';
+import { Command } from '@/interfaces/Command.ts';
+import { selectRandomColor } from '@/constants/randomColors.ts';
 
 export const command: Command = {
 	name: 'dog',
@@ -16,12 +11,12 @@ export const command: Command = {
 	data: new SlashCommandBuilder()
 		.setName('dog')
 		.setDescription('Displays a picture of a dog'),
-	execute: async (client, interaction) => {
+	execute: async (_, interaction) => {
 		await interaction.deferReply();
 		const { data } = await axios.get('https://random.dog/woof.json');
 
 		const embed = new EmbedBuilder()
-			.setTitle(bold(underscore('Who is a good doggo!'))) //`**____**`)
+			.setTitle(bold(underline('Who is a good doggo!'))) //`**____**`)
 			.setImage(data.url)
 			.setColor(selectRandomColor())
 			.setFooter({ text: 'Powered by random.dog API' });

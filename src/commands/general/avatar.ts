@@ -1,4 +1,4 @@
-import { Command } from '../../interfaces/Command';
+import { Command } from '@/interfaces/Command.ts';
 import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 
 export const command: Command = {
@@ -13,10 +13,10 @@ export const command: Command = {
 			option
 				.setName('user')
 				.setDescription(
-					'user avatar to display. If omitted, displays your avatar.'
+					'user avatar to display. If omitted, displays your avatar.',
 				)
 		),
-	execute: async (client, interaction) => {
+	execute: async (_, interaction) => {
 		const user = interaction.options.getUser('user') || interaction.user;
 
 		const embed = new EmbedBuilder()
@@ -25,7 +25,7 @@ export const command: Command = {
 				user.displayAvatarURL({
 					size: 512,
 					extension: 'png',
-				})
+				}),
 			);
 
 		await interaction.reply({ embeds: [embed] });

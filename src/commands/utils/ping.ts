@@ -1,5 +1,5 @@
 import { Colors, EmbedBuilder, SlashCommandBuilder } from 'discord.js';
-import { Command } from '../../interfaces/Command';
+import { Command } from '@/interfaces/Command.ts';
 
 export const command: Command = {
 	name: 'ping',
@@ -9,7 +9,7 @@ export const command: Command = {
 	data: new SlashCommandBuilder()
 		.setName('ping')
 		.setDescription('Replies with the latency with milliseconds'),
-	execute: async (client, interaction) => {
+	execute: async (_, interaction) => {
 		await interaction.deferReply();
 
 		const initEmbed = new EmbedBuilder()
@@ -24,7 +24,7 @@ export const command: Command = {
 			.setDescription(
 				`The latency is ${
 					newInteraction.createdTimestamp - interaction.createdTimestamp
-				}ms. 🏓`
+				}ms. 🏓`,
 			)
 			.setColor(Colors.Green);
 

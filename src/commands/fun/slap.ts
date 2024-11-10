@@ -1,7 +1,7 @@
 import axios from 'axios';
-import prisma from '../../structures/prisma';
+import prisma from '@/structures/prisma.ts';
 import { Colors, EmbedBuilder, SlashCommandBuilder } from 'discord.js';
-import { Command } from '../../interfaces/Command';
+import { Command } from '@/interfaces/Command.ts';
 
 export const command: Command = {
 	name: 'slap',
@@ -15,10 +15,10 @@ export const command: Command = {
 			option
 				.setName('user')
 				.setDescription(
-					'User to target. If omitted, uses the user of this command as the target.'
+					'User to target. If omitted, uses the user of this command as the target.',
 				)
 		),
-	execute: async (client, interaction) => {
+	execute: async (_, interaction) => {
 		const user = interaction.options.getUser('user') || interaction.user;
 
 		const embed = new EmbedBuilder().setColor(Colors.Red);
@@ -40,7 +40,8 @@ export const command: Command = {
 				},
 			});
 			embed.setFooter({
-				text: `That's mean!!! ._. , You lost 5 affection, you now have ${userData.affection} Affection...`,
+				text:
+					`That's mean!!! ._. , You lost 5 affection, you now have ${userData.affection} Affection...`,
 			});
 		}
 		embed.setImage(data.url);

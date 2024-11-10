@@ -1,8 +1,8 @@
 import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 import axios from 'axios';
-import { Command } from '../../interfaces/Command';
-import { randomIndexOfArray } from '../../constants';
-import { IMemes } from '../../declarations/memes';
+import { Command } from '@/interfaces/Command.ts';
+import { randomIndexOfArray, selectRandomColor } from '@/constants/index.ts';
+import { IMemes } from '@/declarations/memes.ts';
 
 export const command: Command = {
 	name: 'bird',
@@ -12,15 +12,16 @@ export const command: Command = {
 	data: new SlashCommandBuilder()
 		.setName('bird')
 		.setDescription('Displays an image of a bird.'),
-	execute: async (client, interaction) => {
+	execute: async (_, interaction) => {
 		await interaction.deferReply();
 		const { data } = await axios.get(
-			'https://www.reddit.com/r/birding/top.json?sort=top&t=day&limit=100'
+			'https://www.reddit.com/r/birding/top.json?sort=top&t=day&limit=100',
 		);
 		const randomMemeData = randomIndexOfArray<IMemes>(data.data.children).data;
 		const embed = new EmbedBuilder()
 			.setTitle(randomMemeData.title)
 			.setImage(randomMemeData.url)
+			.setColor(selectRandomColor())
 			.setFields([
 				{
 					name: 'Votes',

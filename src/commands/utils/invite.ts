@@ -5,7 +5,7 @@ import {
 	EmbedBuilder,
 	SlashCommandBuilder,
 } from 'discord.js';
-import { Command } from '../../interfaces/Command';
+import { Command } from '@/interfaces/Command.ts';
 
 export const command: Command = {
 	name: 'invite',
@@ -15,7 +15,7 @@ export const command: Command = {
 	data: new SlashCommandBuilder()
 		.setName('invite')
 		.setDescription('Sends an invite to the support server!'),
-	execute: async (client, interaction) => {
+	execute: async (_, interaction) => {
 		const button = new ActionRowBuilder<ButtonBuilder>().addComponents([
 			new ButtonBuilder()
 				.setLabel("Asomataru's support server")

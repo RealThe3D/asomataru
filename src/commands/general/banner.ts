@@ -1,4 +1,5 @@
-import { Command } from '../../interfaces/Command';
+import { selectRandomColor } from '@/constants/index.ts';
+import { Command } from '@/interfaces/Command.ts';
 import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 
 export const command: Command = {
@@ -13,10 +14,10 @@ export const command: Command = {
 			option
 				.setName('user')
 				.setDescription(
-					'User banner to display. If omitted, displays your banner.'
+					'User banner to display. If omitted, displays your banner.',
 				)
 		),
-	execute: async (client, interaction) => {
+	execute: async (_, interaction) => {
 		const user = interaction.options.getUser('user') || interaction.user;
 		const userBanner = await user.fetch(true);
 
@@ -33,8 +34,9 @@ export const command: Command = {
 				userBanner.bannerURL({
 					size: 512,
 					extension: 'png',
-				}) as string
-			);
+				}) as string,
+			)
+			.setColor(selectRandomColor());
 
 		await interaction.reply({ embeds: [embed] });
 	},

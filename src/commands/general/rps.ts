@@ -1,16 +1,15 @@
 import {
-	SlashCommandBuilder,
-	EmbedBuilder,
 	ActionRowBuilder,
 	ButtonBuilder,
-	CacheType,
-	MessageComponentInteraction,
 	ButtonStyle,
 	Colors,
 	ComponentType,
+	EmbedBuilder,
+	MessageComponentInteraction,
+	SlashCommandBuilder,
 } from 'discord.js';
-import { randomIndexOfArray } from '../../constants';
-import { Command } from '../../interfaces/Command';
+import { randomIndexOfArray } from '@/constants/index.ts';
+import { Command } from '@/interfaces/Command.ts';
 
 enum RPS {
 	ROCK,
@@ -20,15 +19,13 @@ enum RPS {
 
 export const command: Command = {
 	name: 'rps',
-
 	ownerOnly: false,
-
 	cooldown: 15,
 	usage: 'rps <react to message>',
 	data: new SlashCommandBuilder()
 		.setName('rps')
 		.setDescription('Starts a game of rock-paper-scissors'),
-	execute: async (client, interaction) => {
+	execute: async (_, interaction) => {
 		const botSelections = [RPS.ROCK, RPS.PAPER, RPS.SCISSORS];
 		const botSelection = randomIndexOfArray(botSelections);
 
@@ -44,7 +41,7 @@ export const command: Command = {
 			new ButtonBuilder()
 				.setStyle(ButtonStyle.Secondary)
 				.setEmoji('✂️')
-				.setCustomId('scissors')
+				.setCustomId('scissors'),
 		);
 
 		const filter = (i: MessageComponentInteraction) => {

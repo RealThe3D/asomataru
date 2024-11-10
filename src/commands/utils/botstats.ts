@@ -1,4 +1,4 @@
-import { Command } from '../../interfaces/Command';
+import { Command } from '@/interfaces/Command.ts';
 import { Colors, EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 
 export const command: Command = {
@@ -13,7 +13,7 @@ export const command: Command = {
 		const guildCount = (await client.guilds.fetch()).size;
 		const memberCount = await client.guilds.cache.reduce(
 			(acc, guild) => acc + guild.memberCount,
-			0
+			0,
 		);
 
 		const embed = new EmbedBuilder()

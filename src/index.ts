@@ -1,3 +1,3 @@
-import Client from './structures/client';
+import Asomataru from '@/structures/client.ts';
 
-new Client().init();
+new Asomataru().init();

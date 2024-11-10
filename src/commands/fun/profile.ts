@@ -1,6 +1,6 @@
-import { Command } from '../../interfaces/Command';
+import { Command } from '@/interfaces/Command.ts';
 import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
-import prisma from '../../structures/prisma';
+import prisma from '@/structures/prisma.ts';
 
 export const command: Command = {
 	name: 'profile',
@@ -14,17 +14,18 @@ export const command: Command = {
 			option
 				.setName('user')
 				.setDescription(
-					'User to target. If omitted, uses the user of this command as the target.'
+					'User to target. If omitted, uses the user of this command as the target.',
 				)
 		),
-	execute: async (client, interaction) => {
+	execute: async (_, interaction) => {
 		const user = interaction.options.getUser('user') || interaction.user;
 
-		if (user.bot)
+		if (user.bot) {
 			return await interaction.reply({
 				content: 'That is a bot.',
 				ephemeral: true,
 			});
+		}
 
 		const userData = await prisma.user.findUnique({
 			where: {

@@ -1,10 +1,10 @@
-import { Command } from '../../interfaces/Command';
+import { Command } from '@/interfaces/Command.ts';
 import {
+	Colors,
 	EmbedBuilder,
+	PermissionFlagsBits,
 	SlashCommandBuilder,
 	User,
-	Colors,
-	PermissionFlagsBits,
 } from 'discord.js';
 
 export const command: Command = {
@@ -16,7 +16,7 @@ export const command: Command = {
 		.setName('kick')
 		.setDescription('Kick a user.')
 		.setDefaultMemberPermissions(
-			PermissionFlagsBits.BanMembers | PermissionFlagsBits.KickMembers
+			PermissionFlagsBits.BanMembers | PermissionFlagsBits.KickMembers,
 		)
 		.addUserOption((option) =>
 			option
@@ -29,7 +29,7 @@ export const command: Command = {
 		),
 	// .addStringOption(option => option.setName('id').setDescription('id of the user')),
 
-	execute: async (client, interaction) => {
+	execute: async (_, interaction) => {
 		const mentioned = interaction.options.getUser('mention') as User;
 		const reason = interaction.options.getString('reason') || 'No reason given';
 
@@ -50,7 +50,7 @@ export const command: Command = {
 					value: `${interaction.user.username}`,
 					inline: true,
 				},
-				{ name: 'Reason', value: `${reason}`, inline: false }
+				{ name: 'Reason', value: `${reason}`, inline: false },
 			);
 		await interaction.reply({ embeds: [embed] });
 	},

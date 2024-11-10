@@ -1,4 +1,4 @@
-import { Command } from '../../interfaces/Command';
+import { Command } from '@/interfaces/Command.ts';
 import { SlashCommandBuilder, time } from 'discord.js';
 
 export const command: Command = {
@@ -9,7 +9,7 @@ export const command: Command = {
 	data: new SlashCommandBuilder()
 		.setName('time')
 		.setDescription('Shows what time it is'),
-	execute: async (client, interaction) => {
-		await interaction.reply(`It is currently ${time(new Date())}`);
+	execute: async (_, interaction) => {
+		await interaction.reply(`It is currently ${time()}`);
 	},
 };

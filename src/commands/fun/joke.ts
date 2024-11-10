@@ -1,4 +1,4 @@
-import { Command } from '../../interfaces/Command';
+import { Command } from '@/interfaces/Command.ts';
 import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 import axios from 'axios';
 
@@ -10,10 +10,10 @@ export const command: Command = {
 	data: new SlashCommandBuilder()
 		.setName('joke')
 		.setDescription('Sends a joke in chat'),
-	execute: async (client, interaction) => {
+	execute: async (_, interaction) => {
 		await interaction.deferReply();
 		const { data } = await axios.get(
-			'https://v2.jokeapi.dev/joke/Any?safe-mode&type=single'
+			'https://v2.jokeapi.dev/joke/Any?safe-mode&type=single',
 		);
 
 		const embed = new EmbedBuilder()

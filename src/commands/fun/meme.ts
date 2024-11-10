@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { Command } from '../../interfaces/Command';
-import { randomIndexOfArray } from '../../constants';
+import { Command } from '@/interfaces/Command.ts';
+import { randomIndexOfArray } from '@/constants/index.ts';
 import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
-import { IMemes } from '../../declarations/memes';
+import { IMemes } from '@/declarations/memes.ts';
 
 export const command: Command = {
 	name: 'meme',
@@ -12,10 +12,10 @@ export const command: Command = {
 	data: new SlashCommandBuilder()
 		.setName('meme')
 		.setDescription('Sends a meme into chat.'),
-	execute: async (client, interaction) => {
+	execute: async (_, interaction) => {
 		await interaction.deferReply();
 		const { data } = await axios.get(
-			'https://www.reddit.com/r/dankmemes/top.json?sort=top&t=day&limit=100'
+			'https://www.reddit.com/r/dankmemes/top.json?sort=top&t=day&limit=100',
 		);
 
 		const randomMemeData = randomIndexOfArray<IMemes>(data.data.children).data;
