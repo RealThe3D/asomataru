@@ -1,5 +1,7 @@
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["deno"]
+  output = "../generated/client"
 }
 
 datasource db {
@@ -13,8 +15,8 @@ model Guild {
 }
 
 model User {
-  id        String     @id @default(auto()) @map("_id") @db.ObjectId
-  userId    String     @unique
-  affection Int
-  coins     Int
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String @unique
+  affection Int    @default(0)
+  coins     Int    @default(0)
 }

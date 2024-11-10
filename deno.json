@@ -1,0 +1,19 @@
+{
+	"tasks": {
+		"start": "NODE_ENV=production deno run --watch -A --env-file src/index.ts",
+		"dev": "deno run --watch -A --env-file src/index.ts"
+	},
+	"imports": {
+		"discord.js": "npm:discord.js",
+		"axios": "npm:axios",
+		"@/": "./src/"
+	},
+	"lint": {
+		"exclude": ["node_modules", "generated"]
+	},
+	"fmt": {
+		"useTabs": true,
+		"singleQuote": true,
+		"exclude": ["node_modules/", "generated/"]
+	}
+}
