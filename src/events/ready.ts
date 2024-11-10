@@ -1,5 +1,5 @@
-import { Event } from '../interfaces/Event';
-import fs from 'fs';
+import { Event } from '@/interfaces/Event.ts';
+import fs from 'node:fs';
 import {
 	ActivityType,
 	Events,
@@ -13,9 +13,9 @@ export const event: Event = {
 	once: true,
 	on: async (client) => {
 		const TOKEN = (
-			process.env.NODE_ENV == 'production'
-				? process.env.TOKEN
-				: process.env.TEST_TOKEN
+			Deno.env.get('NODE_ENV') == 'production'
+				? Deno.env.get('TOKEN')
+				: Deno.env.get('TEST_TOKEN')
 		) as string;
 		const commandsArr = [];
 		const commandFolders = fs.readdirSync('./src/commands');
@@ -23,7 +23,7 @@ export const event: Event = {
 			// if (folder !== 'moderation') continue;
 			const commandFiles = fs
 				.readdirSync(`src/commands/${folder}`)
-				.filter((file) => file.endsWith('.ts'));
+				.filter((file: string) => file.endsWith('.ts'));
 			for (const file of commandFiles) {
 				const { command } = await import(`../commands/${folder}/${file}`);
 				command.module = folder;
@@ -50,7 +50,7 @@ export const event: Event = {
 		client.user?.setPresence({
 			status: PresenceUpdateStatus.Online,
 			activities: [
-				{ name: 'Asomataru v3 Beta Phase 4', type: ActivityType.Playing },
+				{ name: 'Asomataru v3 Beta Phase 5', type: ActivityType.Playing },
 			],
 		});
 	},
