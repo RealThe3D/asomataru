@@ -10,7 +10,8 @@ import {
 	SlashCommandBuilder,
 } from 'discord.js';
 import axios from 'axios';
-
+import { delay } from 'jsr:@std/async/delay';
+import { format } from 'npm:date-fns';
 export const command: Command = {
 	name: 'anime',
 	ownerOnly: false,
@@ -85,7 +86,7 @@ export const command: Command = {
 				},
 				{
 					name: 'Air Date',
-					value: animeData.attributes.startDate,
+					value: format(animeData.attributes.startDate, 'MMMM d, yyyy'),
 					inline: false,
 				},
 				{
@@ -123,7 +124,7 @@ export const command: Command = {
 							},
 							{
 								name: 'Air Date',
-								value: animeData.attributes.startDate,
+								value: format(animeData.attributes.startDate, 'MMMM d, yyyy'),
 								inline: false,
 							},
 							{
@@ -176,7 +177,7 @@ export const command: Command = {
 							},
 							{
 								name: 'Air Date',
-								value: animeData.attributes.startDate,
+								value: format(animeData.attributes.startDate, 'MMMM d, yyyy'),
 								inline: false,
 							},
 							{
@@ -202,7 +203,7 @@ export const command: Command = {
 		const focusedValue = interaction.options.getFocused();
 
 		// internal cooldown to prevent potential rate limits.
-		await setTimeout(() => null, 1000);
+		await delay(1000);
 		const { data } = await axios.get(
 			`https://kitsu.io/api/edge/anime?filter[text]=${focusedValue}`.replaceAll(
 				/ /g,
