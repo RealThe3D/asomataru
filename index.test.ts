@@ -1,6 +1,5 @@
 import { assertEquals } from 'jsr:@std/assert';
-import { celsiusToFahrenheit } from '@/constants/index.ts';
-import { fahrenheitToCelsius } from '@/constants/math/temp_conversion.ts';
+import { celsiusToFahrenheit, fahrenheitToCelsius } from '@/constants/index.ts';
 
 Deno.test('Celsius to Fahrenheit', () => {
 	assertEquals(celsiusToFahrenheit(100), 212);
