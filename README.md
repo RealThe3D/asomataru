@@ -9,7 +9,7 @@ TypeScript!
 
 ### Link to the bot's website
 
-> [Asomataru](https://asomataru.vercel.app/)
+> [Asomataru Website](https://asomataru.vercel.app/)
 
 I’m hoping to expand the bot with more commands and make Koro proud!
 
@@ -17,10 +17,10 @@ I’m hoping to expand the bot with more commands and make Koro proud!
 
 Asomataru supports various commands for you to enjoy! Here are some examples:
 
-/kick @user [reason] - Kick a user from the server.
-/hug @user - Hug a user and increase affection points.
-/time - Display the current time.
-/anime [title] - Get information about an anime.
+/kick @user [reason] - Kick a user from the server. \
+/hug @user - Hug a user and increase affection points. \
+/time - Display the current time. \
+/anime [title] - Get information about an anime. \
 /convert [temp_unit] [temp_value] - Convert between Celsius and Fahrenheit.
 
 For a full list of commands, use the /help command
