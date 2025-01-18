@@ -1,5 +1,6 @@
 import { Command } from '@/interfaces/Command.ts';
 import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
+import { randomIndexOfArray } from '@/constants/index.ts';
 
 export const command: Command = {
 	name: 'topic',
@@ -20,7 +21,7 @@ export const command: Command = {
 			"What's the most useful thing you own?",
 			"What's your favorite way to waste time?",
 			"What's your favorite holiday?",
-			'What do you think about 2024 so far?',
+			'What do you think about 2025 so far?',
 			'What is your routine for an average weekday?',
 			"What happened in the funniest YouTube video you've seen?",
 			"What's the story behind how you met your best friend?",
@@ -29,8 +30,7 @@ export const command: Command = {
 			"What's a superpower you wish to have?",
 		];
 
-		const response = options[Math.floor(Math.random() * options.length)];
-		embed.setDescription(response);
+		embed.setDescription(randomIndexOfArray(options));
 		await interaction.reply({ embeds: [embed] });
 	},
 };
