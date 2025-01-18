@@ -4,7 +4,6 @@
 	"description": "A discord bot made by The3D (the3d) in discord.js and TypeScript.",
 	"private": "true",
 	"scripts": {
-		"start": "cross-env NODE_ENV=production ts-node .",
 		"lint": "eslint"
 	},
 	"license": "MIT",
@@ -12,7 +11,7 @@
 		"@prisma/client": "^5.22.0"
 	},
 	"devDependencies": {
-		"@eslint/js": "^9.12.0",
+		"@eslint/js": "^9.18.0",
 		"@types/eslint__js": "^8.42.3",
 		"eslint": "^9.12.0",
 		"prisma": "^5.22.0",
