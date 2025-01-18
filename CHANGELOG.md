@@ -4,6 +4,21 @@
 
 ## Asomataru v3.0
 
+## v3.0.1 
+
+Small update to Asomataru, expect v3.1 to drop this month!
+
+### ✨ New Features
+
+- Added pagination to `credits`
+- Added `github` command
+
+### 💥 New Changes
+- Asomataru is now dockerized 
+- `topic` has been updated slightly
+
+- Jan 18, 2025
+
 ## v3.0
 Long due, Asomataru v3 is here!
 
