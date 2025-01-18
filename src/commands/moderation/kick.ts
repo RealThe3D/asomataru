@@ -11,7 +11,7 @@ export const command: Command = {
 	name: 'kick',
 	ownerOnly: false,
 	cooldown: 0,
-	usage: 'ban (@mention or userID) (reason)',
+	usage: 'kick (@mention or userID) (reason)',
 	data: new SlashCommandBuilder()
 		.setName('kick')
 		.setDescription('Kick a user.')
