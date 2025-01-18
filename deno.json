@@ -4,12 +4,15 @@
 		"dev": "deno run --watch -A --env-file src/index.ts"
 	},
 	"imports": {
-		"discord.js": "npm:discord.js",
+		"@/": "./src/",
 		"axios": "npm:axios",
-		"@/": "./src/"
+		"discord.js": "npm:discord.js",
+		"prisma": "npm:prisma",
+		"date-fns": "npm:date-fns"
 	},
+
 	"lint": {
-		"exclude": ["node_modules", "generated"]
+		"exclude": ["generated"]
 	},
 	"fmt": {
 		"useTabs": true,

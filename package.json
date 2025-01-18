@@ -11,11 +11,12 @@
 	},
 	"license": "MIT",
 	"dependencies": {
+		"@google/generative-ai": "^0.21.0",
 		"@prisma/client": "^5.22.0",
-		"axios": "^1.7.2",
+		"axios": "^1.7.9",
 		"cross-env": "^7.0.3",
 		"date-fns": "^4.1.0",
-		"discord.js": "^14.15.3",
+		"discord.js": "^14.17.3",
 		"ts-node": "^10.9.2"
 	},
 	"devDependencies": {
