@@ -10,7 +10,6 @@
 		"prisma": "npm:prisma",
 		"date-fns": "npm:date-fns"
 	},
-
 	"lint": {
 		"exclude": ["generated"]
 	},
