@@ -8,7 +8,7 @@ import {
 	MessageComponentInteraction,
 	SlashCommandBuilder,
 } from 'discord.js';
-import { randomIndexOfArray } from '@/constants/index.ts';
+import { randomItemInArray } from '@/constants/index.ts';
 import { Command } from '@/interfaces/Command.ts';
 
 enum RPS {
@@ -27,7 +27,7 @@ export const command: Command = {
 		.setDescription('Starts a game of rock-paper-scissors'),
 	execute: async (_, interaction) => {
 		const botSelections = [RPS.ROCK, RPS.PAPER, RPS.SCISSORS];
-		const botSelection = randomIndexOfArray(botSelections);
+		const botSelection = randomItemInArray(botSelections);
 
 		const buttons = new ActionRowBuilder<ButtonBuilder>().addComponents(
 			new ButtonBuilder()

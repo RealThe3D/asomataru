@@ -1,5 +1,5 @@
 export { random } from './math/random.ts';
-export { randomIndexOfArray } from './math/randomIndexOfArray.ts';
+export { randomItemInArray } from './math/randomItemInArray.ts';
 export { selectRandomColor } from './randomColors.ts';
 export {
 	celsiusToFahrenheit,

@@ -1,6 +1,6 @@
 import { Command } from '@/interfaces/Command.ts';
 import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
-import { randomIndexOfArray } from '@/constants/index.ts';
+import { randomItemInArray } from '@/constants/index.ts';
 
 export const command: Command = {
 	name: 'topic',
@@ -30,7 +30,7 @@ export const command: Command = {
 			"What's a superpower you wish to have?",
 		];
 
-		embed.setDescription(randomIndexOfArray(options));
+		embed.setDescription(randomItemInArray(options));
 		await interaction.reply({ embeds: [embed] });
 	},
 };

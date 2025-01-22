@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Command } from '@/interfaces/Command.ts';
-import { randomIndexOfArray } from '@/constants/index.ts';
+import { randomItemInArray } from '@/constants/index.ts';
 import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 import { IMemes } from '@/declarations/memes.ts';
 
@@ -18,7 +18,7 @@ export const command: Command = {
 			'https://www.reddit.com/r/dankmemes/top.json?sort=top&t=day&limit=100',
 		);
 
-		const randomMemeData = randomIndexOfArray<IMemes>(data.data.children).data;
+		const randomMemeData = randomItemInArray<IMemes>(data.data.children).data;
 
 		const embed = new EmbedBuilder()
 			.setTitle(randomMemeData.title)
