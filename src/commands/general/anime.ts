@@ -10,7 +10,7 @@ import {
 	SlashCommandBuilder,
 } from 'discord.js';
 import axios from 'axios';
-import { delay } from 'jsr:@std/async/delay';
+import { delay } from "delay";
 import { format } from 'npm:date-fns';
 export const command: Command = {
 	name: 'anime',
