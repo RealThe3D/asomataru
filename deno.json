@@ -8,7 +8,9 @@
 		"axios": "npm:axios",
 		"discord.js": "npm:discord.js",
 		"prisma": "npm:prisma",
-		"date-fns": "npm:date-fns"
+		"date-fns": "npm:date-fns",
+		"@google/generative-ai": "npm:@google/generative-ai",
+		"delay": "jsr:@std/async/delay"
 	},
 	"lint": {
 		"exclude": ["generated"]
@@ -17,5 +19,6 @@
 		"useTabs": true,
 		"singleQuote": true,
 		"exclude": ["node_modules/", "generated/"]
-	}
+	},
+	"nodeModulesDir": "auto"
 }
