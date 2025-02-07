@@ -1,10 +1,10 @@
-FROM denoland/deno:2.1.7
+FROM denoland/deno:2.1.9
 
 RUN apt-get update -y && apt-get install -y openssl
 
 WORKDIR /app
 
-COPY deno.json deno.lock package.json ./
+COPY deno.json package.json ./
 
 RUN deno install
 
