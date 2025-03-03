@@ -1,4 +1,4 @@
-FROM denoland/deno:2.1.9
+FROM denoland/deno:2.2.2
 
 RUN apt-get update -y && apt-get install -y openssl
 
