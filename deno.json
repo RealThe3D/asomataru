@@ -5,12 +5,14 @@
 	},
 	"imports": {
 		"@/": "./src/",
+		"@std/dotenv": "jsr:@std/dotenv@^0.225.5",
 		"axios": "npm:axios",
 		"discord.js": "npm:discord.js",
 		"prisma": "npm:prisma",
 		"date-fns": "npm:date-fns",
-		"@google/generative-ai": "npm:@google/generative-ai",
-		"delay": "jsr:@std/async/delay"
+		"delay": "jsr:@std/async/delay",
+		"drizzle-kit": "npm:drizzle-kit",
+		"drizzle-orm": "npm:drizzle-orm"
 	},
 	"lint": {
 		"exclude": ["generated"]
