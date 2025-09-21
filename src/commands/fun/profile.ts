@@ -1,29 +1,29 @@
-import { Command } from '@/interfaces/Command.ts';
-import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
-import { db, users as usersTable } from '@/db/index.ts';
-import { eq } from 'drizzle-orm';
+import { EmbedBuilder, SlashCommandBuilder } from "discord.js";
+import { eq } from "drizzle-orm";
+import { db, users as usersTable } from "@/db/index.ts";
+import type { Command } from "@/interfaces/Command.ts";
 
 export const command: Command = {
-	name: 'profile',
+	name: "profile",
 	ownerOnly: false,
 	cooldown: 0,
-	usage: 'profile (@mention or userID)',
+	usage: "profile (@mention or userID)",
 	data: new SlashCommandBuilder()
-		.setName('profile')
-		.setDescription('Display a profile.')
+		.setName("profile")
+		.setDescription("Display a profile.")
 		.addUserOption((option) =>
 			option
-				.setName('user')
+				.setName("user")
 				.setDescription(
-					'User to target. If omitted, uses the user of this command as the target.'
-				)
+					"User to target. If omitted, uses the user of this command as the target.",
+				),
 		),
 	execute: async (_, interaction) => {
-		const user = interaction.options.getUser('user') || interaction.user;
+		const user = interaction.options.getUser("user") || interaction.user;
 
 		if (user.bot) {
 			return await interaction.reply({
-				content: 'That is a bot.',
+				content: "That is a bot.",
 				ephemeral: true,
 			});
 		}
@@ -35,7 +35,7 @@ export const command: Command = {
 
 		if (!userData) {
 			return await interaction.reply({
-				content: 'This user has not set up a profile.',
+				content: "This user has not set up a profile.",
 				ephemeral: true,
 			});
 		}
@@ -44,17 +44,17 @@ export const command: Command = {
 			.setTitle(`${user.username}'s Stats`)
 			.setFields([
 				{
-					name: 'Coins',
+					name: "Coins",
 					value: `${userData[0].coins} coins`,
 					inline: true,
 				},
 				{
-					name: 'Affection',
+					name: "Affection",
 					value: `${userData[0].affection} affection`,
 					inline: true,
 				},
 			])
-			.setFooter({ text: 'WORK IN PROGRESS' });
+			.setFooter({ text: "WORK IN PROGRESS" });
 		await interaction.reply({ embeds: [embed] });
 	},
 };

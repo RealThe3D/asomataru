@@ -1,10 +1,10 @@
 import {
-	AutocompleteInteraction,
-	ChatInputCommandInteraction,
+	type AutocompleteInteraction,
+	type ChatInputCommandInteraction,
 	Collection,
 	Events,
 } from 'discord.js';
-import { Event } from '@/interfaces/Event.ts';
+import type { Event } from '@/interfaces/Event.ts';
 import config from '../../config.json' with { type: 'json' };
 
 // TODO: Object with perms

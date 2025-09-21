@@ -1,23 +1,23 @@
-import { Command } from '@/interfaces/Command.ts';
-import { Colors, EmbedBuilder, SlashCommandBuilder } from 'discord.js';
+import { Colors, EmbedBuilder, SlashCommandBuilder } from "discord.js";
+import type { Command } from "@/interfaces/Command.ts";
 
 export const command: Command = {
-	name: 'help',
+	name: "help",
 	ownerOnly: false,
 	cooldown: 0,
-	usage: 'help (command)',
+	usage: "help (command)",
 	data: new SlashCommandBuilder()
-		.setName('help')
-		.setDescription('Displays help')
+		.setName("help")
+		.setDescription("Displays help")
 		.addStringOption((option) =>
-			option.setName('command').setDescription('Name of command')
+			option.setName("command").setDescription("Name of command"),
 		),
 	execute: async (client, interaction) => {
-		const cmdValue = interaction.options.getString('command');
+		const cmdValue = interaction.options.getString("command");
 		if (!cmdValue) {
 			const embed = new EmbedBuilder()
 				.setDescription(
-					'For more information about a command, use `help <command_name>` command',
+					"For more information about a command, use `help <command_name>` command",
 				)
 				.setColor(Colors.Green)
 				.setTimestamp(new Date());
@@ -26,7 +26,7 @@ export const command: Command = {
 				// @ts-expect-error idk
 				const cat = command.module;
 
-				if (!Object.prototype.hasOwnProperty.call(help, cat)) help[cat] = [];
+				if (!Object.hasOwn(help, cat)) help[cat] = [];
 
 				help[cat].push(`\`${command.name}\``);
 			});
@@ -36,7 +36,7 @@ export const command: Command = {
 					{
 						name: `**${category.charAt(0).toUpperCase() + category.slice(1)}**`,
 
-						value: help[category].join(' '),
+						value: help[category].join(" "),
 					},
 				]);
 			}
@@ -51,17 +51,16 @@ export const command: Command = {
 					)
 					.setFields([
 						{
-							name: 'Usage',
-							value: command.usage ? command.usage : 'Not Found',
+							name: "Usage",
+							value: command.usage ? command.usage : "Not Found",
 						},
 					])
 					.setColor(Colors.Green)
-					.setFooter({ text: '() - Optional, <> - Required' });
+					.setFooter({ text: "() - Optional, <> - Required" });
 				await interaction.reply({ embeds: [embed], ephemeral: true });
 			} else {
 				await interaction.reply({
-					content: 'Command with name ' + '`' + `${command}` + '`' +
-						' was not found.',
+					content: `Command with name " + \`${command}\` was not found.`,
 					ephemeral: true,
 				});
 			}

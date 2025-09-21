@@ -1,4 +1,4 @@
-import { ColorResolvable, Colors } from 'discord.js';
+import { type ColorResolvable, Colors } from "discord.js";
 
 function selectRandomColor(): ColorResolvable {
 	const keyColors = Object.keys(Colors);

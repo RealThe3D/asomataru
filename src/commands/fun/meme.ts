@@ -1,21 +1,21 @@
-import axios from 'axios';
-import { Command } from '@/interfaces/Command.ts';
-import { randomItemInArray } from '@/constants/index.ts';
-import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
-import { IMemes } from '@/declarations/memes.ts';
+import axios from "axios";
+import { EmbedBuilder, SlashCommandBuilder } from "discord.js";
+import { randomItemInArray } from "@/constants/index.ts";
+import type { IMemes } from "@/declarations/memes.ts";
+import type { Command } from "@/interfaces/Command.ts";
 
 export const command: Command = {
-	name: 'meme',
+	name: "meme",
 	ownerOnly: false,
 	cooldown: 10,
-	usage: 'a!meme',
+	usage: "a!meme",
 	data: new SlashCommandBuilder()
-		.setName('meme')
-		.setDescription('Sends a meme into chat.'),
+		.setName("meme")
+		.setDescription("Sends a meme into chat."),
 	execute: async (_, interaction) => {
 		await interaction.deferReply();
 		const { data } = await axios.get(
-			'https://www.reddit.com/r/dankmemes/top.json?sort=top&t=day&limit=100',
+			"https://www.reddit.com/r/dankmemes/top.json?sort=top&t=day&limit=100",
 		);
 
 		const randomMemeData = randomItemInArray<IMemes>(data.data.children).data;
@@ -23,10 +23,10 @@ export const command: Command = {
 		const embed = new EmbedBuilder()
 			.setTitle(randomMemeData.title)
 			.setImage(randomMemeData.url)
-			.setColor('Orange')
+			.setColor("Orange")
 			.setFields([
 				{
-					name: 'Votes',
+					name: "Votes",
 					value: `${randomMemeData.ups} / ${randomMemeData.downs}`,
 					inline: false,
 				},

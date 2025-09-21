@@ -1,56 +1,56 @@
-import { Command } from '@/interfaces/Command.ts';
 import {
 	Colors,
 	EmbedBuilder,
 	PermissionFlagsBits,
 	SlashCommandBuilder,
-	User,
-} from 'discord.js';
+	type User,
+} from "discord.js";
+import type { Command } from "@/interfaces/Command.ts";
 
 export const command: Command = {
-	name: 'kick',
+	name: "kick",
 	ownerOnly: false,
 	cooldown: 0,
-	usage: 'kick (@mention or userID) (reason)',
+	usage: "kick (@mention or userID) (reason)",
 	data: new SlashCommandBuilder()
-		.setName('kick')
-		.setDescription('Kick a user.')
+		.setName("kick")
+		.setDescription("Kick a user.")
 		.setDefaultMemberPermissions(
 			PermissionFlagsBits.BanMembers | PermissionFlagsBits.KickMembers,
 		)
 		.addUserOption((option) =>
 			option
-				.setName('mention')
-				.setDescription('The user you are trying to ban')
-				.setRequired(true)
+				.setName("mention")
+				.setDescription("The user you are trying to ban")
+				.setRequired(true),
 		)
 		.addStringOption((option) =>
-			option.setName('reason').setDescription('Reason for kicking.')
+			option.setName("reason").setDescription("Reason for kicking."),
 		),
 	// .addStringOption(option => option.setName('id').setDescription('id of the user')),
 
 	execute: async (_, interaction) => {
-		const mentioned = interaction.options.getUser('mention') as User;
-		const reason = interaction.options.getString('reason') || 'No reason given';
+		const mentioned = interaction.options.getUser("mention") as User;
+		const reason = interaction.options.getString("reason") || "No reason given";
 
 		try {
 			await interaction.guild?.members.kick(mentioned);
 		} catch (e) {
 			console.log(e);
-			return await interaction.reply({ content: 'An error had occurred.' });
+			return await interaction.reply({ content: "An error had occurred." });
 		}
 
 		const embed = new EmbedBuilder()
 			.setTitle(`Kick | ${mentioned?.tag}`)
 			.setColor(Colors.Red)
 			.setFields(
-				{ name: 'User', value: `${mentioned.tag}`, inline: true },
+				{ name: "User", value: `${mentioned.tag}`, inline: true },
 				{
-					name: 'Moderator',
+					name: "Moderator",
 					value: `${interaction.user.username}`,
 					inline: true,
 				},
-				{ name: 'Reason', value: `${reason}`, inline: false },
+				{ name: "Reason", value: `${reason}`, inline: false },
 			);
 		await interaction.reply({ embeds: [embed] });
 	},

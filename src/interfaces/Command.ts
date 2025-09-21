@@ -4,7 +4,7 @@ import type {
 	// SlashCommandBuilder,
 	SlashCommandOptionsOnlyBuilder,
 } from 'discord.js';
-import Asomataru from '@/structures/client.ts';
+import type Asomataru from '@/structures/client.ts';
 
 export interface Command {
 	name: string;

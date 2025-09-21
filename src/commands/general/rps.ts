@@ -5,11 +5,11 @@ import {
 	Colors,
 	ComponentType,
 	EmbedBuilder,
-	MessageComponentInteraction,
+	type MessageComponentInteraction,
 	SlashCommandBuilder,
-} from 'discord.js';
-import { randomItemInArray } from '@/constants/index.ts';
-import { Command } from '@/interfaces/Command.ts';
+} from "discord.js";
+import { randomItemInArray } from "@/constants/index.ts";
+import type { Command } from "@/interfaces/Command.ts";
 
 enum RPS {
 	ROCK,
@@ -18,13 +18,13 @@ enum RPS {
 }
 
 export const command: Command = {
-	name: 'rps',
+	name: "rps",
 	ownerOnly: false,
 	cooldown: 15,
-	usage: 'rps <react to message>',
+	usage: "rps <react to message>",
 	data: new SlashCommandBuilder()
-		.setName('rps')
-		.setDescription('Starts a game of rock-paper-scissors'),
+		.setName("rps")
+		.setDescription("Starts a game of rock-paper-scissors"),
 	execute: async (_, interaction) => {
 		const botSelections = [RPS.ROCK, RPS.PAPER, RPS.SCISSORS];
 		const botSelection = randomItemInArray(botSelections);
@@ -32,29 +32,29 @@ export const command: Command = {
 		const buttons = new ActionRowBuilder<ButtonBuilder>().addComponents(
 			new ButtonBuilder()
 				.setStyle(ButtonStyle.Secondary)
-				.setEmoji('📃')
-				.setCustomId('paper'),
+				.setEmoji("📃")
+				.setCustomId("paper"),
 			new ButtonBuilder()
 				.setStyle(ButtonStyle.Secondary)
-				.setEmoji('🗿')
-				.setCustomId('rock'),
+				.setEmoji("🗿")
+				.setCustomId("rock"),
 			new ButtonBuilder()
 				.setStyle(ButtonStyle.Secondary)
-				.setEmoji('✂️')
-				.setCustomId('scissors'),
+				.setEmoji("✂️")
+				.setCustomId("scissors"),
 		);
 
 		const filter = (i: MessageComponentInteraction) => {
 			return (
-				(i.customId == 'rock' ||
-					i.customId == 'paper' ||
-					i.customId == 'scissors') &&
-				i.user.id == interaction.user.id
+				(i.customId === "rock" ||
+					i.customId === "paper" ||
+					i.customId === "scissors") &&
+				i.user.id === interaction.user.id
 			);
 		};
 
 		const embed = new EmbedBuilder()
-			.setTitle('Rock Paper Scissors')
+			.setTitle("Rock Paper Scissors")
 			.setColor(Colors.NotQuiteBlack);
 
 		await interaction.reply({ embeds: [embed], components: [buttons] });
@@ -63,17 +63,17 @@ export const command: Command = {
 			time: 12000,
 			componentType: ComponentType.Button,
 		});
-		collector?.on('collect', async (i) => {
+		collector?.on("collect", async (i) => {
 			await i.deferUpdate();
 
 			switch (i.customId) {
-				case 'rock':
+				case "rock":
 					checkWinner(RPS.ROCK, botSelection);
 					break;
-				case 'paper':
+				case "paper":
 					checkWinner(RPS.PAPER, botSelection);
 					break;
-				case 'scissors':
+				case "scissors":
 					checkWinner(RPS.SCISSORS, botSelection);
 					break;
 			}
@@ -82,8 +82,8 @@ export const command: Command = {
 		});
 
 		function checkWinner(user: RPS, enemy: RPS) {
-			let msg = '';
-			if (user == enemy) {
+			let msg = "";
+			if (user === enemy) {
 				// tie
 				embed.setColor(Colors.Grey);
 				msg = "You've tied with your opponent.";
@@ -98,23 +98,23 @@ export const command: Command = {
 			}
 
 			embed.setFields([
-				{ name: 'Your choice', value: `${choices(user)}`, inline: false },
-				{ name: 'Enemy choice', value: `${choices(enemy)}`, inline: false },
-				{ name: 'Result', value: `${msg}`, inline: false },
+				{ name: "Your choice", value: `${choices(user)}`, inline: false },
+				{ name: "Enemy choice", value: `${choices(enemy)}`, inline: false },
+				{ name: "Result", value: `${msg}`, inline: false },
 			]);
 		}
 
 		function choices(choice: RPS): string {
-			let _choice = '';
+			let _choice = "";
 			switch (choice) {
 				case RPS.ROCK:
-					_choice = '🪨';
+					_choice = "🪨";
 					break;
 				case RPS.PAPER:
-					_choice = '📃';
+					_choice = "📃";
 					break;
 				case RPS.SCISSORS:
-					_choice = '✂️';
+					_choice = "✂️";
 					break;
 			}
 			return _choice;

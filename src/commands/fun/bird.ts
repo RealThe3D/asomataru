@@ -1,21 +1,21 @@
-import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
-import axios from 'axios';
-import { Command } from '@/interfaces/Command.ts';
-import { randomItemInArray, selectRandomColor } from '@/constants/index.ts';
-import { IMemes } from '@/declarations/memes.ts';
+import axios from "axios";
+import { EmbedBuilder, SlashCommandBuilder } from "discord.js";
+import { randomItemInArray, selectRandomColor } from "@/constants/index.ts";
+import type { IMemes } from "@/declarations/memes.ts";
+import type { Command } from "@/interfaces/Command.ts";
 
 export const command: Command = {
-	name: 'bird',
+	name: "bird",
 	ownerOnly: false,
 	cooldown: 3,
-	usage: 'bird',
+	usage: "bird",
 	data: new SlashCommandBuilder()
-		.setName('bird')
-		.setDescription('Displays an image of a bird.'),
+		.setName("bird")
+		.setDescription("Displays an image of a bird."),
 	execute: async (_, interaction) => {
 		await interaction.deferReply();
 		const { data } = await axios.get(
-			'https://www.reddit.com/r/birding/top.json?sort=top&t=day&limit=100',
+			"https://www.reddit.com/r/birding/top.json?sort=top&t=day&limit=100",
 		);
 		const randomMemeData = randomItemInArray<IMemes>(data.data.children).data;
 		const embed = new EmbedBuilder()
@@ -24,7 +24,7 @@ export const command: Command = {
 			.setColor(selectRandomColor())
 			.setFields([
 				{
-					name: 'Votes',
+					name: "Votes",
 					value: `${randomMemeData.ups} / ${randomMemeData.downs}`,
 					inline: false,
 				},

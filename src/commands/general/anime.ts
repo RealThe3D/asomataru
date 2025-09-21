@@ -1,4 +1,6 @@
-import { Command } from '@/interfaces/Command.ts';
+import { format } from "npm:date-fns";
+import axios from "axios";
+import { delay } from "delay";
 import {
 	ActionRowBuilder,
 	ButtonBuilder,
@@ -6,49 +8,47 @@ import {
 	Colors,
 	ComponentType,
 	EmbedBuilder,
-	MessageComponentInteraction,
+	type MessageComponentInteraction,
 	SlashCommandBuilder,
-} from 'discord.js';
-import axios from 'axios';
-import { delay } from "delay";
-import { format } from 'npm:date-fns';
+} from "discord.js";
+import type { Command } from "@/interfaces/Command.ts";
 export const command: Command = {
-	name: 'anime',
+	name: "anime",
 	ownerOnly: false,
 	cooldown: 10,
-	usage: 'anime',
+	usage: "anime",
 	data: new SlashCommandBuilder()
-		.setName('anime')
-		.setDescription('Get information about an anime')
+		.setName("anime")
+		.setDescription("Get information about an anime")
 		.addStringOption((option) =>
 			option
-				.setName('title')
-				.setDescription('Anime to get info on.')
+				.setName("title")
+				.setDescription("Anime to get info on.")
 				.setRequired(true)
-				.setAutocomplete(true)
+				.setAutocomplete(true),
 		),
 	execute: async (_, interaction) => {
 		const buttons = new ActionRowBuilder<ButtonBuilder>().addComponents([
 			new ButtonBuilder()
-				.setCustomId('backwards')
-				.setLabel('Previous')
+				.setCustomId("backwards")
+				.setLabel("Previous")
 				.setStyle(ButtonStyle.Secondary),
 			new ButtonBuilder()
-				.setCustomId('stop')
-				.setLabel('Stop')
+				.setCustomId("stop")
+				.setLabel("Stop")
 				.setStyle(ButtonStyle.Secondary),
 			new ButtonBuilder()
-				.setCustomId('forward')
-				.setLabel('Next')
+				.setCustomId("forward")
+				.setLabel("Next")
 				.setStyle(ButtonStyle.Secondary),
 		]);
 
 		const filter = (i: MessageComponentInteraction) => {
 			return (
-				(i.customId == 'backwards' ||
-					i.customId == 'stop' ||
-					i.customId == 'forward') &&
-				i.user.id == interaction.user?.id
+				(i.customId === "backwards" ||
+					i.customId === "stop" ||
+					i.customId === "forward") &&
+				i.user.id === interaction.user?.id
 			);
 		};
 		const collector = interaction.channel?.createMessageComponentCollector({
@@ -57,8 +57,8 @@ export const command: Command = {
 			componentType: ComponentType.Button,
 		});
 		let pageNum = 0;
-		let anime = interaction.options.getString('title') as string;
-		anime = anime.replaceAll(/ /g, '%20');
+		let anime = interaction.options.getString("title") as string;
+		anime = anime.replaceAll(/ /g, "%20");
 		const { data } = await axios.get(
 			`https://kitsu.io/api/edge/anime?filter[text]=${anime}`,
 		);
@@ -75,35 +75,36 @@ export const command: Command = {
 			.setColor(Colors.Aqua)
 			.setFields([
 				{
-					name: 'Synopsis',
+					name: "Synopsis",
 					value: shorten(animeData.attributes.synopsis),
 					inline: false,
 				},
 				{
-					name: 'Rating',
+					name: "Rating",
 					value: `${animeData.attributes.averageRating} / 100`,
 					inline: false,
 				},
 				{
-					name: 'Air Date',
-					value: format(animeData.attributes.startDate, 'MMMM d, yyyy'),
+					name: "Air Date",
+					value: format(animeData.attributes.startDate, "MMMM d, yyyy"),
 					inline: false,
 				},
 				{
-					name: 'Episode Info',
-					value: animeData.attributes.episodeCount +
-						' episodes, ' +
+					name: "Episode Info",
+					value:
+						animeData.attributes.episodeCount +
+						" episodes, " +
 						animeData.attributes.episodeLength +
-						' minutes each',
+						" minutes each",
 					inline: false,
 				},
 			]);
 		await interaction.reply({ embeds: [embed], components: [buttons] });
-		collector?.on('collect', async (i) => {
+		collector?.on("collect", async (i) => {
 			await i.deferUpdate();
 			switch (i.customId) {
-				case 'backwards':
-					if (pageNum != 0) {
+				case "backwards":
+					if (pageNum !== 0) {
 						pageNum--;
 					}
 					animeData = data.data[pageNum];
@@ -113,42 +114,43 @@ export const command: Command = {
 						.setColor(Colors.LuminousVividPink)
 						.setFields([
 							{
-								name: 'Synopsis',
+								name: "Synopsis",
 								value: shorten(animeData.attributes.synopsis),
 								inline: false,
 							},
 							{
-								name: 'Rating',
+								name: "Rating",
 								value: `${animeData.attributes.averageRating} / 100`,
 								inline: false,
 							},
 							{
-								name: 'Air Date',
-								value: format(animeData.attributes.startDate, 'MMMM d, yyyy'),
+								name: "Air Date",
+								value: format(animeData.attributes.startDate, "MMMM d, yyyy"),
 								inline: false,
 							},
 							{
-								name: 'Episode Info',
-								value: animeData.attributes.episodeCount +
-									' episodes, ' +
+								name: "Episode Info",
+								value:
+									animeData.attributes.episodeCount +
+									" episodes, " +
 									animeData.attributes.episodeLength +
-									' minutes each',
+									" minutes each",
 								inline: false,
 							},
 						]);
 					break;
-				case 'stop':
+				case "stop":
 					collector.dispose(i);
 					buttons.components.splice(0, 3);
 					buttons.addComponents(
 						new ButtonBuilder()
-							.setCustomId('finished')
-							.setEmoji('👍')
+							.setCustomId("finished")
+							.setEmoji("👍")
 							.setStyle(ButtonStyle.Success)
 							.setDisabled(true),
 					);
 					break;
-				case 'forward':
+				case "forward":
 					// if(pageNum != 5) {
 					// 	pageNum++;
 					// }
@@ -166,24 +168,23 @@ export const command: Command = {
 						.setColor(Colors.LuminousVividPink)
 						.setFields([
 							{
-								name: 'Synopsis',
+								name: "Synopsis",
 								value: shorten(animeData.attributes.synopsis),
 								inline: false,
 							},
 							{
-								name: 'Rating',
+								name: "Rating",
 								value: `${animeData.attributes.averageRating} / 100`,
 								inline: false,
 							},
 							{
-								name: 'Air Date',
-								value: format(animeData.attributes.startDate, 'MMMM d, yyyy'),
+								name: "Air Date",
+								value: format(animeData.attributes.startDate, "MMMM d, yyyy"),
 								inline: false,
 							},
 							{
-								name: 'Episode Info',
-								value:
-									`${animeData.attributes.episodeCount} episodes, ${animeData.attributes.episodeLength} minutes each`,
+								name: "Episode Info",
+								value: `${animeData.attributes.episodeCount} episodes, ${animeData.attributes.episodeLength} minutes each`,
 								inline: false,
 							},
 						]);
@@ -191,12 +192,12 @@ export const command: Command = {
 			}
 			await i.editReply({ embeds: [embed], components: [buttons] });
 		});
-		collector?.on('end', () => {
+		collector?.on("end", () => {
 			buttons.components.splice(0, 3);
 		});
 
 		function shorten(text: string): string {
-			return text.split(' ').slice(0, 50).join(' ') + '...';
+			return `${text.split(" ").slice(0, 50).join(" ")}..."`;
 		}
 	},
 	autocomplete: async (_, interaction) => {
@@ -207,7 +208,7 @@ export const command: Command = {
 		const { data } = await axios.get(
 			`https://kitsu.io/api/edge/anime?filter[text]=${focusedValue}`.replaceAll(
 				/ /g,
-				'%20',
+				"%20",
 			),
 		);
 		const choices: string[] = [];

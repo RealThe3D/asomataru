@@ -1,7 +1,12 @@
-import { Client, Collection, GatewayIntentBits, Snowflake } from 'discord.js';
-import fs from 'node:fs';
-import { Command } from '@/interfaces/Command.ts';
-import '@std/dotenv/load';
+import fs from "node:fs";
+import {
+	Client,
+	Collection,
+	GatewayIntentBits,
+	type Snowflake,
+} from "discord.js";
+import type { Command } from "@/interfaces/Command.ts";
+import "@std/dotenv/load";
 
 class Asomataru extends Client {
 	commands = new Collection<string, Command>();
@@ -13,8 +18,8 @@ class Asomataru extends Client {
 	async init() {
 		/* Events */
 		const eventFiles = fs
-			.readdirSync('src/events')
-			.filter((file: string) => file.endsWith('.ts'));
+			.readdirSync("src/events")
+			.filter((file: string) => file.endsWith(".ts"));
 		for (const file of eventFiles) {
 			const { event } = await import(`../events/${file}`);
 
@@ -25,10 +30,10 @@ class Asomataru extends Client {
 			}
 		}
 
-		if (Deno.env.get('NODE_ENV') == 'production') {
-			this.login(Deno.env.get('TOKEN'));
+		if (Deno.env.get("NODE_ENV") === "production") {
+			this.login(Deno.env.get("TOKEN"));
 		} else {
-			this.login(Deno.env.get('TEST_TOKEN'));
+			this.login(Deno.env.get("TEST_TOKEN"));
 		}
 	}
 }

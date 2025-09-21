@@ -1,13 +1,13 @@
-import { Command } from '@/interfaces/Command.ts';
-import { Colors, EmbedBuilder, SlashCommandBuilder } from 'discord.js';
+import { Colors, EmbedBuilder, SlashCommandBuilder } from "discord.js";
+import type { Command } from "@/interfaces/Command.ts";
 
 export const command: Command = {
-	name: 'botstats',
+	name: "botstats",
 	ownerOnly: false,
 	cooldown: 10,
-	usage: '',
+	usage: "",
 	data: new SlashCommandBuilder()
-		.setName('botstats')
+		.setName("botstats")
 		.setDescription("Displays Asomataru's stats."),
 	execute: async (client, interaction) => {
 		const guildCount = (await client.guilds.fetch()).size;
@@ -21,12 +21,12 @@ export const command: Command = {
 			.setTitle("Asomataru's Bot Stats")
 			.setFields([
 				{
-					name: 'Servers',
+					name: "Servers",
 					value: `${guildCount} Servers`,
 					inline: false,
 				},
 				{
-					name: 'Users',
+					name: "Users",
 					value: `${memberCount} Users`,
 					inline: false,
 				},

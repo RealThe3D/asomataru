@@ -1,5 +1,5 @@
-import { Events } from 'discord.js';
-import Asomataru from '@/structures/client.ts';
+import type { Events } from 'discord.js';
+import type Asomataru from '@/structures/client.ts';
 
 export interface Event {
 	type: Events;

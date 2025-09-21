@@ -1,16 +1,16 @@
-import { Colors, EmbedBuilder, SlashCommandBuilder } from 'discord.js';
-import { Command } from '@/interfaces/Command.ts';
-import { db, users as usersTable, increment } from '@/db/index.ts';
-import { eq } from 'drizzle-orm';
+import { Colors, EmbedBuilder, SlashCommandBuilder } from "discord.js";
+import { eq } from "drizzle-orm";
+import { db, increment, users as usersTable } from "@/db/index.ts";
+import type { Command } from "@/interfaces/Command.ts";
 
 export const command: Command = {
-	name: 'daily',
+	name: "daily",
 	ownerOnly: false,
 	cooldown: 86400,
-	usage: 'daily',
+	usage: "daily",
 	data: new SlashCommandBuilder()
-		.setName('daily')
-		.setDescription('Redeem your dailies.'),
+		.setName("daily")
+		.setDescription("Redeem your dailies."),
 	execute: async (_, interaction) => {
 		const randomAmount = Math.floor(Math.random() * Math.floor(750)); // 1-750
 
@@ -24,7 +24,7 @@ export const command: Command = {
 			.setColor(Colors.Green)
 			.setTitle(`${interaction.user.username}'s Daily Rewards`)
 			.setDescription(
-				`Your daily reward is ${randomAmount} coins! You now have ${users[0].coins} coins.`
+				`Your daily reward is ${randomAmount} coins! You now have ${users[0].coins} coins.`,
 			);
 		await interaction.reply({ embeds: [embed], ephemeral: true });
 	},

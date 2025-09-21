@@ -1,22 +1,22 @@
-import { Command } from '@/interfaces/Command.ts';
-import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
-import axios from 'axios';
-import { randomItemInArray } from '@/constants/index.ts';
-import { selectRandomColor } from '@/constants/randomColors.ts';
-import { IMemes } from '@/declarations/memes.ts';
+import axios from "axios";
+import { EmbedBuilder, SlashCommandBuilder } from "discord.js";
+import { randomItemInArray } from "@/constants/index.ts";
+import { selectRandomColor } from "@/constants/randomColors.ts";
+import type { IMemes } from "@/declarations/memes.ts";
+import type { Command } from "@/interfaces/Command.ts";
 
 export const command: Command = {
-	name: 'moemorphism',
+	name: "moemorphism",
 	ownerOnly: false,
 	cooldown: 0,
-	usage: 'moemorphism',
+	usage: "moemorphism",
 	data: new SlashCommandBuilder()
-		.setName('moemorphism')
-		.setDescription('Sends an random moemorphism of something'),
+		.setName("moemorphism")
+		.setDescription("Sends an random moemorphism of something"),
 	execute: async (_, interaction) => {
 		await interaction.deferReply();
 		const { data } = await axios.get(
-			'https://www.reddit.com/r/moemorphism/top.json?sort=top&t=day&limit=100',
+			"https://www.reddit.com/r/moemorphism/top.json?sort=top&t=day&limit=100",
 		);
 
 		const randomMemeData = randomItemInArray<IMemes>(data.data.children).data;
@@ -27,7 +27,7 @@ export const command: Command = {
 			.setColor(selectRandomColor())
 			.setFields([
 				{
-					name: 'Votes',
+					name: "Votes",
 					value: `${randomMemeData.ups} / ${randomMemeData.downs}`,
 					inline: false,
 				},

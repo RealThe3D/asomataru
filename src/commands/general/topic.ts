@@ -1,4 +1,4 @@
-import { Command } from '@/interfaces/Command.ts';
+import type { Command } from '@/interfaces/Command.ts';
 import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 import { randomItemInArray } from '@/constants/index.ts';
 
