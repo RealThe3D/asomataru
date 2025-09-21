@@ -4,67 +4,79 @@
 
 ## Asomataru v3.0
 
-## v3.0.1 
+## v3.1
+
+Small backend update to Asomataru!
+
+-   Use **drizzle** instead of **Prisma** as an ORM
+
+-   Sep 21, 2025
+
+## v3.0.1
 
 Small update to Asomataru, expect v3.1 to drop this month!
 
 ### ✨ New Features
 
-- Added pagination to `credits`
-- Added `github` command
+-   Added pagination to `credits`
+-   Added `github` command
 
 ### 💥 New Changes
-- Asomataru is now dockerized 
-- `topic` has been updated slightly
 
-- Jan 18, 2025
+-   Asomataru is now dockerized
+-   `topic` has been updated slightly
+
+-   Jan 18, 2025
 
 ## v3.0
+
 Long due, Asomataru v3 is here!
 
 This should have been done 3 years ago, but here we are! School has taken a big toll on Asomataru's development.
 
 ### 🚀 New Features and Improvements
 
-- A rewrite to **TypeScript**
-- A rewrite to **Deno**
-- A rewrite to use **Prisma** instead of **Mongoose** as an ORM
-- Multiple new commands
-- Much more!
+-   A rewrite to **TypeScript**
+-   A rewrite to **Deno**
+-   A rewrite to use **Prisma** instead of **Mongoose** as an ORM
+-   Multiple new commands
+-   Much more!
 
 ### ❌ Removed features
+
 And as said back in 2021, RPG has been removed. I don't have the time to implement it. Sorry.
 
 Some commands were also removed:
 
-- **Baka**: API removed baka gif.
-- **Blackjack**: Gambling didn't feel right in Asomataru.
-- **Feed**: It was a weird command.
-- **Neko**: It was a weird command.
-- **Version**: Asomataru's internal version isn't particularly necessary for most people.
-- **Eval (OWNER ONLY)**: I don't really need this anymore.
-- **Restart (OWNER ONLY)**: I don't really need this anymore.
-- **Prefix**: Discord uses slash commands now, so prefixes have been removed.
+-   **Baka**: API removed baka gif.
+-   **Blackjack**: Gambling didn't feel right in Asomataru.
+-   **Feed**: It was a weird command.
+-   **Neko**: It was a weird command.
+-   **Version**: Asomataru's internal version isn't particularly necessary for most people.
+-   **Eval (OWNER ONLY)**: I don't really need this anymore.
+-   **Restart (OWNER ONLY)**: I don't really need this anymore.
+-   **Prefix**: Discord uses slash commands now, so prefixes have been removed.
 
 ### 🌱 New Commands
+
 Sorry for the removal of these commands, but the newer ones will take their place!
 
-- **Anime**: Displays an anime and its info as you search, and with autocorrect!
-- **Time**: Displays the current time
-- **Convert**: Convert between Celsius and Fahrenheit, and vice versa!
-- **Banner**: Shows a Discord user's banner if they have Nitro!
+-   **Anime**: Displays an anime and its info as you search, and with autocorrect!
+-   **Time**: Displays the current time
+-   **Convert**: Convert between Celsius and Fahrenheit, and vice versa!
+-   **Banner**: Shows a Discord user's banner if they have Nitro!
 
 ### 🔄 Updated Commands
 
-- **Daily**: No longer tied to RPG. Currently no use for coins, but it will come in **V3.1 in 2025**.
-- **Dog, Cat, Bird**: All use Reddit posts now.
-- **RPS**: Uses buttons now!
-- **Botstats**: Now displays accurate information.
-- **Ban, Kick**: Now work properly.
-- **Topic**: Topics have been updated.
-- **Avatar**: Returns as a PNG rather than a JPG.
-- **Serverinfo**: Now shows server boost level.
-- **Invite**: Now uses a button.
+-   **Daily**: No longer tied to RPG. Currently no use for coins, but it will come in **V3.1 in 2025**.
+-   **Dog, Cat, Bird**: All use Reddit posts now.
+-   **RPS**: Uses buttons now!
+-   **Botstats**: Now displays accurate information.
+-   **Ban, Kick**: Now work properly.
+-   **Topic**: Topics have been updated.
+-   **Avatar**: Returns as a PNG rather than a JPG.
+-   **Serverinfo**: Now shows server boost level.
+-   **Invite**: Now uses a button.
 
 ---
 
@@ -74,7 +86,7 @@ A couple of commands also have received style touch-ups to look much prettier!
 
 **Happy New Year!**
 
-- Dec 31, 2024
+-   Dec 31, 2024
 
 ## Asomataru v2.0
 
@@ -90,60 +102,60 @@ instead of hugged.
 
 **RPG is getting removed in v3.**
 
-- I haven't really did anything to the rpg aspect of Asomataru in over a year.
-  It's just too complex for me to maintain. I really wish I had more knowledge
-  to finish it, but I will leave it at a dead end.
+-   I haven't really did anything to the rpg aspect of Asomataru in over a year.
+    It's just too complex for me to maintain. I really wish I had more knowledge
+    to finish it, but I will leave it at a dead end.
 
 **V3.0 Sneak Peek!**
 
-- Slash Commands will be added.
-- Even more new commands!
-- Rewriting the bot from JavaScript to TypeScript to prevent less errors for
-  this update.
-- Button and Replys added!
-- Discord.js v13 support!
-- Node.js v16 support!
-- Many, many, more visual changes to the bot.
+-   Slash Commands will be added.
+-   Even more new commands!
+-   Rewriting the bot from JavaScript to TypeScript to prevent less errors for
+    this update.
+-   Button and Replys added!
+-   Discord.js v13 support!
+-   Node.js v16 support!
+-   Many, many, more visual changes to the bot.
 
 **This update may take all the way till January of 2022 to launch.**
 
-- Sep 25, 2021
+-   Sep 25, 2021
 
 ### 2.5
 
 Asomataru v2.5! Finally, at last.
 
-- Asomataru v2.5 is finally out! After 3 months of doing nothing, it has finally
-  rolled out!
+-   Asomataru v2.5 is finally out! After 3 months of doing nothing, it has finally
+    rolled out!
 
 Reasons for the long delay.
 
-- School has the took a big toll on how much time I could spend on Asomataru,
-  but it's summertime so now I can push updates like crazy like how it used to
-  be with Asomataru v1!
+-   School has the took a big toll on how much time I could spend on Asomataru,
+    but it's summertime so now I can push updates like crazy like how it used to
+    be with Asomataru v1!
 
 NEW CATEGORY: FUN
 
-- I split the General category into 2 categories, with the fun commands being in
-  the fun category!!! This helps out with organization.
+-   I split the General category into 2 categories, with the fun commands being in
+    the fun category!!! This helps out with organization.
 
 NEW COMMANDS feed, poke, slap, hug has joined the party. All affect your
 affection in different ways!
 
 OPTIMIZATIONS
 
-- Asomataru is a bit smarter and faster now.
+-   Asomataru is a bit smarter and faster now.
 
 MISCELLANEOUS
 
-- We use axios instead of superagent for api calls, because, why not?
+-   We use axios instead of superagent for api calls, because, why not?
 
 PREVIEW FOR v2.6
 
-- Slash Commands! Will be added before 2022.
-- More things to do on our website!!
-- More micro-optimizations!!!
-- Hopefully, the entire RPG will be finished (Will be v3.0)
+-   Slash Commands! Will be added before 2022.
+-   More things to do on our website!!
+-   More micro-optimizations!!!
+-   Hopefully, the entire RPG will be finished (Will be v3.0)
 
 June 20, 2021
 
@@ -151,13 +163,13 @@ June 20, 2021
 
 Asomataru v2.4! Quality of Life Update! Huge Recode!
 
-- Asomataru has gotten a huge recode, similar to the one of v2.0 back in August
-  of last year.
+-   Asomataru has gotten a huge recode, similar to the one of v2.0 back in August
+    of last year.
 
 INTERCHANGEABLE PREFIX
 
-- At last, Asomataru now has a interchangeable prefix! Change the prefix using
-  prefix , you won't regret it!
+-   At last, Asomataru now has a interchangeable prefix! Change the prefix using
+    prefix , you won't regret it!
 
 NO MORE DATABASE RESETS In the earlier versions of Asomataru, adding something
 new to the database required the existing data to be wiped. Now, it will no
@@ -174,7 +186,7 @@ serverinfo - Fixed bug where roles and channel numbers was undefined
 userinfo - Fixed bug where if user didn't have a nickname, it shows undefined
 birthday - No longer owner only.
 
-- March 13, 2021
+-   March 13, 2021
 
 ### v2.3
 
@@ -188,15 +200,15 @@ topics and replaced some old ones. invite - Now is embedded.
 
 Go to the website over at https://asomataru.herokuapp.com/
 
-- February 27, 2021
+-   February 27, 2021
 
 ### v2.2
 
 Asomataru v2.2.0! Revamped (and mostly final) help command
 
-- Finally, after nearly 3 months, I have a decent help command!
-- Automatically update so now it's always updated, no more manual updates to
-  help.
+-   Finally, after nearly 3 months, I have a decent help command!
+-   Automatically update so now it's always updated, no more manual updates to
+    help.
 
 Help command subsystem Help command now has a way to see more detail on a
 command (a!help command, it is not updated and need to be ported from the old
@@ -209,7 +221,7 @@ items! daily - Redeem your daily reward! mine - Mine for some ores! shop
 [UNFINISHED] - Look at some items that will be added in the future, just a sneak
 peak.
 
-- October 1, 2020
+-   October 1, 2020
 
 ### v2.1
 
@@ -224,7 +236,7 @@ is shared between servers.
 Huge updates coming soon! Other than RPG, by the start of 2021, I want to
 increase the amount of content Asomataru has in it!
 
-- August 30, 2020
+-   August 30, 2020
 
 ### v2.0.2
 

@@ -25,7 +25,9 @@ export const event: Event = {
 				.readdirSync(`src/commands/${folder}`)
 				.filter((file: string) => file.endsWith('.ts'));
 			for (const file of commandFiles) {
-				const { command } = await import(`../commands/${folder}/${file}`);
+				const { command } = await import(
+					`../commands/${folder}/${file}`
+				);
 				command.module = folder;
 				try {
 					client.commands.set(command.data.name, command);
@@ -38,9 +40,12 @@ export const event: Event = {
 		const rest = new REST({ version: '10' }).setToken(TOKEN);
 
 		try {
-			await rest.put(Routes.applicationCommands(client.user?.id as string), {
-				body: commandsArr,
-			});
+			await rest.put(
+				Routes.applicationCommands(client.user?.id as string),
+				{
+					body: commandsArr,
+				}
+			);
 			console.log('Commands loaded!');
 		} catch (e) {
 			console.error(e);
@@ -50,7 +55,7 @@ export const event: Event = {
 		client.user?.setPresence({
 			status: PresenceUpdateStatus.Online,
 			activities: [
-				{ name: 'Asomataru v3.0 Release!', type: ActivityType.Playing },
+				{ name: 'Asomataru v3.1 Release!', type: ActivityType.Playing },
 			],
 		});
 	},
