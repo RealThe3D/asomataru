@@ -1,7 +1,8 @@
 {
 	"tasks": {
-		"start": "NODE_ENV=production deno run --watch -A --env-file src/index.ts",
-		"dev": "deno run --watch -A --env-file src/index.ts"
+		"start": "NODE_ENV=production deno run --watch -A src/index.ts",
+		"dev": "deno run --watch -A --env-file src/index.ts",
+		"lint": "biome lint --write"
 	},
 	"imports": {
 		"@/": "./src/",
@@ -13,14 +14,6 @@
 		"delay": "jsr:@std/async/delay",
 		"drizzle-kit": "npm:drizzle-kit",
 		"drizzle-orm": "npm:drizzle-orm"
-	},
-	"lint": {
-		"exclude": ["generated"]
-	},
-	"fmt": {
-		"useTabs": true,
-		"singleQuote": true,
-		"exclude": ["node_modules/", "generated/"]
 	},
 	"nodeModulesDir": "auto"
 }
