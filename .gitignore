@@ -3,6 +3,3 @@ node_modules
 
 # Secrets.
 .env
-
-# Prisma (deno) files
-generated
