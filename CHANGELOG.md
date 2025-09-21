@@ -4,13 +4,19 @@
 
 ## Asomataru v3.0
 
+## v3.1.1
+Small linting update to Asomataru's source code.
+
+- Use **biome** for linting instead of **prettier**
+- Sep 20, 2025
+
 ## v3.1
 
 Small backend update to Asomataru!
 
 -   Use **drizzle** instead of **Prisma** as an ORM
 
--   Sep 21, 2025
+-   Sep 20, 2025
 
 ## v3.0.1
 
