@@ -1,7 +1,8 @@
 import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 import axios from 'axios';
 import { Command } from '@/interfaces/Command.ts';
-import prisma from '@/structures/prisma.ts';
+import { db, increment, users as usersTable } from '@/db/index.ts';
+import { eq } from 'drizzle-orm';
 
 export const command: Command = {
 	name: 'hug',
@@ -15,7 +16,7 @@ export const command: Command = {
 			option
 				.setName('user')
 				.setDescription(
-					'User to target. If omitted, uses the user of this command as the target.',
+					'User to target. If omitted, uses the user of this command as the target.'
 				)
 		),
 	execute: async (_, interaction) => {
@@ -26,20 +27,20 @@ export const command: Command = {
 		if (user.id == interaction.user.id) {
 			embed.setTitle('They... hugged themselves?');
 		} else {
-			embed.setTitle(`${interaction.user.username} hugged ${user.username}!`);
-			const userData = await prisma.user.update({
-				where: {
-					userId: interaction.user.id,
-				},
-				data: {
-					affection: {
-						increment: 10,
-					},
-				},
-			});
+			embed.setTitle(
+				`${interaction.user.username} hugged ${user.username}!`
+			);
+
+			const userData = await db
+				.update(usersTable)
+				.set({
+					affection: increment(usersTable.affection, 10),
+				})
+				.where(eq(usersTable.id, interaction.user.id))
+				.returning();
+
 			embed.setFooter({
-				text:
-					`You've gained 10 affection for being generous! You now have ${userData.affection} Affection!`,
+				text: `You've gained 10 affection for being generous! You now have ${userData[0].affection} Affection!`,
 			});
 		}
 		embed.setImage(data.url);

@@ -1,7 +1,8 @@
 import axios from 'axios';
-import prisma from '@/structures/prisma.ts';
 import { Colors, EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 import { Command } from '@/interfaces/Command.ts';
+import { db, decrement, users as usersTable } from '@/db/index.ts';
+import { eq } from 'drizzle-orm';
 
 export const command: Command = {
 	name: 'slap',
@@ -15,7 +16,7 @@ export const command: Command = {
 			option
 				.setName('user')
 				.setDescription(
-					'User to target. If omitted, uses the user of this command as the target.',
+					'User to target. If omitted, uses the user of this command as the target.'
 				)
 		),
 	execute: async (_, interaction) => {
@@ -28,20 +29,20 @@ export const command: Command = {
 		if (user.id == interaction.user.id) {
 			embed.setTitle('They... slapped themselves?');
 		} else {
-			embed.setTitle(`${interaction.user.username} slapped ${user.username}!`);
-			const userData = await prisma.user.update({
-				where: {
-					userId: interaction.user.id,
-				},
-				data: {
-					affection: {
-						decrement: 5,
-					},
-				},
-			});
+			embed.setTitle(
+				`${interaction.user.username} slapped ${user.username}!`
+			);
+
+			const users = await db
+				.update(usersTable)
+				.set({
+					affection: decrement(usersTable.affection, 5),
+				})
+				.where(eq(usersTable.id, interaction.user.id))
+				.returning();
+
 			embed.setFooter({
-				text:
-					`That's mean!!! ._. , You lost 5 affection, you now have ${userData.affection} Affection...`,
+				text: `That's mean!!! ._. , You lost 5 affection, you now have ${users[0].affection} Affection...`,
 			});
 		}
 		embed.setImage(data.url);

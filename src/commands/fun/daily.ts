@@ -1,6 +1,7 @@
 import { Colors, EmbedBuilder, SlashCommandBuilder } from 'discord.js';
-import prisma from '@/structures/prisma.ts';
 import { Command } from '@/interfaces/Command.ts';
+import { db, users as usersTable, increment } from '@/db/index.ts';
+import { eq } from 'drizzle-orm';
 
 export const command: Command = {
 	name: 'daily',
@@ -13,22 +14,17 @@ export const command: Command = {
 	execute: async (_, interaction) => {
 		const randomAmount = Math.floor(Math.random() * Math.floor(750)); // 1-750
 
-		const user = await prisma.user.update({
-			where: {
-				userId: interaction.user.id,
-			},
-			data: {
-				coins: {
-					increment: randomAmount,
-				},
-			},
-		});
+		const users = await db
+			.update(usersTable)
+			.set({ coins: increment(usersTable.coins, randomAmount) })
+			.where(eq(usersTable.id, interaction.user.id))
+			.returning();
 
 		const embed = new EmbedBuilder()
 			.setColor(Colors.Green)
 			.setTitle(`${interaction.user.username}'s Daily Rewards`)
 			.setDescription(
-				`Your daily reward is ${randomAmount} coins! You now have ${user.coins} coins.`,
+				`Your daily reward is ${randomAmount} coins! You now have ${users[0].coins} coins.`
 			);
 		await interaction.reply({ embeds: [embed], ephemeral: true });
 	},

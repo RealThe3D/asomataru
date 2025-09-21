@@ -1,6 +1,7 @@
 import { Command } from '@/interfaces/Command.ts';
 import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
-import prisma from '@/structures/prisma.ts';
+import { db, users as usersTable } from '@/db/index.ts';
+import { eq } from 'drizzle-orm';
 
 export const command: Command = {
 	name: 'profile',
@@ -14,7 +15,7 @@ export const command: Command = {
 			option
 				.setName('user')
 				.setDescription(
-					'User to target. If omitted, uses the user of this command as the target.',
+					'User to target. If omitted, uses the user of this command as the target.'
 				)
 		),
 	execute: async (_, interaction) => {
@@ -27,11 +28,10 @@ export const command: Command = {
 			});
 		}
 
-		const userData = await prisma.user.findUnique({
-			where: {
-				userId: interaction.user.id,
-			},
-		});
+		const userData = await db
+			.select()
+			.from(usersTable)
+			.where(eq(usersTable.id, user.id));
 
 		if (!userData) {
 			return await interaction.reply({
@@ -43,10 +43,14 @@ export const command: Command = {
 		const embed = new EmbedBuilder()
 			.setTitle(`${user.username}'s Stats`)
 			.setFields([
-				{ name: 'Coins', value: `${userData.coins} coins`, inline: true },
+				{
+					name: 'Coins',
+					value: `${userData[0].coins} coins`,
+					inline: true,
+				},
 				{
 					name: 'Affection',
-					value: `${userData.affection} affection`,
+					value: `${userData[0].affection} affection`,
 					inline: true,
 				},
 			])
