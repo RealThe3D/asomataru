@@ -1,6 +1,7 @@
 import { Client, Collection, GatewayIntentBits, Snowflake } from 'discord.js';
 import fs from 'node:fs';
 import { Command } from '@/interfaces/Command.ts';
+import '@std/dotenv/load';
 
 class Asomataru extends Client {
 	commands = new Collection<string, Command>();
