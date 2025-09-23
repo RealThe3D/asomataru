@@ -1,6 +1,6 @@
 {
 	"tasks": {
-		"start": "NODE_ENV=production deno run --watch -A src/index.ts",
+		"start": "NODE_ENV=production deno run -A src/index.ts",
 		"dev": "deno run --watch -A --env-file src/index.ts",
 		"lint": "biome lint --write"
 	},
@@ -9,7 +9,6 @@
 		"@std/dotenv": "jsr:@std/dotenv@^0.225.5",
 		"axios": "npm:axios",
 		"discord.js": "npm:discord.js",
-		"prisma": "npm:prisma",
 		"date-fns": "npm:date-fns",
 		"delay": "jsr:@std/async/delay",
 		"drizzle-kit": "npm:drizzle-kit",
