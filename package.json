@@ -11,6 +11,6 @@
 	"devDependencies": {
 		"@biomejs/biome": "^2.2.4",
 		"drizzle-kit": "^0.31.4",
-		"typescript": "^5.6.2"
+		"typescript": "^5.9.2"
 	}
 }
