@@ -4,6 +4,14 @@
 
 ## Asomataru v3.0
 
+## v3.1.2
+
+Another small backend update!
+
+- Remove **Prisma** from Asomataru
+- Remove **Eslint** from Asomataru
+
+- Sep 23, 2025
 ## v3.1.1
 Small linting update to Asomataru's source code.
 
