@@ -1,4 +1,4 @@
-import { Colors, EmbedBuilder, SlashCommandBuilder } from "discord.js";
+import { Colors, EmbedBuilder, MessageFlags, SlashCommandBuilder } from "discord.js";
 import type { Command } from "@/interfaces/Command.ts";
 
 export const command: Command = {

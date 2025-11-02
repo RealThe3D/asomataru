@@ -1,4 +1,4 @@
-import { EmbedBuilder, SlashCommandBuilder } from "discord.js";
+import { EmbedBuilder, MessageFlags, SlashCommandBuilder } from "discord.js";
 import { eq } from "drizzle-orm";
 import { db, users as usersTable } from "@/db/index.ts";
 import type { Command } from "@/interfaces/Command.ts";

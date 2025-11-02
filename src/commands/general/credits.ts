@@ -29,10 +29,7 @@ export const command: Command = {
 				"Incineroar (incinesk) - One Piece connoisseur and pro smash player!",
 				"SteelyMite (steelymite) - Graduated from University! I am proud of him!",
 				"Ditlus (ditlus) - An aspiring cook from Costa Rica! 🥰",
-				"Winnie (winxyclub) - A local Floridian fairy, but when will they move to the eastern side?",
 				"Kayla (qtkayla13) - Pro Minecraft and volleyball player, and she also smells!",
-				"Bubba (bubbaholderofls) - Pro Hypixel player, but he should carry me through Catacombs F7!",
-				"Aidan (hirsuna) - Pro Hypixel player, and some of his quotes are the greatest humanity has ever made.",
 			],
 			[
 				"Ethereal (ethereal_23) - Pro HSR player, happy about the release of Dragon Age: Veilguard!",
