@@ -55,6 +55,7 @@ export const command: Command = {
 
 		const embed = new EmbedBuilder()
 			.setTitle("Rock Paper Scissors")
+			.setDescription("Choose the item below!")
 			.setColor(Colors.NotQuiteBlack);
 
 		await interaction.reply({ embeds: [embed], components: [buttons] });
@@ -83,18 +84,18 @@ export const command: Command = {
 
 		function checkWinner(user: RPS, enemy: RPS) {
 			let msg = "";
-			if (user === enemy) {
-				// tie
-				embed.setColor(Colors.Grey);
-				msg = "You've tied with your opponent.";
-			} else if (user < enemy) {
-				// loss
-				embed.setColor(Colors.Red);
-				msg = "You've loss to your opponent...";
-			} else if (user > enemy) {
+			if ((user === RPS.ROCK && enemy === RPS.SCISSORS) || (user === RPS.PAPER && enemy === RPS.ROCK) || (user === RPS.SCISSORS && enemy === RPS.PAPER)) {
 				// win
 				embed.setColor(Colors.Green);
 				msg = "You've won against your opponent!";
+			} else if ((user === RPS.ROCK && enemy === RPS.PAPER) || (user === RPS.PAPER && enemy === RPS.SCISSORS) || (user === RPS.SCISSORS && enemy === RPS.ROCK)) {
+				// loss
+				embed.setColor(Colors.Red);
+				msg = "You've loss to your opponent...";
+			} else {
+				// tie
+				embed.setColor(Colors.Grey);
+				msg = "You've tied with your opponent.";
 			}
 
 			embed.setFields([
