@@ -4,6 +4,12 @@
 
 ## Asomataru v3.0
 
+## v3.1.3
+
+- Fixed a logic error in the `rps` command. A description was also added to make the command more clear.
+
+- November 1, 2025
+
 ## v3.1.2
 
 Another small backend update!
@@ -12,6 +18,7 @@ Another small backend update!
 - Remove **Eslint** from Asomataru
 
 - Sep 23, 2025
+
 ## v3.1.1
 Small linting update to Asomataru's source code.
 
