@@ -26,6 +26,6 @@ export const command: Command = {
 			.setDescription(
 				`Your daily reward is ${randomAmount} coins! You now have ${users[0].coins} coins.`,
 			);
-		await interaction.reply({ embeds: [embed], ephemeral: true });
+		await interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
 	},
 };

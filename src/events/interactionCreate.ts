@@ -3,6 +3,7 @@ import {
 	type ChatInputCommandInteraction,
 	Collection,
 	Events,
+  MessageFlags,
 } from 'discord.js';
 import type { Event } from '@/interfaces/Event.ts';
 import config from '../../config.json' with { type: 'json' };
@@ -23,7 +24,7 @@ export const event: Event = {
 			if (command.ownerOnly && !config.owners.includes(interaction.user.id)) {
 				return interaction.reply({
 					content: 'Only the bot owner can use this!',
-					ephemeral: true,
+					flags: MessageFlags.Ephemeral,
 				});
 			}
 			if (!client.cooldowns.has(command.name)) {
@@ -46,7 +47,7 @@ export const event: Event = {
 								1,
 							)
 						} seconds to use this command again.`,
-						ephemeral: true,
+						flags: MessageFlags.Ephemeral,
 					});
 				} else if (now < expirationTime && timeLeft > 60) {
 					return await interaction.reply({
@@ -55,7 +56,7 @@ export const event: Event = {
 								0,
 							)
 						} minutes to use this command again.`,
-						ephemeral: true,
+						flags: MessageFlags.Ephemeral,
 					});
 				}
 				timestamps.set(interaction.user.id, now);
@@ -73,12 +74,12 @@ export const event: Event = {
 				if (interaction.deferred || interaction.replied) {
 					await interaction.followUp({
 						content: 'An error had occurred',
-						ephemeral: true,
+						flags: MessageFlags.Ephemeral,
 					});
 				} else {
 					await interaction.reply({
 						content: 'An error had occurred',
-						ephemeral: true,
+						flags: MessageFlags.Ephemeral,
 					});
 				}
 			}

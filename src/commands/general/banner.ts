@@ -25,7 +25,7 @@ export const command: Command = {
 			return await interaction.reply({
 				content:
 					"That user does not have a banner. They need to be a Nitro member and set an image as a banner.",
-				ephemeral: true,
+				flags: MessageFlags.Ephemeral,
 			});
 		}
 		const embed = new EmbedBuilder()

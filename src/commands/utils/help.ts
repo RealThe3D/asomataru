@@ -40,7 +40,7 @@ export const command: Command = {
 					},
 				]);
 			}
-			await interaction.reply({ embeds: [embed], ephemeral: true });
+			await interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
 		} else {
 			let command: any = cmdValue;
 			if (client.commands.has(command)) {
@@ -57,11 +57,11 @@ export const command: Command = {
 					])
 					.setColor(Colors.Green)
 					.setFooter({ text: "() - Optional, <> - Required" });
-				await interaction.reply({ embeds: [embed], ephemeral: true });
+				await interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
 			} else {
 				await interaction.reply({
 					content: `Command with name " + \`${command}\` was not found.`,
-					ephemeral: true,
+					flags: MessageFlags.Ephemeral,
 				});
 			}
 		}

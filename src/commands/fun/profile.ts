@@ -23,8 +23,8 @@ export const command: Command = {
 
 		if (user.bot) {
 			return await interaction.reply({
-				content: "That is a bot.",
-				ephemeral: true,
+				content: "That user is a bot.",
+				flags: MessageFlags.Ephemeral,
 			});
 		}
 
@@ -36,7 +36,7 @@ export const command: Command = {
 		if (!userData) {
 			return await interaction.reply({
 				content: "This user has not set up a profile.",
-				ephemeral: true,
+				flags: MessageFlags.Ephemeral,
 			});
 		}
 
