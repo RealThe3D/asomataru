@@ -32,7 +32,7 @@ export const command: Command = {
 			.setTitle(`${user.username}'s Banner`)
 			.setImage(
 				userBanner.bannerURL({
-					size: 512,
+					size: 2048,
 					extension: "png",
 				}) as string,
 			)
