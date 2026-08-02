@@ -1,8 +1,8 @@
-FROM denoland/deno:2.9.1
+FROM denoland/deno:2.9.4
 
 WORKDIR /app
 
-COPY deno.json package.json ./
+COPY deno.json package*.json ./
 
 RUN deno install
 
