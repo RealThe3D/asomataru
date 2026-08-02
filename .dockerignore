@@ -1,2 +1,9 @@
-node_modules
+node_modules/
+.git/
+.vscode/
+.claude/
 .env
+*.log
+coverage/
+dist/
+build/
