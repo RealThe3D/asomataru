@@ -6,26 +6,32 @@ import {
 	REST,
 	Routes,
 } from "discord.js";
+import type { Command } from "@/interfaces/Command.ts";
 import type { Event } from "@/interfaces/Event.ts";
+import packageJson from "../../package.json" with { type: "json" };
 
 export const event: Event = {
 	type: Events.ClientReady,
 	once: true,
 	on: async (client) => {
-		const TOKEN = (
+		const TOKEN =
 			Deno.env.get("NODE_ENV") === "production"
 				? Deno.env.get("TOKEN")
-				: Deno.env.get("TEST_TOKEN")
-		) as string;
+				: Deno.env.get("TEST_TOKEN");
+
+		if (!TOKEN) return;
+
 		const commandsArr = [];
 		const commandFolders = fs.readdirSync("./src/commands");
+
 		for (const folder of commandFolders) {
-			// if (folder !== 'moderation') continue;
 			const commandFiles = fs
 				.readdirSync(`src/commands/${folder}`)
 				.filter((file: string) => file.endsWith(".ts"));
 			for (const file of commandFiles) {
-				const { command } = await import(`../commands/${folder}/${file}`);
+				const { command }: { command: Command } = await import(
+					`../commands/${folder}/${file}`
+				);
 				command.module = folder;
 				try {
 					client.commands.set(command.data.name, command);
@@ -50,7 +56,10 @@ export const event: Event = {
 		client.user?.setPresence({
 			status: PresenceUpdateStatus.Online,
 			activities: [
-				{ name: "Asomataru v3.1.3 Release!", type: ActivityType.Playing },
+				{
+					name: `Asomataru v${packageJson.version} Release!`,
+					type: ActivityType.Playing,
+				},
 			],
 		});
 	},

@@ -1,4 +1,9 @@
-import { Colors, EmbedBuilder, MessageFlags, SlashCommandBuilder } from "discord.js";
+import {
+	Colors,
+	EmbedBuilder,
+	MessageFlags,
+	SlashCommandBuilder,
+} from "discord.js";
 import type { Command } from "@/interfaces/Command.ts";
 
 export const command: Command = {
@@ -21,46 +26,49 @@ export const command: Command = {
 				)
 				.setColor(Colors.Green)
 				.setTimestamp(new Date());
-			const help = {} as any;
+			const help = new Map<string, string[]>();
+
 			client.commands.forEach((command) => {
-				// @ts-expect-error idk
-				const cat = command.module;
+				const category = command.module as string;
+				const commands = help.get(category) ?? [];
 
-				if (!Object.hasOwn(help, cat)) help[cat] = [];
-
-				help[cat].push(`\`${command.name}\``);
+				commands.push(`\`${command.name}\``);
+				help.set(category, commands);
 			});
 
-			for (const category in help) {
-				embed.addFields([
-					{
-						name: `**${category.charAt(0).toUpperCase() + category.slice(1)}**`,
-
-						value: help[category].join(" "),
-					},
-				]);
+			for (const [category, commands] of help) {
+				embed.addFields({
+					name: `**${category.charAt(0).toUpperCase() + category.slice(1)}**`,
+					value: commands.join(" "),
+				});
 			}
-			await interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
+			await interaction.reply({
+				embeds: [embed],
+				flags: MessageFlags.Ephemeral,
+			});
 		} else {
-			let command: any = cmdValue;
-			if (client.commands.has(command)) {
-				command = client.commands.get(command);
+			const foundCommand = client.commands.get(cmdValue);
+			if (foundCommand) {
 				const embed = new EmbedBuilder()
 					.setTitle(
-						command.data.name.charAt(0).toUpperCase() + command.name.slice(1),
+						foundCommand.data.name.charAt(0).toUpperCase() +
+							foundCommand.name.slice(1),
 					)
 					.setFields([
 						{
 							name: "Usage",
-							value: command.usage ? command.usage : "Not Found",
+							value: foundCommand.usage || "Not Found",
 						},
 					])
 					.setColor(Colors.Green)
 					.setFooter({ text: "() - Optional, <> - Required" });
-				await interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
+				await interaction.reply({
+					embeds: [embed],
+					flags: MessageFlags.Ephemeral,
+				});
 			} else {
 				await interaction.reply({
-					content: `Command with name " + \`${command}\` was not found.`,
+					content: `Command with name "${cmdValue}" was not found.`,
 					flags: MessageFlags.Ephemeral,
 				});
 			}

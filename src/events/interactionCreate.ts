@@ -3,10 +3,10 @@ import {
 	type ChatInputCommandInteraction,
 	Collection,
 	Events,
-  MessageFlags,
-} from 'discord.js';
-import type { Event } from '@/interfaces/Event.ts';
-import config from '../../config.json' with { type: 'json' };
+	MessageFlags,
+} from "discord.js";
+import type { Event } from "@/interfaces/Event.ts";
+import config from "../../config.json" with { type: "json" };
 
 // TODO: Object with perms
 export const event: Event = {
@@ -23,7 +23,7 @@ export const event: Event = {
 
 			if (command.ownerOnly && !config.owners.includes(interaction.user.id)) {
 				return interaction.reply({
-					content: 'Only the bot owner can use this!',
+					content: "Only the bot owner can use this!",
 					flags: MessageFlags.Ephemeral,
 				});
 			}
@@ -31,10 +31,8 @@ export const event: Event = {
 				client.cooldowns.set(command.name, new Collection());
 			}
 			const now = Date.now();
-			const timestamps = client.cooldowns.get(command.name) as Collection<
-				string,
-				number
-			>;
+			const timestamps = client.cooldowns.get(command.name);
+
 			const cooldownAmount = command.cooldown * 1000;
 			if (timestamps?.has(interaction.user.id)) {
 				const timeId = timestamps.get(interaction.user.id) as number;
@@ -42,20 +40,16 @@ export const event: Event = {
 				const timeLeft = (expirationTime - now) / 1000;
 				if (now < expirationTime && timeLeft < 60) {
 					return await interaction.reply({
-						content: `Please wait ${
-							timeLeft.toFixed(
-								1,
-							)
-						} seconds to use this command again.`,
+						content: `Please wait ${timeLeft.toFixed(
+							1,
+						)} seconds to use this command again.`,
 						flags: MessageFlags.Ephemeral,
 					});
 				} else if (now < expirationTime && timeLeft > 60) {
 					return await interaction.reply({
-						content: `Please wait ${
-							(timeLeft / 60).toFixed(
-								0,
-							)
-						} minutes to use this command again.`,
+						content: `Please wait ${(timeLeft / 60).toFixed(
+							0,
+						)} minutes to use this command again.`,
 						flags: MessageFlags.Ephemeral,
 					});
 				}
@@ -73,12 +67,12 @@ export const event: Event = {
 				console.error(e);
 				if (interaction.deferred || interaction.replied) {
 					await interaction.followUp({
-						content: 'An error had occurred',
+						content: "An error had occurred",
 						flags: MessageFlags.Ephemeral,
 					});
 				} else {
 					await interaction.reply({
-						content: 'An error had occurred',
+						content: "An error had occurred",
 						flags: MessageFlags.Ephemeral,
 					});
 				}
@@ -93,8 +87,8 @@ export const event: Event = {
 				return;
 			}
 			try {
-				// @ts-expect-error this code will only run if there's an autocomplete in the command.
-				await command.autocomplete(client, interaction);
+				if (!command.autocomplete) return;
+				command.autocomplete(client, interaction);
 			} catch (e) {
 				console.error(e);
 			}

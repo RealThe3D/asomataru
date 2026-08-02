@@ -1,19 +1,22 @@
 import type {
 	AutocompleteInteraction,
 	ChatInputCommandInteraction,
-	// SlashCommandBuilder,
+	SlashCommandBuilder,
 	SlashCommandOptionsOnlyBuilder,
-} from 'discord.js';
-import type Asomataru from '@/structures/client.ts';
+	SlashCommandSubcommandsOnlyBuilder,
+} from "discord.js";
+import type Asomataru from "@/structures/client.ts";
 
 export interface Command {
 	name: string;
+	module?: string;
 	ownerOnly: boolean;
 	cooldown: number;
 	usage: string;
-	data: // | SlashCommandBuilder
-		// | Omit<SlashCommandBuilder, 'addSubcommand' | 'addSubcommandGroup'>
-		SlashCommandOptionsOnlyBuilder;
+	data:
+		| SlashCommandBuilder
+		| SlashCommandOptionsOnlyBuilder
+		| SlashCommandSubcommandsOnlyBuilder;
 
 	execute: (
 		client: Asomataru,
