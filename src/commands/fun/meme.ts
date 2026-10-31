@@ -8,7 +8,7 @@ export const command: Command = {
 	name: "meme",
 	ownerOnly: false,
 	cooldown: 10,
-	usage: "a!meme",
+	usage: "/meme",
 	data: new SlashCommandBuilder()
 		.setName("meme")
 		.setDescription("Sends a meme into chat."),
